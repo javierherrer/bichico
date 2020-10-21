@@ -1,9 +1,9 @@
 package model;
 
 public class AdminVO{
-    int id;
-    String nombre;
-    String hashedPass;
+    private int id;
+    private String nombre;
+    private String hashedPass;
 
     public AdminVO(int id, String nombre, String hashedPass){
         this.id = id;
