@@ -1,6 +1,7 @@
 package model.facades;
 
 import controller.PoolConnectionManager;
+import model.ComunidadVO;
 import model.RegionVO;
 
 import java.sql.Connection;
@@ -22,7 +23,7 @@ public class RegionFacade {
     private static final String COMUNIDAD = "comunidad";
 
     private final static String CONSULTA_REGIONES =
-            "SELECT * FROM Bichico.region";
+            "SELECT * FROM Bichico.region r WHERE r.comunidad=?";
 
     private final static String CONSULTA_LATITUD =
             "SELECT r.latitud " +
@@ -38,15 +39,16 @@ public class RegionFacade {
      * Obtiene una lista de regiones en la base de datos
      * @return List<RegionVO>
      */
-    public static List<RegionVO> obtenerRegiones(){
+    public static List<RegionVO> obtenerRegiones(ComunidadVO comunidadVO){
         List<RegionVO> listaRegiones = new ArrayList<>();
         Connection connection;
         try {
             connection = PoolConnectionManager.getConnection();
-            if (connection != null) {
+            if (connection == null) {
                 return null;
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_REGIONES);
+            statement.setString(1, comunidadVO.getNombre());
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()){
@@ -84,7 +86,7 @@ public class RegionFacade {
                 return longitud;
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_LONGITUD);
-            statement.setString(1, Integer.toString(regionVO.getId()));
+            statement.setInt(1,regionVO.getId());
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
@@ -114,7 +116,7 @@ public class RegionFacade {
                 return latitud;
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_LATITUD);
-            statement.setString(1, Integer.toString(regionVO.getId()));
+            statement.setInt(1,regionVO.getId());
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
