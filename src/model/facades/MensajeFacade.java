@@ -11,11 +11,11 @@ import model.MensajeVO;
 public class MensajeFacade {
 
 	private static String mostrarMensajes = "SELECT m.* FROM Bichico.mensaje m";
-<<<<<<< HEAD
+
 	private static String insertarMensaje = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
-=======
+
 	private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
->>>>>>> b5eb7eefefb2d27d6a8e8e34cbded19e9640a57d
+
 	
 	public void mostrarMensajes() {
 		Connection conn = null;
