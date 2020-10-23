@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.AdminVO;
+import model.MensajeVO;
+import model.facades.AdminFacade;
 import model.facades.MensajeFacade;
 
 
@@ -34,9 +37,15 @@ public class Test extends HttpServlet {
 		MensajeFacade facade = new MensajeFacade();
 		//UserVO user = facade.getUser("telleria@unizar.es");
 		facade.mostrarMensajes();
+		AdminFacade adminFacade = new AdminFacade();
+		AdminVO adminPrueba = new AdminVO(1,"juan","1234");
+		boolean a = adminFacade.validateAdmin(adminPrueba);
+		System.out.println();
 		//System.out.println("username = " + user.getUserName());
 		//System.out.println("password = " + user.getPassword());
-		
+		MensajeFacade f = new MensajeFacade();
+		MensajeVO m = new MensajeVO("juan","juanico11@hotmail.com","esta web es una basura");
+		f.enviarMensaje(m);
 		//request.setAttribute("user", user);
 		
 		response.sendRedirect("index.html");
