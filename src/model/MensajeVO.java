@@ -12,6 +12,7 @@ public class MensajeVO {
         this.contenido = contenido;
         this.email = email;
     }
+  
 
     public int getId() {
         return id;
