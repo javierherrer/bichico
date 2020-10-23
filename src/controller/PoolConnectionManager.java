@@ -7,11 +7,21 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class PoolConnectionManager {
+public class PoolConnectionManager implements ConnectionFacade{
     // TODO: 21/10/20 Añadir url base datos
+    private static PoolConnectionManager instancia = null;
     private static final String URI_DB = "jdbc/bichico";
-    
-    public static Connection getConnection() throws SQLException{
+
+
+    public static PoolConnectionManager instancia(){
+        if (instancia == null){
+            instancia = new PoolConnectionManager();
+        }
+        return instancia;
+    }
+
+
+    public Connection getConnection() throws SQLException{
         try {
             Context initCtx = new InitialContext();
             Context envCtx = (Context) initCtx.lookup("java:comp/env");
@@ -30,7 +40,7 @@ public class PoolConnectionManager {
      * @param conn
      * @throws SQLException
      */
-    public final static void releaseConnection(Connection conn) {
+    public void releaseConnection(Connection conn) {
 		try {
 			if (conn != null)
 				conn.close();

@@ -1,6 +1,6 @@
 package model.facades;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.PalabraVO;
 
 import java.sql.*;
@@ -14,8 +14,8 @@ public class PalabraFacade {
      *
      * @return a Connection object
      */
-    public Connection connect() throws SQLException {
-        return PoolConnectionManager.getConnection();
+    public Connection connect(){
+        return ConnectionController.getConnection();
     }
 
     /**
@@ -89,7 +89,7 @@ public class PalabraFacade {
      * @return
      */
     public int eliminarPalabra(String nombre) {
-        String SQL = "DELETE FROM palabra " +
+        String SQL = "DELETE FROM bichico.palabra " +
                 "WHERE nombre = ?";
 
         int affectedrows = 0;

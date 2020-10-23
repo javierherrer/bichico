@@ -1,6 +1,6 @@
 package model.facades;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.FactorVO;
 import model.RegionVO;
 
@@ -22,7 +22,7 @@ public class FactorFacade {
         FactorVO factorVO = null;
         Connection connection;
         try {
-            connection = PoolConnectionManager.getConnection();
+            connection = ConnectionController.getConnection();
             if (connection == null){
                 return null;
             }
@@ -40,7 +40,7 @@ public class FactorFacade {
             }
             statement.close();
             resultSet.close();
-            PoolConnectionManager.releaseConnection(connection);
+            ConnectionController.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }

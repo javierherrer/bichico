@@ -5,19 +5,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import controller.ConnectionController;
 import controller.PoolConnectionManager;
 import model.MensajeVO;
 
 public class MensajeFacade {
 
 	private static String mostrarMensajes = "SELECT m.* FROM Bichico.mensaje m";
-	private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
+	private static String mostrarMensajeUsuario = "Select * from bichico.mensaje where emisor= ?";
 	
 	public void mostrarMensajes() {
 		Connection conn = null;
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
-			conn = PoolConnectionManager.getConnection(); 
+			conn = ConnectionController.getConnection();
 			PreparedStatement ps = conn.prepareStatement(mostrarMensajes);
 			ResultSet rset = ps.executeQuery();
 			while(rset.next()) {
@@ -27,7 +28,7 @@ public class MensajeFacade {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			PoolConnectionManager.releaseConnection(conn);
+			ConnectionController.releaseConnection(conn);
 		}
 	}
 	
@@ -37,7 +38,7 @@ public class MensajeFacade {
 
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
-			conn = PoolConnectionManager.getConnection(); 
+			conn = ConnectionController.getConnection();
 			PreparedStatement ps = conn.prepareStatement(mostrarMensajeUsuario);
 			ps.setString(1, emisor);
 			ResultSet rset = ps.executeQuery();
@@ -49,7 +50,7 @@ public class MensajeFacade {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			PoolConnectionManager.releaseConnection(conn);
+			ConnectionController.releaseConnection(conn);
 		}
 		return user;
 	}
