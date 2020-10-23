@@ -11,7 +11,7 @@ import model.MensajeVO;
 public class MensajeFacade {
 
 	private static String mostrarMensajes = "SELECT m.* FROM Bichico.mensaje m";
-	private static String mostrarMensajeUsuario = "Select * from mesaje where emisor= ?";
+	private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
 	
 	public void mostrarMensajes() {
 		Connection conn = null;
