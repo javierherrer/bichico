@@ -4,15 +4,25 @@ public class RegionVO {
     private int id;
     private int habitantes;
     private String nombre;
+    private String comunidad;
     private float latitud;
     private float longitud;
 
-    public RegionVO(int id, int habitantes, String nombre, float latitud, float longitud) {
+    public RegionVO(int id, int habitantes, String nombre, String comunidad, float latitud, float longitud) {
         this.id = id;
         this.habitantes = habitantes;
         this.nombre = nombre;
+        this.comunidad = comunidad;
         this.latitud = latitud;
         this.longitud = longitud;
+    }
+
+    public String getComunidad() {
+        return comunidad;
+    }
+
+    public void setComunidad(String comunidad) {
+        this.comunidad = comunidad;
     }
 
     public int getId() {

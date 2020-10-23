@@ -12,24 +12,14 @@ package model;
  *
  */
 public class ComunidadVO {
-    private int id;
     private String nombre;
     private float latitud;
     private float longitud;
 
-    public ComunidadVO(int id, String nombre, float latitud, float longitud) {
-        this.id = id;
+    public ComunidadVO(String nombre, float latitud, float longitud) {
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getNombre() {
