@@ -27,7 +27,7 @@ public class PoolConnectionManager {
 
     /**
      * Releases the connection to the pool
-     * @param connection
+     * @param conn
      * @throws SQLException
      */
     public final static void releaseConnection(Connection conn) {
