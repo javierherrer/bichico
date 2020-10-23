@@ -40,8 +40,7 @@ public class FactorFacade {
             }
             statement.close();
             resultSet.close();
-            connection.close();
-
+            PoolConnectionManager.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }

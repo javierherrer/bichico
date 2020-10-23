@@ -65,11 +65,10 @@ public class RegionFacade {
             statement.close();
             resultSet.close();
             PoolConnectionManager.releaseConnection(connection);
-            return listaRegiones;
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return null;
+        return listaRegiones;
     }
 
     /**
@@ -95,7 +94,6 @@ public class RegionFacade {
             statement.close();
             resultSet.close();
             PoolConnectionManager.releaseConnection(connection);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
