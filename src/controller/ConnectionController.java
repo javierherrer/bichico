@@ -3,10 +3,10 @@ package controller;
 import java.sql.Connection;
 
 public class ConnectionController {
-    private static ConnectionFacade connectionFacade = PoolConnectionManager.instancia();
+    private static DatabaseConnection databaseConnection = PoolDatabaseConnectionManager.instancia();
 
-    public static void setConnectionFacade(ConnectionFacade c){
-        connectionFacade = c;
+    public static void setConnectionFacade(DatabaseConnection c){
+        databaseConnection = c;
     }
 
     /**
@@ -15,7 +15,7 @@ public class ConnectionController {
      */
     public static Connection getConnection(){
         try {
-            return connectionFacade.getConnection();
+            return databaseConnection.getConnection();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -23,10 +23,12 @@ public class ConnectionController {
     }
 
     public static void releaseConnection(Connection connection) {
-        try {
-            connectionFacade.releaseConnection(connection);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (connection != null){
+            try {
+                databaseConnection.releaseConnection(connection);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
     }
 }

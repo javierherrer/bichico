@@ -3,7 +3,7 @@ import java.sql.*;
 
 /**  * Clase que abstrae la conexion con la base de datos.  */
 
-public class ConnectionManager implements ConnectionFacade{
+public class DatabaseConnectionManager implements DatabaseConnection {
 	// JDBC nombred el driver y URL de BD 
 	private static final String JDBC_DRIVER = "org.postgresql.Driver";  
 	private static final String HOST = "139.59.205.11";

@@ -3,8 +3,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import controller.ConnectionController;
-import controller.ConnectionManager;
-import controller.PoolConnectionManager;
 
 public class main {
 

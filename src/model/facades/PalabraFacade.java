@@ -8,7 +8,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PalabraFacade {
+    private final static String INSERTAR_PALABRA =
+            "INSERT INTO Bichico.palabra (nombre, importancia) " +
+            "VALUES (?,?)";
 
+    private final static String CONSULTAR_PALABRAS = "SELECT p.nombre FROM Bichico.palabra p";
+
+    private static final String ELIMINAR_PALABRA = "DELETE FROM bichico.palabra " +
+            "WHERE nombre = ?";
     /**
      * Connect to the PostgreSQL database
      *
@@ -25,13 +32,10 @@ public class PalabraFacade {
      * @return
      */
     public String insertarPalabra(PalabraVO palabra) {
-        String SQL = "INSERT INTO Bichico.palabra (nombre, importancia) " +
-                "VALUES (?,?)";
-
         String nombre ="";
 
         try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL,
+             PreparedStatement pstmt = conn.prepareStatement(INSERTAR_PALABRA,
                      Statement.RETURN_GENERATED_KEYS)) {
 
             pstmt.setString(1, palabra.getPalabra());
@@ -62,12 +66,12 @@ public class PalabraFacade {
      * @return una lista de palabras
      */
     public List<String> consultarPalabras() {
-        String SQL = "SELECT p.nombre FROM Bichico.palabra p";
+
 
         List<String> listaPalabras = new ArrayList<String>();
 
         try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL);
+             PreparedStatement pstmt = conn.prepareStatement(CONSULTAR_PALABRAS);
              ResultSet consultarRs = pstmt.executeQuery()) {
 
             //Leemos los registros
@@ -88,14 +92,10 @@ public class PalabraFacade {
      * @param nombre
      * @return
      */
-    public int eliminarPalabra(String nombre) {
-        String SQL = "DELETE FROM bichico.palabra " +
-                "WHERE nombre = ?";
-
-        int affectedrows = 0;
+    public int eliminarPalabra(String nombre) {int affectedrows = 0;
 
         try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+             PreparedStatement pstmt = conn.prepareStatement(ELIMINAR_PALABRA)) {
 
             pstmt.setString(1, nombre);
 
