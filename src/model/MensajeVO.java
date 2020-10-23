@@ -12,7 +12,11 @@ public class MensajeVO {
         this.contenido = contenido;
         this.email = email;
     }
-  
+    public MensajeVO( String emisor, String contenido, String email) {
+        this.emisor = emisor;
+        this.contenido = contenido;
+        this.email = email;
+    }
 
     public int getId() {
         return id;
