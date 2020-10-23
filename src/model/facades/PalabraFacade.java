@@ -62,7 +62,8 @@ public class PalabraFacade {
      * @return una lista de palabras
      */
     public List<String> consultarPalabras() {
-        String SQL = "SELECT p.nombre FROM Bichico.palabra p";
+        String SQL = "SELECT p.nombre " +
+                "FROM Bichico.palabra p";
 
         List<String> listaPalabras = new ArrayList<String>();
 
@@ -106,6 +107,4 @@ public class PalabraFacade {
         }
         return affectedrows;
     }
-
-
 }
