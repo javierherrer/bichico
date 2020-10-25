@@ -18,9 +18,9 @@ public class FactorFacade {
     private static final String CONSULTA_FACTOR =
             "SELECT * FROM Bichico.factor f WHERE f.id_region=?";
 
-    public static FactorVO obtenerFactor(RegionVO regionVO){
+    public FactorVO obtenerFactor(RegionVO regionVO){
         FactorVO factorVO = null;
-        Connection connection;
+        Connection connection = null;
         try {
             connection = PoolConnectionManager.getConnection();
             if (connection == null){
@@ -28,7 +28,7 @@ public class FactorFacade {
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_FACTOR);
             statement.setInt(1,regionVO.getId());
-
+            System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
@@ -43,7 +43,10 @@ public class FactorFacade {
             PoolConnectionManager.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+            
+        }finally {
+			PoolConnectionManager.releaseConnection(connection); 
+		}
         return factorVO;
     }
 }

@@ -10,19 +10,17 @@ import model.MensajeVO;
 
 public class MensajeFacade {
 
-	private static String mostrarMensajes = "SELECT m.* FROM Bichico.mensaje m";
+	private static String MOSTRAR_MENSAJE = "SELECT m.* FROM Bichico.mensaje m";
 
-	private static String insertarMensaje = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
-
-	private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
+	private static String INSERTAR_MENSAJE = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
 
 	
-	public void mostrarMensajes() {
+	public void mostrarMensajes() {			//se puede hacer un obetner
 		Connection conn = null;
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
 			conn = PoolConnectionManager.getConnection(); 
-			PreparedStatement ps = conn.prepareStatement(mostrarMensajes);
+			PreparedStatement ps = conn.prepareStatement(MOSTRAR_MENSAJE);
 			ResultSet rset = ps.executeQuery();
 			while(rset.next()) {
 				System.out.println(rset.getString("emisor"));
@@ -48,24 +46,24 @@ public class MensajeFacade {
 	}
 	
 	public boolean enviarMensaje(MensajeVO mensaje) {
-			Connection conn = null;
-	
+			Connection connection = null;
+			boolean resultado = true;
 			// Abrimos la conexión e inicializamos los parámetros 
 			try {
-				conn = PoolConnectionManager.getConnection();
-//	private static String insertarMensaje = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
+				connection = PoolConnectionManager.getConnection();
+				PreparedStatement ps = connection.prepareStatement(INSERTAR_MENSAJE);
+				ps.setString(1, mensaje.getEmisor());
+				ps.setString(2, mensaje.getEmail());
+				ps.setString(3, mensaje.getContenido());
 			
-			PreparedStatement ps = conn.prepareStatement(insertarMensaje);
-			ps.setString(1, mensaje.getEmisor());
-			ps.setString(2, mensaje.getEmail());
-			ps.setString(3, mensaje.getContenido());
-			System.out.println(ps);
-			int tablasAfectadas = ps.executeUpdate();
-			System.out.println(tablasAfectadas);
+				ps.executeUpdate();
+				
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				resultado = false;
+			}finally {
+				PoolConnectionManager.releaseConnection(connection); 
 			} 
-			return true;
+			return resultado;
 	}
 }

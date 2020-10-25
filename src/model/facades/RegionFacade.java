@@ -23,17 +23,17 @@ public class RegionFacade {
     private static final String COMUNIDAD = "comunidad";
 
     private final static String CONSULTA_REGIONES =
-            "SELECT * FROM Bichico.region r WHERE r.comunidad=?";
+            "SELECT * FROM Bichico.region r WHERE r.comunidad = ?";
 
     private final static String CONSULTA_LATITUD =
             "SELECT r.latitud " +
             "FROM Bichico.region r " +
-            "WHERE r.id=?";
+            "WHERE r.id = ?";
 
     private final static String CONSULTA_LONGITUD =
             "SELECT r.longitud " +
             "FROM Bichico.region r " +
-            "WHERE r.id=?";
+            "WHERE r.id = ?";
 
     /**
      * Obtiene una lista de regiones en la base de datos

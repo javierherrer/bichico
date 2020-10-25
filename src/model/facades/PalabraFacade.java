@@ -29,14 +29,14 @@ public class PalabraFacade {
                 "VALUES (?,?)";
 
         String nombre ="";
-
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL,
-                     Statement.RETURN_GENERATED_KEYS)) {
-
+        Connection conn = null;
+        try {
+        	conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL,
+            Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, palabra.getPalabra());
             pstmt.setFloat(2, palabra.getImportancia());
-
+            System.out.println(pstmt);
             int filas = pstmt.executeUpdate();
             // comprobar filas afectadas
             if (filas > 0) {
@@ -51,7 +51,9 @@ public class PalabraFacade {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } finally {
+			PoolConnectionManager.releaseConnection(conn); 
+		} 
 
         return nombre;
     }
@@ -65,11 +67,11 @@ public class PalabraFacade {
         String SQL = "SELECT p.nombre FROM Bichico.palabra p";
 
         List<String> listaPalabras = new ArrayList<String>();
-
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL);
-             ResultSet consultarRs = pstmt.executeQuery()) {
-
+        Connection conn = null;
+        try {
+        	conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(SQL);
+            ResultSet consultarRs = pstmt.executeQuery();
             //Leemos los registros
             while (consultarRs.next()) {
                 String palabra = consultarRs.getString("nombre");
@@ -77,7 +79,9 @@ public class PalabraFacade {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } finally {
+			PoolConnectionManager.releaseConnection(conn); 
+		} 
 
         return listaPalabras;
     }
@@ -93,17 +97,19 @@ public class PalabraFacade {
                 "WHERE nombre = ?";
 
         int affectedrows = 0;
-
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
-
+        Connection conn = null;
+        try {
+        	conn = connect();
+        	PreparedStatement pstmt = conn.prepareStatement(SQL);
             pstmt.setString(1, nombre);
 
             affectedrows = pstmt.executeUpdate();
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } finally {
+			PoolConnectionManager.releaseConnection(conn); 
+		} 
         return affectedrows;
     }
 
