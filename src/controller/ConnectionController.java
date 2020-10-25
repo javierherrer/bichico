@@ -6,7 +6,7 @@ public class ConnectionController {
     public static final String REMOTA = "remota";
     public static final String TOMCAT_LOCAL = "tomcat";
 
-    private static DatabaseConnection databaseConnection = PoolDatabaseConnectionManager.instancia();
+    private static DatabaseConnection databaseConnection = PoolTomcatConnection.instancia();
 
     private static void setConnectionFacade(DatabaseConnection c){
         databaseConnection = c;
@@ -38,10 +38,10 @@ public class ConnectionController {
     public static void changeConnection(String database){
         switch (database){
             case REMOTA:
-                setConnectionFacade(new DatabaseConnectionManager());
+                setConnectionFacade(PostgreSQLConnection.instancia());
                 break;
             case TOMCAT_LOCAL:
-                setConnectionFacade(new PoolDatabaseConnectionManager());
+                setConnectionFacade(PoolTomcatConnection.instancia());
                 break;
         }
     }
