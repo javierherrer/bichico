@@ -1,6 +1,6 @@
 package model.facades;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.ComunidadVO;
 import model.RegionVO;
 
@@ -43,7 +43,7 @@ public class RegionFacade {
         List<RegionVO> listaRegiones = new ArrayList<>();
         Connection connection;
         try {
-            connection = PoolConnectionManager.getConnection();
+            connection = ConnectionController.getConnection();
             if (connection == null) {
                 return null;
             }
@@ -64,7 +64,7 @@ public class RegionFacade {
             }
             statement.close();
             resultSet.close();
-            PoolConnectionManager.releaseConnection(connection);
+            ConnectionController.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -80,7 +80,7 @@ public class RegionFacade {
         Connection connection;
         float longitud = 0;
         try {
-            connection = PoolConnectionManager.getConnection();
+            connection = ConnectionController.getConnection();
             if (connection == null) {
                 return longitud;
             }
@@ -93,7 +93,7 @@ public class RegionFacade {
             }
             statement.close();
             resultSet.close();
-            PoolConnectionManager.releaseConnection(connection);
+            ConnectionController.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -109,7 +109,7 @@ public class RegionFacade {
         Connection connection;
         float latitud = 0;
         try {
-            connection = PoolConnectionManager.getConnection();
+            connection = ConnectionController.getConnection();
             if (connection == null) {
                 return latitud;
             }
@@ -122,7 +122,7 @@ public class RegionFacade {
             }
             statement.close();
             resultSet.close();
-            PoolConnectionManager.releaseConnection(connection);
+            ConnectionController.releaseConnection(connection);
 
         } catch (SQLException e) {
             e.printStackTrace();

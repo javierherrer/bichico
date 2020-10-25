@@ -2,17 +2,16 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import controller.ConnectionManager;
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		Connection conn = null;
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
-			conn = ConnectionManager.getConnection(); 
+			conn = ConnectionController.getConnection();
 			PreparedStatement ps = conn.prepareStatement("SELECT m.* FROM Bichico.mensaje m");
 			ResultSet rset = ps.executeQuery();
 			while(rset.next()) {
@@ -22,7 +21,7 @@ public class main {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			PoolConnectionManager.releaseConnection(conn);
+			ConnectionController.releaseConnection(conn);
 		}
 	}
 

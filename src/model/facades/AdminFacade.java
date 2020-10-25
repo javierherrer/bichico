@@ -5,26 +5,28 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.AdminVO;
 
 public class AdminFacade {
 	
 	
-	private static String contarUsuarios = "SELECT count(*) cuenta FROM bichico.admin a WHERE a.nombre = ?";
-	private static String buscamosUsuario = "SELECT a.* FROM bichico.admin a where a.nombre = ?";
+	private final static String contarUsuarios =
+			"SELECT count(*) cuenta FROM bichico.admin a WHERE a.nombre = ?";
+	private final static String buscamosUsuario =
+			"SELECT a.* FROM bichico.admin a where a.nombre = ?";
 	
 	private final static String PASSWORD = "hash_contrasenya";
 
 	
 	
-	public boolean validateAdmin(AdminVO user) { 
+	public static boolean validateAdmin(AdminVO user) {
 		boolean result = false;
 		Connection conn = null;
 		
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
-			conn = PoolConnectionManager.getConnection(); 
+			conn = ConnectionController.getConnection();
 		
 			PreparedStatement countPs = conn.prepareStatement(contarUsuarios);
 			PreparedStatement findPs = conn.prepareStatement(buscamosUsuario);
@@ -69,7 +71,7 @@ public class AdminFacade {
 		} catch(Exception e) {
 			e.printStackTrace(System.err); 
 		} finally {
-			PoolConnectionManager.releaseConnection(conn); 
+			ConnectionController.releaseConnection(conn);
 		}
 		
 		return result;
