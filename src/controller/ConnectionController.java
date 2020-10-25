@@ -3,7 +3,7 @@ package controller;
 import java.sql.Connection;
 
 public class ConnectionController {
-    private static DatabaseConnection databaseConnection = PoolDatabaseConnectionManager.instancia();
+    private static DatabaseConnection databaseConnection = DatabaseConnectionManager.instancia();
 
     public static void setConnectionFacade(DatabaseConnection c){
         databaseConnection = c;

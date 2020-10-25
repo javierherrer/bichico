@@ -77,7 +77,7 @@ public class RegionFacade {
      * @param regionVO
      * @return
      */
-    public static float obtenerLongitud(RegionVO regionVO){
+    public float obtenerLongitud(RegionVO regionVO){
         Connection connection;
         float longitud = 0;
         try {
