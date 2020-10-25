@@ -3,7 +3,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 import controller.ConnectionController;
-import controller.DatabaseConnectionManager;
 
 public class main {
 

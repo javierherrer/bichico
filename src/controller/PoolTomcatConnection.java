@@ -7,15 +7,21 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class PoolDatabaseConnectionManager implements DatabaseConnection {
+public class PoolTomcatConnection implements DatabaseConnection {
     // TODO: 21/10/20 Añadir url base datos
-    private static PoolDatabaseConnectionManager instancia = null;
+    private static PoolTomcatConnection instancia = null;
     private static final String URI_DB = "jdbc/bichico";
 
 
-    public static PoolDatabaseConnectionManager instancia(){
+    /**
+     * Es singleton
+     */
+    private PoolTomcatConnection(){
+
+    }
+    public static PoolTomcatConnection instancia(){
         if (instancia == null){
-            instancia = new PoolDatabaseConnectionManager();
+            instancia = new PoolTomcatConnection();
         }
         return instancia;
     }
