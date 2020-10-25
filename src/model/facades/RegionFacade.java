@@ -18,20 +18,20 @@ public class RegionFacade {
     private static final String ID = "id";
     private static final String HABITANTES = "habitantes";
     private static final String NOMBRE = "nombre";
-    private static final String LATITUD = "latitud";
-    private static final String LONGITUD = "longitud";
-    private static final String COMUNIDAD = "comunidad";
+    private static final String LATITUD = "lat";
+    private static final String LONGITUD = "long";
+    private static final String COMUNIDAD = "id_com";
 
     private final static String CONSULTA_REGIONES =
-            "SELECT * FROM Bichico.region r WHERE r.comunidad = ?";
+    		"SELECT * FROM Bichico.region r where r.id_com = (select c.id from Bichico.comunidad c where c.nombre = ?)";
 
     private final static String CONSULTA_LATITUD =
-            "SELECT r.latitud " +
+            "SELECT r.lat " +
             "FROM Bichico.region r " +
             "WHERE r.id = ?";
 
     private final static String CONSULTA_LONGITUD =
-            "SELECT r.longitud " +
+            "SELECT r.long " +
             "FROM Bichico.region r " +
             "WHERE r.id = ?";
 
@@ -39,7 +39,7 @@ public class RegionFacade {
      * Obtiene una lista de regiones en la base de datos
      * @return List<RegionVO>
      */
-    public static List<RegionVO> obtenerRegiones(ComunidadVO comunidadVO){
+    public List<RegionVO> obtenerRegiones(ComunidadVO comunidadVO){
         List<RegionVO> listaRegiones = new ArrayList<>();
         Connection connection;
         try {
@@ -49,6 +49,7 @@ public class RegionFacade {
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_REGIONES);
             statement.setString(1, comunidadVO.getNombre());
+            System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()){

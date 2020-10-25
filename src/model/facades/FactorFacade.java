@@ -44,8 +44,8 @@ public class FactorFacade {
         } catch (SQLException e) {
             e.printStackTrace();
             
-        }finally {
-			PoolConnectionManager.releaseConnection(connection); 
+        } finally {
+			ConnectionController.releaseConnection(connection); 
 		}
         return factorVO;
     }
