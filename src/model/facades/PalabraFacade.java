@@ -100,7 +100,6 @@ public class PalabraFacade {
      * @param nombre
      * @return
      */
-
     public int eliminarPalabra(String nombre) {
 
         int affectedrows = 0;
@@ -120,6 +119,4 @@ public class PalabraFacade {
 		} 
         return affectedrows;
     }
-
-
 }

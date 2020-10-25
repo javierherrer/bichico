@@ -3,9 +3,12 @@ package controller;
 import java.sql.Connection;
 
 public class ConnectionController {
+    public static final String REMOTA = "remota";
+    public static final String TOMCAT_LOCAL = "tomcat";
+
     private static DatabaseConnection databaseConnection = PoolDatabaseConnectionManager.instancia();
 
-    public static void setConnectionFacade(DatabaseConnection c){
+    private static void setConnectionFacade(DatabaseConnection c){
         databaseConnection = c;
     }
 
@@ -29,6 +32,17 @@ public class ConnectionController {
             } catch (Exception e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public static void changeConnection(String database){
+        switch (database){
+            case REMOTA:
+                setConnectionFacade(new DatabaseConnectionManager());
+                break;
+            case TOMCAT_LOCAL:
+                setConnectionFacade(new PoolDatabaseConnectionManager());
+                break;
         }
     }
 }
