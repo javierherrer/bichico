@@ -5,6 +5,11 @@ public class AdminVO{
     private String nombre;
     private String hashedPass;
 
+    public AdminVO(String nombre, String hashedPass){
+        this.nombre = nombre;
+        this.hashedPass = hashedPass;
+    }
+
     public AdminVO(int id, String nombre, String hashedPass){
         this.id = id;
         this.nombre = nombre;

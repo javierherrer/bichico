@@ -2,6 +2,9 @@ package controller;
 
 import java.sql.Connection;
 
+/**
+ * Clase encargada de la conexión con la base de datos
+ */
 public class ConnectionController {
     public static final String REMOTA = "remota";
     public static final String TOMCAT_LOCAL = "tomcat";
@@ -25,6 +28,10 @@ public class ConnectionController {
         return null;
     }
 
+    /**
+     * Libera la conexión a la base de datos
+     * @param connection
+     */
     public static void releaseConnection(Connection connection) {
         if (connection != null){
             try {
@@ -35,6 +42,11 @@ public class ConnectionController {
         }
     }
 
+    /**
+     * Permite cambiar la conexión utilizada
+     * Pueden ser: ConnectionController.REMOTA o ConnectionController.TOMCAT_LOCAL
+     * @param database
+     */
     public static void changeConnection(String database){
         switch (database){
             case REMOTA:
