@@ -64,4 +64,11 @@ public class RegionVO {
     public void setLongitud(float longitud) {
         this.longitud = longitud;
     }
+
+	@Override
+	public String toString() {
+		return "RegionVO [id=" + id + ", habitantes=" + habitantes + ", nombre=" + nombre + ", comunidad=" + comunidad
+				+ ", latitud=" + latitud + ", longitud=" + longitud + "]";
+	}
+    
 }

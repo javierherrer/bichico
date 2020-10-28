@@ -48,4 +48,10 @@ public class FactorVO {
         this.id_region = id_region;
     }
 
+	@Override
+	public String toString() {
+		return "FactorVO [fecha=" + fecha + ", valor=" + valor + ", id_region=" + id_region + "]";
+	}
+
+    
 }

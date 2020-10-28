@@ -1,6 +1,6 @@
 package model.facades;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.PalabraVO;
 
 import java.sql.*;
@@ -8,14 +8,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PalabraFacade {
+    private final static String INSERTAR_PALABRA =
+            "INSERT INTO Bichico.palabra (nombre, importancia) " +
+            "VALUES (?,?)";
 
+    private final static String CONSULTAR_PALABRAS = "SELECT p.nombre FROM Bichico.palabra p";
+
+    private static final String ELIMINAR_PALABRA = "DELETE FROM bichico.palabra " +
+            "WHERE nombre = ?";
     /**
      * Connect to the PostgreSQL database
      *
      * @return a Connection object
      */
-    public Connection connect() throws SQLException {
-        return PoolConnectionManager.getConnection();
+    public Connection connect(){
+        return ConnectionController.getConnection();
     }
 
     /**
@@ -25,18 +32,17 @@ public class PalabraFacade {
      * @return
      */
     public String insertarPalabra(PalabraVO palabra) {
-        String SQL = "INSERT INTO Bichico.palabra (nombre, importancia) " +
-                "VALUES (?,?)";
-
         String nombre ="";
 
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL,
-                     Statement.RETURN_GENERATED_KEYS)) {
+        Connection conn = null;
+        try {
+        	conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(INSERTAR_PALABRA,
+            Statement.RETURN_GENERATED_KEYS);
 
             pstmt.setString(1, palabra.getPalabra());
             pstmt.setFloat(2, palabra.getImportancia());
-
+            System.out.println(pstmt);
             int filas = pstmt.executeUpdate();
             // comprobar filas afectadas
             if (filas > 0) {
@@ -51,7 +57,9 @@ public class PalabraFacade {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        } finally {
+        	ConnectionController.releaseConnection(conn); 
+		} 
 
         return nombre;
     }
@@ -62,14 +70,15 @@ public class PalabraFacade {
      * @return una lista de palabras
      */
     public List<String> consultarPalabras() {
-        String SQL = "SELECT p.nombre " +
-                "FROM Bichico.palabra p";
+
 
         List<String> listaPalabras = new ArrayList<String>();
 
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL);
-             ResultSet consultarRs = pstmt.executeQuery()) {
+        Connection conn = null;
+        try {
+        	conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(CONSULTAR_PALABRAS);
+            ResultSet consultarRs = pstmt.executeQuery();
 
             //Leemos los registros
             while (consultarRs.next()) {
@@ -78,7 +87,9 @@ public class PalabraFacade {
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } finally {
+        	ConnectionController.releaseConnection(conn);  
+		} 
 
         return listaPalabras;
     }
@@ -90,13 +101,12 @@ public class PalabraFacade {
      * @return
      */
     public int eliminarPalabra(String nombre) {
-        String SQL = "DELETE FROM palabra " +
-                "WHERE nombre = ?";
 
         int affectedrows = 0;
-
-        try (Connection conn = connect();
-             PreparedStatement pstmt = conn.prepareStatement(SQL)) {
+        Connection conn = null;
+        try {
+        	conn = connect();
+        	PreparedStatement pstmt = conn.prepareStatement(ELIMINAR_PALABRA);
 
             pstmt.setString(1, nombre);
 
@@ -104,7 +114,9 @@ public class PalabraFacade {
 
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
-        }
+        } finally {
+        	ConnectionController.releaseConnection(conn); 
+		} 
         return affectedrows;
     }
 }

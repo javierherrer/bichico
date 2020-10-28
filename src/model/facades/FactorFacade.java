@@ -1,6 +1,6 @@
 package model.facades;
 
-import controller.PoolConnectionManager;
+import controller.ConnectionController;
 import model.FactorVO;
 import model.RegionVO;
 
@@ -18,17 +18,17 @@ public class FactorFacade {
     private static final String CONSULTA_FACTOR =
             "SELECT * FROM Bichico.factor f WHERE f.id_region=?";
 
-    public static FactorVO obtenerFactor(RegionVO regionVO){
+    public FactorVO obtenerFactor(RegionVO regionVO){
         FactorVO factorVO = null;
-        Connection connection;
+        Connection connection = null;
         try {
-            connection = PoolConnectionManager.getConnection();
+            connection = ConnectionController.getConnection();
             if (connection == null){
                 return null;
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_FACTOR);
             statement.setInt(1,regionVO.getId());
-
+            System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){
@@ -40,10 +40,13 @@ public class FactorFacade {
             }
             statement.close();
             resultSet.close();
-            PoolConnectionManager.releaseConnection(connection);
+            ConnectionController.releaseConnection(connection);
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+            
+        } finally {
+			ConnectionController.releaseConnection(connection); 
+		}
         return factorVO;
     }
 }

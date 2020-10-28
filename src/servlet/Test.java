@@ -1,16 +1,26 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import model.AdminVO;
+import model.ComunidadVO;
+import model.FactorVO;
 import model.MensajeVO;
+import model.PalabraVO;
+import model.RegionVO;
 import model.facades.AdminFacade;
+import model.facades.FactorFacade;
 import model.facades.MensajeFacade;
+import model.facades.PalabraFacade;
+import model.facades.RegionFacade;
 
 
 
@@ -34,22 +44,13 @@ public class Test extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		MensajeFacade facade = new MensajeFacade();
-		//UserVO user = facade.getUser("telleria@unizar.es");
-		facade.mostrarMensajes();
-		AdminFacade adminFacade = new AdminFacade();
-		AdminVO adminPrueba = new AdminVO(1,"juan","1234");
-		boolean a = adminFacade.validateAdmin(adminPrueba);
-		System.out.println();
-		//System.out.println("username = " + user.getUserName());
-		//System.out.println("password = " + user.getPassword());
-		MensajeFacade f = new MensajeFacade();
-		MensajeVO m = new MensajeVO("juan","juanico11@hotmail.com","esta web es una basura");
-		f.enviarMensaje(m);
-		//request.setAttribute("user", user);
-		
-		response.sendRedirect("index.html");
 	
+		RegionFacade rf = new RegionFacade();
+		ComunidadVO cv = new ComunidadVO("Valencia",1,2);
+		ArrayList<RegionVO> c = (ArrayList<RegionVO>) rf.obtenerRegiones(cv);
+		for (int i = 0; i < c.size(); i++) {
+			System.out.println(c.get(i));
+		}
 	}
 
 	/**
