@@ -35,9 +35,11 @@ public class Prueba extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println(RegionFacade.obtenerJSON());
-		String data = "Hello World!";
+		
+		
 		response.setContentType("text/plain");
 		response.setCharacterEncoding("UTF-8");
+		//poner el objeto completo en 
 		response.getWriter().write(RegionFacade.obtenerJSON());
 	}
 

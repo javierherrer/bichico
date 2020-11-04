@@ -1,7 +1,6 @@
 package model.facades;
 
 import controller.ConnectionController;
-import controller.ConnectionManager;
 import model.ComunidadVO;
 import model.RegionVO;
 
@@ -90,7 +89,7 @@ public class RegionFacade {
 		// Abrimos la conexión e inicializamos los parámetros 
     	try {
     	JSONObject obj = new JSONObject();
-    	conn = ConnectionManager.getConnection();
+    	conn = ConnectionController.getConnection();
 		PreparedStatement ps = conn.prepareStatement("select  * from bichico.region r where r.id_com  = 2;");
 		ResultSet rset;
 	

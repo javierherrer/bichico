@@ -7,6 +7,9 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * Clase que se comunica con el servidor TOMCAT para obtener y liberar conexiones.
+ */
 public class PoolTomcatConnection implements DatabaseConnection {
     // TODO: 21/10/20 Añadir url base datos
     private static PoolTomcatConnection instancia = null;
@@ -19,6 +22,11 @@ public class PoolTomcatConnection implements DatabaseConnection {
     private PoolTomcatConnection(){
 
     }
+
+    /**
+     * Obtiene la instancia de la conexión
+     * @return
+     */
     public static PoolTomcatConnection instancia(){
         if (instancia == null){
             instancia = new PoolTomcatConnection();

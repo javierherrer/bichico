@@ -25,6 +25,11 @@ public class PostgreSQLConnection implements DatabaseConnection {
 	private PostgreSQLConnection(){
 
 	}
+
+	/**
+	 * Obtiene la instancia de la conexión
+	 * @return
+	 */
 	public static PostgreSQLConnection instancia(){
 		if (instancia == null) {
 			instancia = new PostgreSQLConnection();
