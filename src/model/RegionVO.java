@@ -16,8 +16,14 @@ public class RegionVO {
         this.latitud = latitud;
         this.longitud = longitud;
     }
+    //prueba
+    public RegionVO(String nombre2, float longitud2, float latitud2) {
+		this.nombre = nombre2;
+		this.longitud = longitud2;
+		this.latitud = latitud2;
+	}
 
-    public String getComunidad() {
+	public String getComunidad() {
         return comunidad;
     }
 
