@@ -139,7 +139,7 @@ https://templatemo.com/tm-544-comparto
 					var suma = 0;
 					var longitud = 0;
 					var latitud = 0;
-					for (var i = 0; i < 800; i++) {
+					for (var i = 0; i < Object.keys(obj.regiones).length; i++) {
  
 						L.circle([obj.regiones[i].lat,obj.regiones[i].long], 5000, {
 						color: 'red',
