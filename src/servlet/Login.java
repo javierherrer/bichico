@@ -1,10 +1,7 @@
 package servlet;
 
 import model.AdminVO;
-import model.ComunidadVO;
-import model.RegionVO;
 import model.facades.AdminFacade;
-import model.facades.RegionFacade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/login" })
 public class Login extends HttpServlet {
@@ -57,7 +53,7 @@ public class Login extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+
         doGet(request, response);
     }
 }

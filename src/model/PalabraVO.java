@@ -35,5 +35,4 @@ public class PalabraVO {
     public void setImportancia(float importancia) {
         this.importancia = importancia;
     }
-    
 }

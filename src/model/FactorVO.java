@@ -52,6 +52,4 @@ public class FactorVO {
 	public String toString() {
 		return "FactorVO [fecha=" + fecha + ", valor=" + valor + ", id_region=" + id_region + "]";
 	}
-
-    
 }

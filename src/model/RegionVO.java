@@ -1,5 +1,7 @@
 package model;
 
+import org.json.simple.JSONObject;
+
 public class RegionVO {
     private int id;
     private int habitantes;
@@ -70,5 +72,19 @@ public class RegionVO {
 		return "RegionVO [id=" + id + ", habitantes=" + habitantes + ", nombre=" + nombre + ", comunidad=" + comunidad
 				+ ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
-    
+
+    /**
+     * Returns de JSON representation of the region
+     * @return
+     */
+	public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        obj.put("id", id);
+        obj.put("habitantes", habitantes);
+        obj.put("nombre",nombre);
+        obj.put("comunidad",comunidad);
+        obj.put("latitud", latitud);
+        obj.put("longitud",longitud);
+        return obj;
+    }
 }

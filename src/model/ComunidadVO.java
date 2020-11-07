@@ -7,12 +7,17 @@
 package model;
 
 
+import org.json.simple.JSONObject;
+
+import java.util.List;
+
 /**
  * comunidadVO
  *
  */
 public class ComunidadVO {
     private String nombre;
+    private List<RegionVO> regiones;
     private float latitud;
     private float longitud;
 
@@ -44,5 +49,23 @@ public class ComunidadVO {
 
     public void setLongitud(float longitud) {
         this.longitud = longitud;
+    }
+
+    public List<RegionVO> getRegiones(){
+        return regiones;
+    }
+
+    public void setRegiones(List<RegionVO> regiones){
+        this.regiones = regiones;
+    }
+
+    /**
+     * Returns de JSON representation of the region
+     * @return
+     */
+    public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+//            obj.put();
+        return obj;
     }
 }
