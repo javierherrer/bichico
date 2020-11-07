@@ -1,5 +1,7 @@
 package model;
 
+import org.json.simple.JSONObject;
+
 public class RegionVO {
     private int id;
     private int habitantes;
@@ -16,11 +18,17 @@ public class RegionVO {
         this.latitud = latitud;
         this.longitud = longitud;
     }
-    //prueba
-    public RegionVO(String nombre2, float longitud2, float latitud2) {
-		this.nombre = nombre2;
-		this.longitud = longitud2;
-		this.latitud = latitud2;
+
+    /**
+     * Constructor de RegionVO
+     * @param nombre
+     * @param latitud
+     * @param longitud
+     */
+    public RegionVO(String nombre, float latitud, float longitud) {
+		this.nombre = nombre;
+		this.latitud = latitud;
+		this.longitud = longitud;
 	}
 
 	public String getComunidad() {
@@ -76,5 +84,19 @@ public class RegionVO {
 		return "RegionVO [id=" + id + ", habitantes=" + habitantes + ", nombre=" + nombre + ", comunidad=" + comunidad
 				+ ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
-    
+
+    /**
+     * Returns de JSON representation of the region
+     * @return
+     */
+	public JSONObject toJSON(){
+        JSONObject obj = new JSONObject();
+        obj.put("id", id);
+        obj.put("habitantes", habitantes);
+        obj.put("nombre",nombre);
+        obj.put("comunidad",comunidad);
+        obj.put("latitud", latitud);
+        obj.put("longitud",longitud);
+        return obj;
+    }
 }

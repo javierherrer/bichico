@@ -7,6 +7,8 @@ import java.sql.SQLException;
 
 
 import controller.ConnectionController;
+import model.ComunidadVO;
+import model.facades.ComunidadFacade;
 import model.facades.RegionFacade;
 
 public class main {
@@ -14,8 +16,14 @@ public class main {
 	public static void main(String[] args) throws Exception {
 		// TODO Auto-generated method stub
 		//testTomcat();
-		testRemoto();
+//		testRemoto();
+		ConnectionController.changeConnection(ConnectionController.REMOTA);
+		ComunidadVO comunidadVO = ComunidadFacade.leerComunidad("Aragón");
+
+		System.out.println(comunidadVO.toJSON().toJSONString());
+
 	}
+
 
 	private static void testTomcat() {
 		Connection conn = null;
