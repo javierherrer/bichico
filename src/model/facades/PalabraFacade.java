@@ -12,7 +12,7 @@ public class PalabraFacade {
             "INSERT INTO Bichico.palabra (nombre, importancia) " +
             "VALUES (?,?)";
 
-    private final static String CONSULTAR_PALABRAS = "SELECT p.nombre FROM Bichico.palabra p";
+    private final static String CONSULTAR_PALABRAS = "SELECT p.nombre, p.importancia FROM Bichico.palabra p";
 
     private static final String ELIMINAR_PALABRA = "DELETE FROM bichico.palabra " +
             "WHERE nombre = ?";
@@ -69,10 +69,10 @@ public class PalabraFacade {
      *
      * @return una lista de palabras
      */
-    public List<String> consultarPalabras() {
+    public List<PalabraVO> consultarPalabras() {
 
 
-        List<String> listaPalabras = new ArrayList<String>();
+        List<PalabraVO> listaPalabras = new ArrayList<PalabraVO>();
 
         Connection conn = null;
         try {
@@ -83,7 +83,8 @@ public class PalabraFacade {
             //Leemos los registros
             while (consultarRs.next()) {
                 String palabra = consultarRs.getString("nombre");
-                listaPalabras.add(palabra);
+                float importancia = consultarRs.getFloat("importancia");
+                listaPalabras.add(new PalabraVO(palabra, importancia));
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());

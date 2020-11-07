@@ -2,12 +2,12 @@ package controller;
 
 import java.sql.Connection;
 
-/**
- * Clase encargada de la conexión con la base de datos
- */
+
 public class ConnectionController {
+
     public static final String REMOTA = "remota";
     public static final String TOMCAT_LOCAL = "tomcat";
+
 
     private static DatabaseConnection databaseConnection = PoolTomcatConnection.instancia();
 

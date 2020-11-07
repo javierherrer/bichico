@@ -35,4 +35,11 @@ public class PalabraVO {
     public void setImportancia(float importancia) {
         this.importancia = importancia;
     }
+
+	@Override
+	public String toString() {
+		return "PalabraVO [palabra=" + palabra + ", importancia=" + importancia + "]";
+	}
+    
+    
 }

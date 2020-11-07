@@ -1,9 +1,13 @@
+import java.io.StringWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+
+
 import controller.ConnectionController;
+import model.facades.RegionFacade;
 
 public class main {
 
@@ -15,21 +19,8 @@ public class main {
 
 	private static void testTomcat() {
 		Connection conn = null;
-		try {
-			// Abrimos la conexión e inicializamos los parámetros
-			ConnectionController.changeConnection(ConnectionController.TOMCAT_LOCAL);
-			conn = ConnectionController.getConnection();
-			PreparedStatement ps = conn.prepareStatement("SELECT m.* FROM Bichico.mensaje m");
-			ResultSet rset = ps.executeQuery();
-			while(rset.next()) {
-				System.out.println(rset.getString("emisor"));
-			}
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			ConnectionController.releaseConnection(conn);
-		}
+		
+	
 	}
 
 	private static void testRemoto(){

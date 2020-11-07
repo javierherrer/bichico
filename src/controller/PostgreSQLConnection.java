@@ -3,8 +3,10 @@ import java.sql.*;
 
 /**  * Clase que abstrae la conexion con la base de datos.  */
 
+
 public class PostgreSQLConnection implements DatabaseConnection {
 	private static PostgreSQLConnection instancia = null;
+
 	// JDBC nombred el driver y URL de BD 
 	private static final String JDBC_DRIVER = "org.postgresql.Driver";  
 	private static final String HOST = "139.59.205.113";
@@ -15,6 +17,7 @@ public class PostgreSQLConnection implements DatabaseConnection {
 	// Credenciales de la Base de Datos
 	private static final String USER = "admin";
 	private static final String PASS = "123456";
+
 
 	/**
 	 * Es singleton
@@ -33,6 +36,7 @@ public class PostgreSQLConnection implements DatabaseConnection {
 		}
 		return instancia;
 	}
+
 	@Override
 	public Connection getConnection() {
 		Connection conn = null;
