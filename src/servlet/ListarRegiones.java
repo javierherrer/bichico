@@ -20,7 +20,7 @@ import java.io.PrintWriter;
 public class ListarRegiones extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    private static final String COMUNIDAD = "region";
+    private static final String COMUNIDAD = "comunidad";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -33,14 +33,15 @@ public class ListarRegiones extends HttpServlet{
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         if (request.getParameter(COMUNIDAD) != null){
 
-            ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(COMUNIDAD);
+            ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(request.getParameter(COMUNIDAD));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
+            
             PrintWriter out = response.getWriter();
-            out.print(comunidadVO.toJSON().toString());
+           
+            out.write(comunidadVO.toJSON().toString());
             out.flush();
         }
     }

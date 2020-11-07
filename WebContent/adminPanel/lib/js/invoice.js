@@ -55,10 +55,11 @@ function newRowTable(){
 function newRowTableWithValue(name,importancia)
 {
 	var nombrePalabra = document.getElementById("name");
+	var importancia = document.getElementById("importancia");
   $.post("insertarPalabraServlet",
   {
-    name: "Donald Duck",
-    city: "Duckburg"
+    nombre: nombrePalabra,
+    importancia: importancia
   },
   function(data, status){
     alert("Data: " + data + "\nStatus: " + status);

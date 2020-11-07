@@ -46,10 +46,8 @@ public class InsertarPalabraServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
-        System.out.println("paso insertar");
-        PrintWriter out = response.getWriter();
-        String str = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        System.out.println(str);
+        System.out.println(request.getParameter("nombre"));
+        System.out.println(request.getParameter("importancia"));
         /*
         System.out.println(request.getParameter(PARAM_IMPORTANCIA));
         if (request.getParameter(PARAM_PALABRA) == null) {

@@ -115,45 +115,63 @@ https://templatemo.com/tm-544-comparto
 				  var mymap = L.map('mapid').setView([41.65606, -0.87734], 13);
                     function funcionPreMapa() {
                      document.getElementById("botton1").style.color = "red";
-                     $.get("prueba", function(data, status){
-                    	 	alert(data);
-                    	 	
-                    	 	var obj = JSON.parse(data);
+                    
+                     $.post("listarregiones",
+                    		  {
+                    	 		comunidad: "Castilla La Mancha"
+                    		  
+                    		  },
+                    		  function(data, status){
+                    		    alert("Data: " + data + "\nStatus: " + status);
+                    		    alert(data);
+                        	 	var myJSON = JSON.stringify(data);
+                        	 	 alert(myJSON);
+                    		  });
+                     <!--
+                     $.get("listarregiones", function(data, status){
+                                         	 	alert(data);
+                                         	 	var myJSON = JSON.stringify(data);
+                                         	 	alert(myJSON);
+                                         	 	var obj = JSON.parse(data);
 
-                    	    //alert("Data: " + obj.nombre);
-                    	    //alert("Datalat: " + obj.lat);
-                    	    //alert("Datalong: " + obj.long);
-                    	  
-                   
-				
+                                         	    //alert("Data: " + obj.nombre);
+                                         	    //alert("Datalat: " + obj.lat);
+                                         	    //alert("Datalong: " + obj.long);
+                                         	  
+                                        
+                     				
 
-					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-						maxZoom: 18,
-						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-							'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-							'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-						id: 'mapbox/streets-v11',
-						tileSize: 512,
-						zoomOffset: -1
-					}).addTo(mymap);
-					var suma = 0;
-					var longitud = 0;
-					var latitud = 0;
-					for (var i = 0; i < Object.keys(obj.regiones).length; i++) {
- 
-						L.circle([obj.regiones[i].lat,obj.regiones[i].long], 5000, {
-						color: 'red',
-						fillColor: '#f03',
-						fillOpacity: 0.5
-					}).addTo(mymap).bindPopup(obj.regiones[i].nombre);
-				}	
-				
-					L.polygon([
-						[51.509, -0.08],
-						[51.503, -0.06],
-						[51.51, -0.047]
-					]).addTo(mymap).bindPopup("I am a polygon.");
-                   });
+                     					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+                     						maxZoom: 18,
+                     						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+                     							'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+                     							'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                     						id: 'mapbox/streets-v11',
+                     						tileSize: 512,
+                     						zoomOffset: -1
+                     					}).addTo(mymap);
+                     					var suma = 0;
+                     					var longitud = 0;
+                     					var latitud = 0;
+                     					for (var i = 0; i < Object.keys(obj.regiones).length; i++) {
+                      
+                     						L.circle([obj.regiones[i].lat,obj.regiones[i].long], 5000, {
+                     						color: 'red',
+                     						fillColor: '#f03',
+                     						fillOpacity: 0.5
+                     					}).addTo(mymap).bindPopup(obj.regiones[i].nombre);
+                     				}	
+                     				
+                     					L.polygon([
+                     						[51.509, -0.08],
+                     						[51.503, -0.06],
+                     						[51.51, -0.047]
+                     					]).addTo(mymap).bindPopup("I am a polygon.");
+                                        });
+
+                     -->
+                     
+                  
                  }
                     function sleep(milliseconds) {
                     	 var start = new Date().getTime();
