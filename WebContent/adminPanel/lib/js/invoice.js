@@ -14,7 +14,7 @@ function nombreUser(){
 	var nombreUsuario = document.getElementById("nombreUsuario");
 	var prueba = 'paco';
 	console.log(prueba);
-	nombreUsuario.innerHTML = '<span id= "nombreUsuario" style="color: white">'+prueba+'</span>';
+	nombreUsuario.innerHTML = '<span id= "nombreUsuario" style="color: black">'+prueba+'</span>';
 }
 
 function listWords(){
@@ -54,7 +54,17 @@ function newRowTable(){
 
 function newRowTableWithValue(name,importancia)
 {
-	
+	var nombrePalabra = document.getElementById("name");
+  $.post("insertarPalabraServlet",
+  {
+    name: "Donald Duck",
+    city: "Duckburg"
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
+
+
 	var name_table=document.getElementById("tabla_palabras");
     var row = name_table.insertRow(1);
     var cell1 = row.insertCell(0);

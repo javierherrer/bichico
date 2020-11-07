@@ -9,7 +9,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.json.simple.JSONObject;
+
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.util.stream.Collectors;
 
 import static java.lang.Float.parseFloat;
 
@@ -17,7 +24,7 @@ import static java.lang.Float.parseFloat;
  * Servlet implementation class InsertarPalabraServlet
  */
 @WebServlet(description = "Servlet de inserción de palabra",
-        urlPatterns = { "/insertarPalabraServlet" })
+        urlPatterns = { "/adminPanel/insertarPalabraServlet" })
 public class InsertarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
@@ -39,10 +46,16 @@ public class InsertarPalabraServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
-
+        System.out.println("paso insertar");
+        PrintWriter out = response.getWriter();
+        String str = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        System.out.println(str);
+        /*
+        System.out.println(request.getParameter(PARAM_IMPORTANCIA));
         if (request.getParameter(PARAM_PALABRA) == null) {
             request.getRequestDispatcher(URL_ADMIN).forward(request, response);
         } else {
+        	System.out.println("*****"+request.getParameter(PARAM_PALABRA)+parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
             PalabraVO palabra = new PalabraVO(request.getParameter(PARAM_PALABRA),
                     parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
             String id = dao.insertarPalabra(palabra);
@@ -53,6 +66,7 @@ public class InsertarPalabraServlet extends HttpServlet{
                 request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             }
         }
+        */
     }
 
     /**

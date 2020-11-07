@@ -76,8 +76,8 @@ public class ListarPalabrasServlet extends HttpServlet{
 		}
 	      
 	      String jsonText = out.toString();
-	      System.out.print(jsonText);
-	      System.out.println("*********");
+	     // System.out.print(jsonText);
+	      //System.out.println("*********");
 	     
            
             /*
