@@ -7,6 +7,7 @@
 package model;
 
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.List;
@@ -20,6 +21,10 @@ public class ComunidadVO {
     private List<RegionVO> regiones;
     private float latitud;
     private float longitud;
+
+    public ComunidadVO(String nombre) {
+        this.nombre = nombre;
+    }
 
     public ComunidadVO(String nombre, float latitud, float longitud) {
         this.nombre = nombre;
@@ -65,7 +70,15 @@ public class ComunidadVO {
      */
     public JSONObject toJSON(){
         JSONObject obj = new JSONObject();
-//            obj.put();
+        JSONArray regiones = new JSONArray();
+        for (RegionVO region: this.regiones) {
+            regiones.add(region.toJSON());
+        }
+
+        obj.put("regiones",regiones);
+        obj.put("latitud", this.latitud);
+        obj.put("longitud", this.longitud);
+
         return obj;
     }
 }
