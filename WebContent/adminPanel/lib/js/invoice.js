@@ -5,7 +5,7 @@ function funcMain()
 {
 	$("#add_row").on('click',newRowTableWithValueButton);
 	listWords();
-	$("loans_table").on('click','..fa-times',deleteProduct);
+	$("loans_table").on('click','.fa-times',deleteProduct);
 	$("body").on('click',".fa-times",deleteProduct);
 	nombreUser();
 }
@@ -19,7 +19,7 @@ function nombreUser(){
 
 function listWords(){
 
-	    $.get("listarPalabrasServlet", function(data, status){
+	    $.get("listarPalabrasServlet", function(data, status){ //en json marcar codigo de error para recargar la web con documen.location
             var obj = JSON.parse(data);
 			var all = Object.keys(obj.palabras).length;
           	for (var i = 0; i < all; i++) {
@@ -30,7 +30,16 @@ function listWords(){
 
 function deleteProduct(){
 	//Guardando la referencia del objeto presionado
-	var _this = this;
+  var _this = this;
+  var palabra = _this.id;
+   $.post("insertarPalabraServlet",
+  {
+    palabra: palabra
+  },
+  function(data, status){                                                 //detectar error
+    
+  });
+
 	$(this).parent().parent().parent().fadeOut("slow",function(){$(this).remove();});
 }
 
@@ -46,9 +55,10 @@ function newRowTable(){
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
 
-    cell1.innerHTML = '<p name="palabra" class="non-margin">'+name+'</p>';
+    cell1.innerHTML = '<p id="palabra" name="palabra" class="non-margin">'+name+'</p>';
     cell2.innerHTML = '<p name="factor" class="non-margin">'+importancia+'</p>';
-    cell3.innerHTML = '<span><i class="fas fa-times"></i></span>';
+    cell3.innerHTML = '<span><i id ="'+name+'" class="fas fa-times"></i></span>';
+
  
 	}
 
@@ -62,9 +72,9 @@ function newRowTableWithValue(name,importancia)
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
 
-    cell1.innerHTML = '<p name="palabra" class="non-margin">'+name+'</p>';
+    cell1.innerHTML = '<p id="palabra" name="palabra" class="non-margin">'+name+'</p>';
     cell2.innerHTML = '<p name="importancia" class="non-margin">'+importancia+'</p>';
-    cell3.innerHTML = '<span><i class="fas fa-times"></i></span>';
+    cell3.innerHTML = '<span><i id ="'+name+'" class="fas fa-times"></i></span>';
 
   
 }
@@ -74,18 +84,17 @@ function newRowTableWithValueButton(name,importancia)
 	var nombrePalabra = document.getElementById("nombrePalabra").value;
 	var importancia = document.getElementById("importancia").value;
 
-  alert(nombrePalabra);
-  alert(importancia);
+
   $.post("insertarPalabraServlet",
   {
     nombre: nombrePalabra,
     importancia: importancia
   },
-  function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
+  function(data, status){                                                 //detectar error
+    
   });
 
-  
+  newRowTableWithValue(nombrePalabra,importancia);
 }
 
 
