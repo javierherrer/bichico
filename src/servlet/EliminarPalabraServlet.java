@@ -40,12 +40,14 @@ public class EliminarPalabraServlet extends HttpServlet{
         } else {
             String id = request.getParameter(PARAM_PALABRA);
             int rows = dao.eliminarPalabra(id);
+            /* No consideramos errores
             if (rows < 1) {
                 request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             } else {
                 request.setAttribute("error", "invalid word");
                 request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             }
+             */
         }
     }
 

@@ -25,9 +25,7 @@ import java.util.List;
         urlPatterns = { "/adminPanel/listarPalabrasServlet" })
 public class ListarPalabrasServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
-
-    private static final String URL_LISTA = "";
-    private static final String PARAM_LISTA = "listaPalabras";
+    private static final String URL_LOGIN = "bichico/login"; //Revisar si es la direccion correcta
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -47,49 +45,31 @@ public class ListarPalabrasServlet extends HttpServlet{
             List<PalabraVO> lista = dao.consultarPalabras();
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
-            JSONObject obj1;
-            for (int i = 0; i < lista.size(); i++) {
-            	obj1 = new JSONObject(); 
-    			obj1.put("nombre",lista.get(i).getPalabra());
-    			obj1.put("importancia",lista.get(i).getImportancia());
-    			list.add(obj1);
-			}
-           
-            obj.put("palabras",list);
-			
-		      /*
-				obj.put("nombre",nombre);
-		      obj.put("long",longitud);
-		      obj.put("lat",latitud);
-		      
-		}
-		
-		
-	
-		 */
-		 StringWriter out = new StringWriter();
-	      try {
-			obj.writeJSONString(out);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	      
-	      String jsonText = out.toString();
-	     // System.out.print(jsonText);
-	      //System.out.println("*********");
-	     
-           
-            /*
-            request.setAttribute(PARAM_LISTA, lista);
-            request.getRequestDispatcher(URL_LISTA).forward(request, response);
-            */
+            JSONObject palabra;
+
+            if (request.getSession().getAttribute("admin") == null) {
+                obj.put("error", URL_LOGIN);
+            } else {
+                for (int i = 0; i < lista.size(); i++) {
+                    palabra = new JSONObject();
+                    palabra.put("nombre",lista.get(i).getPalabra());
+                    palabra.put("importancia",lista.get(i).getImportancia());
+                    list.add(obj1);
+                }
+                obj.put("palabras",list);
+            }
+
+		    StringWriter out = new StringWriter();
+            obj.writeJSONString(out);
+
+	        String jsonText = out.toString();
+
             response.setContentType("text/plain");
     		response.setCharacterEncoding("UTF-8");
-    		//poner el objeto completo en 
-    		response.getWriter().write(jsonText);
-        } catch (Throwable theException) {
 
+    		response.getWriter().write(jsonText);
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
 
