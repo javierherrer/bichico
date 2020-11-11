@@ -14,10 +14,10 @@ import java.io.IOException;
 public class Login extends HttpServlet {
 
     private static final String LOGIN = "inputEmail";
-    private static final String URL_LOGIN = "login.jsp";
+    private static final String URL_LOGIN = "/login";
     private static final String PASSWORD = "password";
-    private static final String URL_LOGGED = "logged.jsp";
-    private static final String  MENSAJE_ERROR = "Error en el login";
+    private static final String URL_LOGGED = "/adminpanel";
+    private static final String MENSAJE_ERROR = "Error en el login";
     private static final String ERROR_LOGIN = "error";
 
     /**

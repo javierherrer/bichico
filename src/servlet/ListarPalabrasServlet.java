@@ -54,7 +54,7 @@ public class ListarPalabrasServlet extends HttpServlet{
                     palabra = new JSONObject();
                     palabra.put("nombre",lista.get(i).getPalabra());
                     palabra.put("importancia",lista.get(i).getImportancia());
-                    list.add(obj1);
+                    list.add(palabra);
                 }
                 obj.put("palabras",list);
             }
