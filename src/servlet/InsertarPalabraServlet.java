@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.json.simple.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,23 +45,21 @@ public class InsertarPalabraServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
       
-      
         if (request.getParameter(PARAM_PALABRA) == null) {
             request.getRequestDispatcher(URL_ADMIN).forward(request, response);
         } else {
-        	
             PalabraVO palabra = new PalabraVO(request.getParameter(PARAM_PALABRA),
                     parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
             String id = dao.insertarPalabra(palabra);
+            /* No consideramos errores
             if (id == null || id.equals("")) {
                 request.setAttribute("error", "invalid word");
-                //request.getRequestDispatcher(URL_ADMIN).forward(request, response);
+                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             } else {
-                //request.getRequestDispatcher(URL_ADMIN).forward(request, response);
+                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             }
+             */
         }
-        response.sendRedirect("http://localhost:8080/bichico/");
-        
     }
 
     /**
@@ -73,4 +69,5 @@ public class InsertarPalabraServlet extends HttpServlet{
         // TODO Auto-generated method stub
         doGet(request, response);
     }
+
 }

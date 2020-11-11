@@ -19,7 +19,16 @@ function nombreUser(){
 
 function listWords(){
 
+<<<<<<< HEAD
 	    $.get("listarPalabrasServlet", function(data, status){ //en json marcar codigo de error para recargar la web con documen.location
+=======
+	    $.get("listarPalabrasServlet", function(data, status){
+	    	/*
+	    	TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
+			Document.location para redirigir a la pagina de login (que te envian en el valor de error)
+			*/
+
+>>>>>>> cdecd637265a5dc051b54b8167d12df4e438787c
             var obj = JSON.parse(data);
 			var all = Object.keys(obj.palabras).length;
           	for (var i = 0; i < all; i++) {
