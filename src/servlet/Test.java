@@ -43,7 +43,6 @@ public class Test extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		RegionFacade rf = new RegionFacade();
 		ComunidadVO cv = new ComunidadVO("Valencia",1,2);
 		ArrayList<RegionVO> c = (ArrayList<RegionVO>) rf.obtenerRegiones(cv);

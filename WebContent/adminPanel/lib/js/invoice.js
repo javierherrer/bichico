@@ -73,9 +73,7 @@ function newRowTable(){
 
 function newRowTableWithValue(name,importancia)
 {
-
-
-	  var name_table=document.getElementById("tabla_palabras");
+	var name_table=document.getElementById("tabla_palabras");
     var row = name_table.insertRow(1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
