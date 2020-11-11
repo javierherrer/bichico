@@ -28,8 +28,8 @@ import static java.lang.Float.parseFloat;
 public class InsertarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    private static final String URL_ADMIN = "admin.jsp";
-    private static final String PARAM_PALABRA = "palabra";
+    private static final String URL_ADMIN = "bichico";
+    private static final String PARAM_PALABRA = "nombre";
     private static final String PARAM_IMPORTANCIA = "importancia";
 
 
@@ -46,25 +46,24 @@ public class InsertarPalabraServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
-        System.out.println(request.getParameter("nombre"));
-        System.out.println(request.getParameter("importancia"));
-        /*
-        System.out.println(request.getParameter(PARAM_IMPORTANCIA));
+      
+      
         if (request.getParameter(PARAM_PALABRA) == null) {
             request.getRequestDispatcher(URL_ADMIN).forward(request, response);
         } else {
-        	System.out.println("*****"+request.getParameter(PARAM_PALABRA)+parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
+        	
             PalabraVO palabra = new PalabraVO(request.getParameter(PARAM_PALABRA),
                     parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
             String id = dao.insertarPalabra(palabra);
             if (id == null || id.equals("")) {
                 request.setAttribute("error", "invalid word");
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
+                //request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             } else {
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
+                //request.getRequestDispatcher(URL_ADMIN).forward(request, response);
             }
         }
-        */
+        response.sendRedirect("http://localhost:8080/bichico/");
+        
     }
 
     /**

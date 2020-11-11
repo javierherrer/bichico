@@ -3,7 +3,7 @@ $(document).on('ready', funcMain);
 
 function funcMain()
 {
-	$("#add_row").on('click',newRowTable);
+	$("#add_row").on('click',newRowTableWithValueButton);
 	listWords();
 	$("loans_table").on('click','..fa-times',deleteProduct);
 	$("body").on('click',".fa-times",deleteProduct);
@@ -54,19 +54,9 @@ function newRowTable(){
 
 function newRowTableWithValue(name,importancia)
 {
-	var nombrePalabra = document.getElementById("name");
-	var importancia = document.getElementById("importancia");
-  $.post("insertarPalabraServlet",
-  {
-    nombre: nombrePalabra,
-    importancia: importancia
-  },
-  function(data, status){
-    alert("Data: " + data + "\nStatus: " + status);
-  });
 
 
-	var name_table=document.getElementById("tabla_palabras");
+	  var name_table=document.getElementById("tabla_palabras");
     var row = name_table.insertRow(1);
     var cell1 = row.insertCell(0);
     var cell2 = row.insertCell(1);
@@ -75,6 +65,25 @@ function newRowTableWithValue(name,importancia)
     cell1.innerHTML = '<p name="palabra" class="non-margin">'+name+'</p>';
     cell2.innerHTML = '<p name="importancia" class="non-margin">'+importancia+'</p>';
     cell3.innerHTML = '<span><i class="fas fa-times"></i></span>';
+
+  
+}
+
+function newRowTableWithValueButton(name,importancia)
+{
+	var nombrePalabra = document.getElementById("nombrePalabra").value;
+	var importancia = document.getElementById("importancia").value;
+
+  alert(nombrePalabra);
+  alert(importancia);
+  $.post("insertarPalabraServlet",
+  {
+    nombre: nombrePalabra,
+    importancia: importancia
+  },
+  function(data, status){
+    alert("Data: " + data + "\nStatus: " + status);
+  });
 
   
 }
