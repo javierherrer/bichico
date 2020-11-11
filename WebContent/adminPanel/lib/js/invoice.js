@@ -20,6 +20,11 @@ function nombreUser(){
 function listWords(){
 
 	    $.get("listarPalabrasServlet", function(data, status){
+	    	/*
+	    	TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
+			Document.location para redirigir a la pagina de login (que te envian en el valor de error)
+			*/
+
             var obj = JSON.parse(data);
 			var all = Object.keys(obj.palabras).length;
           	for (var i = 0; i < all; i++) {
