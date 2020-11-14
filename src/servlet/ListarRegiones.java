@@ -39,11 +39,14 @@ public class ListarRegiones extends HttpServlet{
             ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(request.getParameter(COMUNIDAD));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            
+            System.out.println(comunidadVO.toJSON().toString());
             PrintWriter out = response.getWriter();
-           
+            System.out.println("escribo");
             out.write(comunidadVO.toJSON().toString());
+            System.out.println("fluxh");
             out.flush();
+            out.close();
+            System.out.println("fin");
         }
     }
 

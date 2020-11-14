@@ -54,10 +54,13 @@ public class ComunidadFacade {
                 idCom = resultSet.getInt("id");
                 comunidadVO = new ComunidadVO(nombre, latitud, longitud);
             }
+            ConnectionController.releaseConnection(connection);
             leerRegiones(comunidadVO, idCom);
             return comunidadVO;
         } catch (Exception e){
-            return null;
+        	 e.printStackTrace();
+        	 ConnectionController.releaseConnection(connection);
+        	 return null;
         }
     }
 
@@ -87,7 +90,7 @@ public class ComunidadFacade {
                     longitud = resultSet.getFloat("long");
                     regionVOList.add(new RegionVO(nombreRegion, latitud, longitud));
                 }
-
+                ConnectionController.releaseConnection(connection);	
                 comunidadVO.setRegiones(regionVOList);
             }
         } catch (SQLException throwables) {
@@ -100,7 +103,7 @@ public class ComunidadFacade {
      * @return
      */
     public static List<ComunidadVO> listarTodas() {
-        Connection connection;
+        Connection connection = null;
         try {
             connection = ConnectionController.getConnection();
             if (connection != null){
@@ -116,11 +119,12 @@ public class ComunidadFacade {
                     longitud = resultSet.getFloat("long");
                     comunidadVOList.add(new ComunidadVO(nombreComunidad, latitud, longitud));
                 }
-
+                ConnectionController.releaseConnection(connection);
                 return comunidadVOList;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            ConnectionController.releaseConnection(connection);
         }
         return null;
     }

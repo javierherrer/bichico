@@ -58,6 +58,7 @@ public class ListarComunidades extends HttpServlet{
             System.out.println(comunidades.toString());
             out.write(comunidades.toString());
             out.flush();
+            out.close();
        // }
     }
 
