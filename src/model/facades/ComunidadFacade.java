@@ -95,7 +95,33 @@ public class ComunidadFacade {
         }
     }
 
+    /**
+     * Lista todas las comunidades de la base de datos
+     * @return
+     */
     public static List<ComunidadVO> listarTodas() {
+        Connection connection;
+        try {
+            connection = ConnectionController.getConnection();
+            if (connection != null){
+                List<ComunidadVO> comunidadVOList = new ArrayList<>();
+                String nombreComunidad;
+                float latitud;
+                float longitud;
+                PreparedStatement statement = connection.prepareStatement(CONSULTAR_TODAS_COMUNIDADES);
+                ResultSet resultSet = statement.executeQuery();
+                while (resultSet.next()){
+                    nombreComunidad = resultSet.getString("nombre");
+                    latitud = resultSet.getFloat("lat");
+                    longitud = resultSet.getFloat("long");
+                    comunidadVOList.add(new ComunidadVO(nombreComunidad, latitud, longitud));
+                }
+
+                return comunidadVOList;
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
         return null;
     }
 }
