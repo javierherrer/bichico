@@ -37,7 +37,8 @@ public class ListarComunidades extends HttpServlet{
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter(COMUNIDAD) != null){
+    	
+      //  if (request.getParameter(COMUNIDAD) != null){
 
             List<ComunidadVO> comunidadVO  = ComunidadFacade.listarTodas();
             response.setContentType("application/json");
@@ -53,9 +54,10 @@ public class ListarComunidades extends HttpServlet{
                 comunidades.add(tmp);
             }
 //            obj.put(comunidades);
+            System.out.println(comunidades.toString());
             out.write(comunidades.toString());
             out.flush();
-        }
+       // }
     }
 
     /**

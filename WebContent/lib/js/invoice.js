@@ -3,7 +3,7 @@ $(document).on('ready', funcMain);
 function funcMain()
 {
  elementoClicado();
- //newElement();                            //descomentar y crear bien
+ newElement();                            //descomentar y crear bien
 }
 
 
@@ -40,8 +40,8 @@ function perdirRegiones(comunidad) {
 }
 // Create a new list item when clicking on the "Add" button
 function newElement() {
-   $.get("listarComunidades", function(data, status){
-          //alert(data);
+   $.get("listarcomunidades", function(data, status){
+          alert(data);
           var myJSON = JSON.stringify(data);
           //alert(myJSON);
           var obj = JSON.parse(data);
