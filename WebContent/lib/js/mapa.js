@@ -10,6 +10,7 @@ L.tileLayer(tilesProvider,{
 
 let bandera = false;
 function anadirCirculos(data) {
+	myMap.setView([data.latitud,data.longitud],8);
 	if(bandera == true){
 		grupoCirculos.clearLayers();
 	}
@@ -18,13 +19,16 @@ function anadirCirculos(data) {
 		let circulo = L.circle([data.regiones[i].latitud,data.regiones[i].longitud], 5000, {
 		color: 'red',
 		fillColor: '#f03',
-		fillOpacity: 0.5,
-		bindPopup: data.regiones[i].nombre
+		fillOpacity: 0.5
 		});
 		grupoCirculos.addLayer(circulo);
 		//.addTo(myMap).bindPopup(data.regiones[i].nombre);
 	}
-	
+	var i = 0;
+	grupoCirculos.eachLayer(function (layer) {
+    	layer.bindPopup(data.regiones[i].nombre);
+    	i++;
+	});
 	grupoCirculos.addTo(myMap);
 	bandera = true;
 	
