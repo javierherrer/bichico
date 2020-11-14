@@ -10,17 +10,19 @@ import controller.ConnectionController;
 import model.ComunidadVO;
 import model.facades.ComunidadFacade;
 import model.facades.RegionFacade;
+import utils.DataCleaner;
 
 public class main {
 
 	public static void main(String[] args) throws Exception {
+		System.out.println(DataCleaner.clean("Campo de Mirra/Camp de Mirra (el)"));
 		// TODO Auto-generated method stub
 		//testTomcat();
 //		testRemoto();
-		ConnectionController.changeConnection(ConnectionController.REMOTA);
-		ComunidadVO comunidadVO = ComunidadFacade.leerComunidad("Aragón");
-
-		System.out.println(comunidadVO.toJSON().toJSONString());
+//		ConnectionController.changeConnection(ConnectionController.REMOTA);
+//		ComunidadVO comunidadVO = ComunidadFacade.leerComunidad("Aragón");
+//
+//		System.out.println(comunidadVO.toJSON().toJSONString());
 
 	}
 
