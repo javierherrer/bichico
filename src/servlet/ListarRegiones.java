@@ -33,8 +33,9 @@ public class ListarRegiones extends HttpServlet{
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter(COMUNIDAD) != null){
-
+        
+    	if (request.getParameter(COMUNIDAD) != null){
+    		System.out.println(request.getParameter(COMUNIDAD));
             ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(request.getParameter(COMUNIDAD));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");

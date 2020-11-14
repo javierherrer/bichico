@@ -24,7 +24,64 @@ Text Color: #666
   outline: none;
 }
 
-#mapid { width: 500px; height: 620px}
+#mapid { width: 800px; height: 720px}
+
+/* Remove margins and padding from the list */
+#myUL {
+  margin: 0;
+  padding: 0;
+}
+
+/* Style the list items */
+#myUL li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+  
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Set all odd list items to a different color (zebra-stripes) */
+#myUL li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+/* Darker background-color on hover */
+#myUL li:hover {
+  background: #ddd;
+}
+
+/* When clicked on, add a background color and strike out text */
+#myUL li.checked {
+  background: #888;
+  color: #fff;
+  
+}
+
+/* Add a "checked" mark when clicked on */
+#myUL li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+
+
 
 ul, h1, h2, h3, h4, p, figure {
     padding: 0;
@@ -222,11 +279,11 @@ h1, h2, h3, h4, h5, h6 { color: #333; }
 .tm-icon-inner h3 { line-height: 1.7; }
 
 .tm-section-2-l {
-  width: 40.5%;
+  width: 70.5%;
   margin-right: 1.65%;
 }
 
-.tm-section-2-r { width: 57.85%; }
+.tm-section-2-r { width: 27.85%; }
 .tm-box-pad { padding: 40px 50px; }
 
 .tm-em-box {
