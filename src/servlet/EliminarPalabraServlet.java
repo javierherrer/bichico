@@ -14,7 +14,7 @@ import java.io.IOException;
  * Servlet implementation class EliminarPalabraServlet
  */
 @WebServlet(description = "Servlet de eliminacion de palabra",
-        urlPatterns = { "/eliminarPalabraServlet" })
+        urlPatterns = { "/adminPanel/eliminarPalabraServlet" })
 public class EliminarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
@@ -34,12 +34,14 @@ public class EliminarPalabraServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
-
+        System.out.println("paso");
         if (request.getParameter(PARAM_PALABRA) == null) {
             request.getRequestDispatcher(URL_ADMIN).forward(request, response);
+            System.out.println("entro if");
         } else {
             String id = request.getParameter(PARAM_PALABRA);
             int rows = dao.eliminarPalabra(id);
+            System.out.println("entro eliminar");
             /* No consideramos errores
             if (rows < 1) {
                 request.getRequestDispatcher(URL_ADMIN).forward(request, response);

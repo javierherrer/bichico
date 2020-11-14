@@ -47,9 +47,9 @@ public class ListarPalabrasServlet extends HttpServlet{
             JSONArray list = new JSONArray();
             JSONObject palabra;
 
-            if (request.getSession().getAttribute("admin") == null) {
-                obj.put("error", URL_LOGIN);
-            } else {
+           // if (request.getSession().getAttribute("admin") == null) {
+           //     obj.put("error", URL_LOGIN);
+          //  } else {
                 for (int i = 0; i < lista.size(); i++) {
                     palabra = new JSONObject();
                     palabra.put("nombre",lista.get(i).getPalabra());
@@ -57,7 +57,7 @@ public class ListarPalabrasServlet extends HttpServlet{
                     list.add(palabra);
                 }
                 obj.put("palabras",list);
-            }
+          //  }
 
 		    StringWriter out = new StringWriter();
             obj.writeJSONString(out);
@@ -66,7 +66,7 @@ public class ListarPalabrasServlet extends HttpServlet{
 
             response.setContentType("text/plain");
     		response.setCharacterEncoding("UTF-8");
-
+    		System.out.println(jsonText);
     		response.getWriter().write(jsonText);
         } catch (Exception ex) {
             ex.printStackTrace();

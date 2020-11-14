@@ -123,9 +123,9 @@ https://templatemo.com/tm-544-comparto
                     		  },
                     		  function(data, status){
                     		    alert("Data: " + data + "\nStatus: " + status);
-                    		    alert(data);
+                    		    //alert(data);
                         	 	var myJSON = JSON.stringify(data);
-                        	 	 alert(myJSON);
+                        	 	 //alert(myJSON);
                     		  });
                      <!--
                      $.get("listarregiones", function(data, status){
@@ -232,133 +232,21 @@ https://templatemo.com/tm-544-comparto
 				</script>
             </div>
             <div class="tm-section-2-r">
-                <article class="tm-bg-color-6 tm-box-pad tm-mb-1">
-                    <h2 class="tm-mb-1">.02 Aliquam pretium hendrerit</h2>
-                    <p>Cras tempus, velit amet facilisis venenatis, erat felis imperdiet lectus, at posuere elit metus. Title #333 BG #F2F2F2</p>
-                    <p class="tm-mb-0">Nam iaculis, urna ut laoreet aliquam, massa magna dapibus. Text #666</p>
-                </article>
-                <div class="tm-bg-color-7 tm-em-box">
-                    <p class="tm-text-color-2">Nam iaculis, urna ut laoreet aliquam, massa magna dapibus nibh, at pellentesque lectus odio non risus. Nulla ac sodales est, vel iaculis. Text #333 . BG #DDD</p>
-                    <a href="#gallery" class="tm-btn tm-btn-2">Read More</a>
-                </div>
+            	<div>
+				  <h2 style="margin:5px;text-align: center;">Comarcas</h2>
+				</div>
+               <ul id="myUL">
+				  <li class="comarca">Aragón</li>
+				  <li class="checked">Pay bills</li>
+				  <li>Meet George</li>
+				  <li>Buy eggs</li>
+				  <li>Read a book</li>
+				  <li>Organize office</li>
+				</ul>
                <button id="botton1" onclick="funcionPreMapa()">Click me</button>
             </div>
         </section>
-       <!-- <section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
-            <div class="tm-gallery-header">
-                <h2 class="tm-mb-1 text-right">.03 The Gallery Section</h2>
-                <ul class="tm-gallery-filter tabs clearfix filters-button-group">
-                    <li><a role="button" href="#" class="active" data-filter="*">Show All</a></li>
-                    . <li><a role="button" href="#" data-filter=".nature">Nature</a></li>
-                    . <li><a role="button" href="#" data-filter=".animals">Animals</a></li>
-                    . <li><a role="button" href="#" data-filter=".people">People</a></li>
-                </ul>
-            </div>
-            <div class="tm-gallery-outer">
-                <div class="tm-gallery" id="tm-gallery">
-                    <div class="tm-gallery-item nature">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-01.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Too <span>CSS</span></h2>
-                                <p>It is a great blog you should explore.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item animals">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-02.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Templates</h2>
-                                <p>best templates come from TemplateMo website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item nature">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-03.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Web <span>Design</span></h2>
-                                <p>This is our special design work.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item nature">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-04.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Free <span>HTML</span></h2>
-                                <p>HTML layouts are easy to edit.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item animals">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-05.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Just <span>Art</span></h2>
-                                <p>You can create your own art website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item animals">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-06.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Pro <span>Display</span></h2>
-                                <p>You can make your artwork gallery.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item peopl">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-07.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>The <span>Nature</span></h2>
-                                <p>You can create your own HTML website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-08.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Color <span>Art</span></h2>
-                                <p>You can create your own CSS website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-09.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Take it <span>easy</span></h2>
-                                <p>You can create your own art gallery.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                    <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-10.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Share <span>This</span></h2>
-                                <p>You can make your own image gallery.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                </div>
-            </div>
-        </section> <!-- Gallery -->
+      
         <section id="contact" class="tm-bg-color-5 tm-mb-3">
 
             <h2 class="tm-text-white tm-contact-title">.04 Contact Us</h2>
@@ -443,8 +331,11 @@ https://templatemo.com/tm-544-comparto
     <script src="js/isotope.pkgd.min.js"></script> <!-- https://isotope.metafizzy.co/ -->
     <script src="js/jquery.singlePageNav.min.js"></script> <!-- https://github.com/ChrisWojcik/single-page-nav -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="lib/js/invoice.js"></script>
     <script>
-
+    	/////////////////////////////////////////////////
+    	
+    	///////////////////////////////////////////////
         // Scroll to Top button
         var btn = $('#button');
 
@@ -464,7 +355,7 @@ https://templatemo.com/tm-544-comparto
         // DOM is ready
         $(function () {
             // Single Page Nav
-            $('#tm-nav').singlePageNav({ speed: 600 });
+ //           $('#tm-nav').singlePageNav({ speed: 600 });
 
             // Smooth Scroll (https://css-tricks.com/snippets/jquery/smooth-scrolling/)
             $('a[href*="#"]')
@@ -504,17 +395,18 @@ https://templatemo.com/tm-544-comparto
                 });
 
             /* Isotope Gallery */
-
+/*
             // init isotope
             var $gallery = $(".tm-gallery").isotope({
                 itemSelector: ".tm-gallery-item",
                 layoutMode: "fitRows"
             });
+
             // layout Isotope after each image loads
             $gallery.imagesLoaded().progress(function () {
                 $gallery.isotope("layout");
             });
-
+*/
             $(".filters-button-group").on("click", "a", function () {
                 var filterValue = $(this).attr("data-filter");
                 $gallery.isotope({ filter: filterValue });
