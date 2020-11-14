@@ -48,6 +48,7 @@ public class ListarComunidades extends HttpServlet{
 //            JSONObject obj = new JSONObject();
             JSONArray comunidades = new JSONArray();
             JSONObject tmp;
+            System.out.println(comunidadVO.size());
             for (ComunidadVO comunidadVO1: comunidadVO) {
                 tmp = new JSONObject();
                 tmp.put("nombre", comunidadVO1.getNombre());

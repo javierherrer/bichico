@@ -19,13 +19,7 @@
      <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
      integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
      crossorigin=""></script>
-<!--
 
-Comparto TemplateMo
-
-https://templatemo.com/tm-544-comparto
-
--->
 </head>
 
 <body>
@@ -57,12 +51,6 @@ https://templatemo.com/tm-544-comparto
                                 <span>Contacto</span>
                             </a>
                         </li>
-            <!--            <li class="tm-nav-item">
-                            <a href="#contact" class="tm-nav-link">
-                                <span class="tm-nav-text tm-mb-1">.04</span>
-                                <span class="tm-nav-text">Contact</span>
-                            </a>
-                        </li> -->
                     </ul>
                 </nav>
             </div>
@@ -111,139 +99,13 @@ https://templatemo.com/tm-544-comparto
         <section class="tm-mb-1 tm-row tm-services-row" id="services">
 	        <div class="tm-section-2-l">			
             <div id="mapid"></div>
-				<script>
-				  var mymap = L.map('mapid').setView([41.65606, -0.87734], 13);
-                    function funcionPreMapa() {
-                     document.getElementById("botton1").style.color = "red";
-                    
-                     $.post("listarregiones",
-                    		  {
-                    	 		comunidad: "Castilla La Mancha"
-                    		  
-                    		  },
-                    		  function(data, status){
-                    		    alert("Data: " + data + "\nStatus: " + status);
-                    		    //alert(data);
-                        	 	var myJSON = JSON.stringify(data);
-                        	 	 //alert(myJSON);
-                    		  });
-                     <!--
-                     $.get("listarregiones", function(data, status){
-                                         	 	alert(data);
-                                         	 	var myJSON = JSON.stringify(data);
-                                         	 	alert(myJSON);
-                                         	 	var obj = JSON.parse(data);
-
-                                         	    //alert("Data: " + obj.nombre);
-                                         	    //alert("Datalat: " + obj.lat);
-                                         	    //alert("Datalong: " + obj.long);
-                                         	  
-                                        
-                     				
-
-                     					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-                     						maxZoom: 18,
-                     						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-                     							'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-                     							'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-                     						id: 'mapbox/streets-v11',
-                     						tileSize: 512,
-                     						zoomOffset: -1
-                     					}).addTo(mymap);
-                     					var suma = 0;
-                     					var longitud = 0;
-                     					var latitud = 0;
-                     					for (var i = 0; i < Object.keys(obj.regiones).length; i++) {
-                      
-                     						L.circle([obj.regiones[i].lat,obj.regiones[i].long], 5000, {
-                     						color: 'red',
-                     						fillColor: '#f03',
-                     						fillOpacity: 0.5
-                     					}).addTo(mymap).bindPopup(obj.regiones[i].nombre);
-                     				}	
-                     				
-                     					L.polygon([
-                     						[51.509, -0.08],
-                     						[51.503, -0.06],
-                     						[51.51, -0.047]
-                     					]).addTo(mymap).bindPopup("I am a polygon.");
-                                        });
-
-                     -->
-                     
-                  
-                 }
-                    function sleep(milliseconds) {
-                    	 var start = new Date().getTime();
-                    	 for (var i = 0; i < 1e7; i++) {
-                    	  if ((new Date().getTime() - start) > milliseconds) {
-                    	   break;
-                    	  }
-                    	 }
-                    	}
-                
-
-					L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
-						maxZoom: 18,
-						attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-							'<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-							'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-						id: 'mapbox/streets-v11',
-						tileSize: 512,
-						zoomOffset: -1
-					}).addTo(mymap);
-					var suma = 0;
-					for (var i = 0; i < 1000; i++) {
-							L.circle([(41.65606 + suma), -0.87734], 5000, {
-						color: 'red',
-						fillColor: '#f03',
-						fillOpacity: 0.5
-					}).addTo(mymap).bindPopup("I am a circle.");
-						suma = suma + 1;
-					}
-					L.polygon([
-						[51.509, -0.08],
-						[51.503, -0.06],
-						[51.51, -0.047]
-					]).addTo(mymap).bindPopup("I am a polygon.");
-
-				
-/*
-					L.circle([51.608, -0.11], 5000, {
-						color: 'red',
-						fillColor: '#f03',
-						fillOpacity: 0.5
-					}).addTo(mymap).bindPopup("I am a circle.");
-					
-
-					var popup = L.popup();
-
-					function onMapClick(e) {
-						popup
-							.setLatLng(e.latlng)
-							.setContent("You clicked the map at " + e.latlng.toString())
-							.openOn(mymap);
-					}
-
-					mymap.on('click', onMapClick);
-					
-					
-*/
-				</script>
             </div>
             <div class="tm-section-2-r">
             	<div>
 				  <h2 style="margin:5px;text-align: center;">Comarcas</h2>
 				</div>
                <ul id="myUL">
-				  <li class="comarca">Aragón</li>
-				  <li class="checked">Pay bills</li>
-				  <li>Meet George</li>
-				  <li>Buy eggs</li>
-				  <li>Read a book</li>
-				  <li>Organize office</li>
 				</ul>
-               <button id="botton1" onclick="funcionPreMapa()">Click me</button>
             </div>
         </section>
       
@@ -331,10 +193,36 @@ https://templatemo.com/tm-544-comparto
     <script src="js/isotope.pkgd.min.js"></script> <!-- https://isotope.metafizzy.co/ -->
     <script src="js/jquery.singlePageNav.min.js"></script> <!-- https://github.com/ChrisWojcik/single-page-nav -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="lib/js/invoice.js"></script>
+    <script src="lib/js/lista.js"></script>
+    <script src="lib/js/mapa.js"></script>
     <script>
-    	/////////////////////////////////////////////////
-    	
+    	/////////////////////////////////////////////////      elemento de lista clicado
+    	 var list = document.getElementById('myUL');
+    	 var listItems = document.getElementById("myUL").getElementsByTagName('li'); 
+    	 list.addEventListener('click', function(ev) {
+    	 	console.log("pasooo");
+            for (i = 0; i < listItems.length; i++) {
+                    listItems[i].className = '';          //les coloco las class a nula en caso de ponerle colocar una nueva
+            }
+
+          if (ev.target.tagName === 'LI') {
+          	console.log("entro11111");
+            ev.target.classList.toggle('checked');
+            var comunidad = ev.srcElement.innerText;
+            //peticion al servido
+            console.log(comunidad);
+            $.post("listarregiones",
+                                    {
+                                        comunidad: comunidad
+                                  
+                                    },
+                                      function(data, status){
+                                      		console.log(data);
+                                      		console.log(status);
+                                            anadirCirculos(data);
+                                      });
+          }
+     }, false);
     	///////////////////////////////////////////////
         // Scroll to Top button
         var btn = $('#button');
