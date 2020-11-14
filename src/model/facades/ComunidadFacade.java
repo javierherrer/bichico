@@ -14,6 +14,10 @@ import java.util.List;
 public class ComunidadFacade {
 
 
+    private static final String  CONSULTAR_TODAS_COMUNIDADES
+            = "SELECT c.nombre, c.lat, c.long, c.id" +
+            " FROM bichico.comunidad c ";
+
     private static final String  CONSULTA_COMUNIDAD
             = "SELECT c.nombre, c.lat, c.long, c.id" +
             " FROM bichico.comunidad c " +
@@ -89,5 +93,9 @@ public class ComunidadFacade {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
+    }
+
+    public static List<ComunidadVO> listarTodas() {
+        return null;
     }
 }
