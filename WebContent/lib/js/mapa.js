@@ -14,7 +14,7 @@ function anadirCirculos(data) {
 	if(bandera == true){
 		grupoCirculos.clearLayers();
 	}
-	console.log("llego añadir");
+	
 	for (var i = 0; i < data.regiones.length; i++) {
 		let circulo = L.circle([data.regiones[i].latitud,data.regiones[i].longitud], 5000, {
 		color: 'red',

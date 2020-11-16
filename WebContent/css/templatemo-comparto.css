@@ -547,14 +547,7 @@ figure.effect-bubba:hover p {
   display: flex;
 }
 
-.map-outer {
-  position:relative;
-  text-align:right;
-  min-height:400px; 
-  width:35%; 
-  height: 100%;
-  padding-right: 10px;
-}
+
 
 .gmap-canvas {
   overflow:hidden;
@@ -563,11 +556,10 @@ figure.effect-bubba:hover p {
   width:100%;
 }
 
-.contact-form-outer { width: 37%; }
-.contact-info-outer { width: 28%; }
+.contact-form-outer { width: 62%; }
+.contact-info-outer { width: 38%; }
 
 .contact-form-outer {
-  padding-left: 10px;
   padding-right: 10px;
 }
 
@@ -673,14 +665,12 @@ button:hover { cursor: pointer; }
 }
 
 @media (max-width: 1145px) {
-  .map-outer,
   .contact-form-outer,
   .contact-info-outer {
     width: 100%;  
     padding: 0;  
   }
 
-  .map-outer,
   .contact-form-outer { margin-bottom: 20px; }
 
   .tm-contact-main { flex-direction: column; }

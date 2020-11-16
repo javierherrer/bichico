@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
     <link href="fontawesome/css/all.min.css" rel="stylesheet" />
     <link href="css/templatemo-comparto.css" rel="stylesheet" />
+
     <title>Comparto HTML CSS Template</title>
 
     
@@ -108,45 +109,42 @@
 				</ul>
             </div>
         </section>
-      
+                <section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
+            <div class="tm-gallery-header">
+                <h2 class="tm-mb-1 text-center">Team develop</h2>
+            </div>
+            <div class="tm-gallery-outer"> 																					//revisar
+                <table class="equipo" align="center" style="padding-left: 20px;padding-right: 20px">
+              
+                   	<tr>
+                   	<td>
+	                     <div class="persona">
+		                        <div>
+		                            <img src="img/gallery/gallery-item-08.jpg" alt="">
+		                        </div>
+		                    </div>
+                    </td>
+                    <td>
+	                    <div class="persona">
+	                        <div>
+	                            <img src="img/gallery/gallery-item-08.jpg" alt="">
+	                        </div>
+	                    </div>
+                    </td>
+                    <td>
+	                    <div class="persona">
+	                        <div>
+	                            <img src="img/gallery/gallery-item-08.jpg" alt="">
+	                        </div>
+	                    </div>
+                    </td>
+                    </tr>
+                </table>
+            </div>
+        </section> <!-- Gallery -->
         <section id="contact" class="tm-bg-color-5 tm-mb-3">
-
             <h2 class="tm-text-white tm-contact-title">.04 Contact Us</h2>
             <div class="tm-bg-color-white tm-contact-main">
-            	<div class="map-outer">
-            	<div class="tm-gallery" id="tm-gallery">	
-		           <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-08.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Color <span>Art</span></h2>
-                                <p>You can create your own CSS website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                     <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-08.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Color <span>Art</span></h2>
-                                <p>You can create your own CSS website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                     <div class="tm-gallery-item people">
-                        <figure class="effect-bubba">
-                            <img src="img/gallery/gallery-item-08.jpg" alt="Gallery item" class="tm-img-responsive" />
-                            <figcaption>
-                                <h2>Color <span>Art</span></h2>
-                                <p>You can create your own CSS website.</p>
-                                <a href="#">View more</a>
-                            </figcaption>
-                        </figure>
-                    </div>
-                   </div>
-                </div>
                 <div class="contact-form-outer">
                     <form id="contact-form" action="" method="POST" class="tm-bg-color-6 tm-contact-form">
                         <div class="form-group">
@@ -188,37 +186,27 @@
             - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
         </footer>
     </div> <!-- .container -->
-    <script src="js/jquery.min.js"></script> <!-- https://jquery.com/download/ -->
-    <script src="js/imagesloaded.pkgd.min.js"></script> <!-- https://imagesloaded.desandro.com/ -->
-    <script src="js/isotope.pkgd.min.js"></script> <!-- https://isotope.metafizzy.co/ -->
-    <script src="js/jquery.singlePageNav.min.js"></script> <!-- https://github.com/ChrisWojcik/single-page-nav -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="lib/js/lista.js"></script>
     <script src="lib/js/mapa.js"></script>
     <script>
     	/////////////////////////////////////////////////      elemento de lista clicado
     	 var list = document.getElementById('myUL');
-    	 var listItems = document.getElementById("myUL").getElementsByTagName('li'); 
-    	 list.addEventListener('click', function(ev) {
-    	 	console.log("pasooo");
+         var listItems = document.getElementById("myUL").getElementsByTagName('li');
+    list.addEventListener('click', function(ev) {
             for (i = 0; i < listItems.length; i++) {
                     listItems[i].className = '';          //les coloco las class a nula en caso de ponerle colocar una nueva
             }
-
           if (ev.target.tagName === 'LI') {
-          	console.log("entro11111");
             ev.target.classList.toggle('checked');
             var comunidad = ev.srcElement.innerText;
             //peticion al servido
-            console.log(comunidad);
             $.post("listarregiones",
                                     {
                                         comunidad: comunidad
                                   
                                     },
                                       function(data, status){
-                                      		console.log(data);
-                                      		console.log(status);
                                             anadirCirculos(data);
                                       });
           }
@@ -240,10 +228,26 @@
             $('html, body').animate({ scrollTop: 0 }, '300');
         });
 
+  // Scroll to Top button
+        var btn = $('#button');
+
+        $(window).scroll(function () {
+            if ($(window).scrollTop() > 300) {
+                btn.addClass('show');
+            } else {
+                btn.removeClass('show');
+            }
+        });
+
+        btn.on('click', function (e) {
+            e.preventDefault();
+            $('html, body').animate({ scrollTop: 0 }, '300');
+        });
+
         // DOM is ready
         $(function () {
             // Single Page Nav
- //           $('#tm-nav').singlePageNav({ speed: 600 });
+           // $('#tm-nav').singlePageNav({ speed: 600 });
 
             // Smooth Scroll (https://css-tricks.com/snippets/jquery/smooth-scrolling/)
             $('a[href*="#"]')
@@ -289,12 +293,14 @@
                 itemSelector: ".tm-gallery-item",
                 layoutMode: "fitRows"
             });
-
+            
             // layout Isotope after each image loads
             $gallery.imagesLoaded().progress(function () {
                 $gallery.isotope("layout");
             });
-*/
+            
+            */
+
             $(".filters-button-group").on("click", "a", function () {
                 var filterValue = $(this).attr("data-filter");
                 $gallery.isotope({ filter: filterValue });
@@ -316,5 +322,8 @@
             });
         });
     </script>
+
+		
+
 </body>
 </html>

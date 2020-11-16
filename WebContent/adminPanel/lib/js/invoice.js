@@ -3,6 +3,8 @@ $(document).on('ready', funcMain);
 
 function funcMain()
 {
+	var modal = document.getElementById("myModal");
+	modal.style.display = "none";
 	$("#add_row").on('click',newRowTableWithValueButton);
 	listWords();
 	$("loans_table").on('click','.fa-times',deleteProduct);
@@ -24,9 +26,7 @@ function listWords(){
 	    	
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
-			locationObj = document.location;
-      document.location.href="http://www.google.com";
-      Document.location.href="http://www.google.com";
+
       var obj = JSON.parse(data);
       var all = Object.keys(obj.palabras).length;
           	for (var i = 0; i < Object.keys(obj.palabras).length; i++) {
