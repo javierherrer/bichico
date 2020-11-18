@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-import static java.lang.Float.parseFloat;
 
 /**
  * Servlet implementation class EnviarMensajeServlet
@@ -22,7 +21,6 @@ import static java.lang.Float.parseFloat;
 public class EnviarMensajeServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    private static final String URL_ADMIN = "bichico";
     private static final String PARAM_EMISOR = "emisor";
     private static final String PARAM_EMAIL = "email";
     private static final String PARAM_CONTENIDO = "contenido";
@@ -40,20 +38,12 @@ public class EnviarMensajeServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
 
-        if (request.getParameter() == null) {
-            request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-        } else {
-            PalabraVO palabra = new PalabraVO(request.getParameter(PARAM_PALABRA),
-                    parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
-            String id = dao.insertarPalabra(palabra);
-            /* No consideramos errores
-            if (id == null || id.equals("")) {
-                request.setAttribute("error", "invalid word");
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            } else {
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            }
-             */
+        if (request.getParameter(PARAM_EMAIL) != null) {
+            MensajeVO mensaje = new MensajeVO(request.getParameter(PARAM_EMISOR),
+                    request.getParameter(PARAM_CONTENIDO),
+                    request.getParameter(PARAM_EMAIL));
+            dao.enviarMensaje(mensaje);
+            //No se realiza tratamiento de errores
         }
     }
 

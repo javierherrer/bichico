@@ -26,7 +26,6 @@ import static java.lang.Float.parseFloat;
 public class InsertarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    private static final String URL_ADMIN = "bichico";
     private static final String PARAM_PALABRA = "nombre";
     private static final String PARAM_IMPORTANCIA = "importancia";
 
@@ -44,20 +43,11 @@ public class InsertarPalabraServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
       
-        if (request.getParameter(PARAM_PALABRA) == null) {
-            request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-        } else {
+        if (request.getParameter(PARAM_PALABRA) != null) {
             PalabraVO palabra = new PalabraVO(request.getParameter(PARAM_PALABRA),
                     parseFloat(request.getParameter(PARAM_IMPORTANCIA)));
-            String id = dao.insertarPalabra(palabra);
-            /* No consideramos errores
-            if (id == null || id.equals("")) {
-                request.setAttribute("error", "invalid word");
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            } else {
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            }
-             */
+            dao.insertarPalabra(palabra);
+            //No se realiza tratamiento de errores
         }
     }
 
