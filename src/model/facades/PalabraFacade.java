@@ -55,6 +55,8 @@ public class PalabraFacade {
                     System.out.println(ex.getMessage());
                 }
             }
+
+            pstmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -116,6 +118,7 @@ public class PalabraFacade {
 
             affectedrows = pstmt.executeUpdate();
 
+            pstmt.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {
