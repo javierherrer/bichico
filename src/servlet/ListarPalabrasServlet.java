@@ -49,18 +49,10 @@ public class ListarPalabrasServlet extends HttpServlet{
 
 
             if (request.getSession().getAttribute("admin") == null) {
-                obj.put("error", URL_LOGIN);
-                for (int i = 0; i < lista.size(); i++) {
-                    palabra = new JSONObject();
-                    palabra.put("nombre",lista.get(i).getPalabra());
-                    palabra.put("importancia",lista.get(i).getImportancia());
-                    list.add(palabra);
-                }
-                obj.put("palabras",list);
-
+                obj.put("error", "true");
             } else {
-                obj.put("error", "");
-            }
+                obj.put("error", "false");
+
                 for (int i = 0; i < lista.size(); i++) {
                     palabra = new JSONObject();
                     palabra.put("nombre",lista.get(i).getPalabra());
@@ -68,8 +60,7 @@ public class ListarPalabrasServlet extends HttpServlet{
                     list.add(palabra);
                 }
                 obj.put("palabras",list);
-          //  }
-
+            }
 
 		    StringWriter out = new StringWriter();
             obj.writeJSONString(out);
