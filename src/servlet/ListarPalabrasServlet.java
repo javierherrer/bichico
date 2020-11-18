@@ -59,7 +59,7 @@ public class ListarPalabrasServlet extends HttpServlet{
                 }
                 obj.put("palabras",list);
             }
-
+            System.out.println(obj);
 		    StringWriter out = new StringWriter();
             obj.writeJSONString(out);
 

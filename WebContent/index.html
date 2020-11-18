@@ -170,19 +170,19 @@
             <h2 class="tm-text-white tm-contact-title">.04 Contact Us</h2>
             <div class="tm-bg-color-white tm-contact-main">
                 <div class="contact-form-outer">
-                    <form id="contact-form" action="" method="POST" class="tm-bg-color-6 tm-contact-form">
+                    <form id="contact-form"  class="tm-bg-color-6 tm-contact-form">
                         <div class="form-group">
-                            <input type="text" name="name" class="form-control" placeholder="Name" required="" />
+                            <input id="nombreUsuario" type="text" name="name" class="form-control" placeholder="Name" required="" />
                         </div>
                         <div class="form-group">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required="" />
+                            <input id="emailUsuario" type="email" name="email" class="form-control" placeholder="Email" required="" />
                         </div>
                         <div class="form-group">
-                            <textarea rows="4" name="message" class="form-control" placeholder="Message..."
+                            <textarea id="mensajeUsuario" rows="4" name="message" class="form-control" placeholder="Message..."
                                 required=""></textarea>
                         </div>
                         <div>
-                            <button type="submit" class="ml-auto tm-btn tm-btn-3">
+                            <button id="botonMensaje" class="ml-auto tm-btn tm-btn-3">
                                 Send
                             </button>
                         </div>
@@ -213,11 +213,12 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="lib/js/lista.js"></script>
     <script src="lib/js/mapa.js"></script>
+     <script src="lib/js/mensaje.js"></script>
     <script>
     	/////////////////////////////////////////////////      elemento de lista clicado
     	 var list = document.getElementById('myUL');
          var listItems = document.getElementById("myUL").getElementsByTagName('li');
-    list.addEventListener('click', function(ev) {
+         list.addEventListener('click', function(ev) {
             for (i = 0; i < listItems.length; i++) {
                     listItems[i].className = '';          //les coloco las class a nula en caso de ponerle colocar una nueva
             }
@@ -236,6 +237,7 @@
           }
      }, false);
     	///////////////////////////////////////////////
+/*        
         // Scroll to Top button
         var btn = $('#button');
 
@@ -251,8 +253,9 @@
             e.preventDefault();
             $('html, body').animate({ scrollTop: 0 }, '300');
         });
-
+*/
   // Scroll to Top button
+/*
         var btn = $('#button');
 
         $(window).scroll(function () {
@@ -265,9 +268,12 @@
 
         btn.on('click', function (e) {
             e.preventDefault();
-            $('html, body').animate({ scrollTop: 0 }, '300');
-        });
 
+
+           // $('html, body').animate({ scrollTop: 0 }, '300');
+        });
+*/
+/*
         // DOM is ready
         $(function () {
             // Single Page Nav
@@ -309,7 +315,7 @@
                         }
                     }
                 });
-
+*/
             /* Isotope Gallery */
 /*
             // init isotope
@@ -324,7 +330,7 @@
             });
             
             */
-
+/*
             $(".filters-button-group").on("click", "a", function () {
                 var filterValue = $(this).attr("data-filter");
                 $gallery.isotope({ filter: filterValue });
@@ -345,6 +351,7 @@
                 $this.addClass("active");
             });
         });
+*/
     </script>
 
 		
