@@ -86,6 +86,9 @@ public class PalabraFacade {
                 float importancia = consultarRs.getFloat("importancia");
                 listaPalabras.add(new PalabraVO(palabra, importancia));
             }
+
+            consultarRs.close();
+            pstmt.close();
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         } finally {

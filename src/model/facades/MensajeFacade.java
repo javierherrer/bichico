@@ -4,9 +4,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import controller.ConnectionController;
 import model.MensajeVO;
+import model.PalabraVO;
 
 public class MensajeFacade {
 
@@ -20,17 +23,23 @@ public class MensajeFacade {
 	//private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
 
 	
-	public static void mostrarMensajes() {
+	public static List<MensajeVO> consultarMensajes() {
+		List<MensajeVO> listaMensajes = new ArrayList<>();
+
 		Connection conn = null;
+
 		try {
 			// Abrimos la conexión e inicializamos los parámetros 
 			conn = ConnectionController.getConnection();
 			PreparedStatement ps = conn.prepareStatement(MOSTRAR_MENSAJES);
 			ResultSet rset = ps.executeQuery();
+
 			while(rset.next()) {
-				System.out.println(rset.getString("emisor"));
-				System.out.println(rset.getString("email"));
-				System.out.println(rset.getString("contenido"));
+				String emisor = rset.getString("emisor");
+				String email = rset.getString("email");
+				String contenido = rset.getString("contenido");
+
+				listaMensajes.add(new MensajeVO(emisor, contenido, email));
 			}
 			rset.close();
 			ps.close();
@@ -40,6 +49,8 @@ public class MensajeFacade {
 		} finally {
 			ConnectionController.releaseConnection(conn);
 		}
+
+		return listaMensajes;
 	}
 	
 	boolean comprobarMensage(MensajeVO mensaje) {

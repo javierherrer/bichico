@@ -1,8 +1,8 @@
 package servlet;
 
 
-import model.PalabraVO;
-import model.facades.PalabraFacade;
+import model.MensajeVO;
+import model.facades.MensajeFacade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,17 +18,17 @@ import java.io.StringWriter;
 import java.util.List;
 
 /**
- * Servlet implementation class ListarPalabrasServlet
+ * Servlet implementation class ListarMensajesServlet
  */
-@WebServlet(description = "Servlet de listado de palabras",
-        urlPatterns = { "/adminPanel/listarPalabrasServlet" })
-public class ListarPalabrasServlet extends HttpServlet{
+@WebServlet(description = "Servlet de listado de mensajes",
+        urlPatterns = { "/adminPanel/listarMensajesServlet" })
+public class ListarMensajesServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListarPalabrasServlet() {
+    public ListarMensajesServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -38,37 +38,32 @@ public class ListarPalabrasServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            PalabraFacade dao = new PalabraFacade();
+            MensajeFacade dao = new MensajeFacade();
 
-            List<PalabraVO> lista = dao.consultarPalabras();
+            List<MensajeVO> lista = dao.consultarMensajes();
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
-            JSONObject palabra;
+            JSONObject mensaje;
 
+            for (int i = 0; i < lista.size(); i++) {
+                mensaje = new JSONObject();
+                mensaje.put("emisor",lista.get(i).getEmisor());
+                mensaje.put("email", lista.get(i).getEmail());
+                mensaje.put("contenido", lista.get(i).getContenido());
 
-            if (request.getSession().getAttribute("admin") == null) {
-                obj.put("error", "true");
-            } else {
-                obj.put("error", "false");
-
-                for (int i = 0; i < lista.size(); i++) {
-                    palabra = new JSONObject();
-                    palabra.put("nombre",lista.get(i).getPalabra());
-                    palabra.put("importancia",lista.get(i).getImportancia());
-                    list.add(palabra);
-                }
-                obj.put("palabras",list);
+                list.add(mensaje);
             }
+            obj.put("mensajes",list);
 
-		    StringWriter out = new StringWriter();
+            StringWriter out = new StringWriter();
             obj.writeJSONString(out);
 
-	        String jsonText = out.toString();
+            String jsonText = out.toString();
 
             response.setContentType("text/plain");
-    		response.setCharacterEncoding("UTF-8");
-    		System.out.println(jsonText);
-    		response.getWriter().write(jsonText);
+            response.setCharacterEncoding("UTF-8");
+            System.out.println(jsonText);
+            response.getWriter().write(jsonText);
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -82,3 +77,4 @@ public class ListarPalabrasServlet extends HttpServlet{
         doGet(request, response);
     }
 }
+
