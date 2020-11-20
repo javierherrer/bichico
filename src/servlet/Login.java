@@ -2,6 +2,7 @@ package servlet;
 
 import model.AdminVO;
 import model.facades.AdminFacade;
+import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,17 +10,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.StringWriter;
 
 @WebServlet(description = "Servlet de autenticación del usuario",
         urlPatterns = { "/loginpage/login" })
 public class Login extends HttpServlet {
 
-    private static final String LOGIN = "inputEmail";
+    private static final String LOGIN = "usuario";
     private static final String URL_LOGIN = "/login";
     private static final String PASSWORD = "password";
     private static final String URL_LOGGED = "/adminpanel";
     private static final String MENSAJE_ERROR = "Error en el login";
     private static final String ERROR_LOGIN = "error";
+    private static final String ADMIN = "admin";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -31,30 +34,75 @@ public class Login extends HttpServlet {
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException,
-                                                                                          IOException {
-        String id = (String) request.getSession().getAttribute(LOGIN);
-        String pass = (String) request.getSession().getAttribute(PASSWORD);
-        if (id == null){
-            request.getRequestDispatcher(URL_LOGIN).forward(request, response);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException{
+        String id = (String) request.getParameter(LOGIN);
+        String pass = hashPassword((String) request.getParameter(PASSWORD));
+        String error = "";
+        // TODO: 20/11/20 HASH PASS
+        System.out.println("entro    aaa");
+        System.out.println("id "+ id + " pass "+ pass);
+        if (id == null || pass == null || pass.equals("") || id.equals("")){
+            error = "Campos sin rellenar";
+
         } else {
             AdminVO adminVO = new AdminVO(id, pass);
+            System.out.println(request.getSession().getAttribute(ADMIN));
+           // if (request.getSession().getAttribute(ADMIN) != null || AdminFacade.validateAdmin(adminVO)){
             if (AdminFacade.validateAdmin(adminVO)){
+            	
                 adminVO.setHashedPass("");
-                request.getSession().setAttribute("admin", adminVO);
-                request.getRequestDispatcher(URL_LOGGED).forward(request, response);
+                request.getSession().setAttribute(ADMIN, adminVO);
+
+
             } else {
-                request.setAttribute(ERROR_LOGIN, MENSAJE_ERROR);
-                request.getRequestDispatcher(URL_LOGIN).forward(request, response);
+
+                error = "Contraseña incorrecta";
+
             }
         }
+        sendResponse(response, createJSONResponse(error));
     }
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
         doGet(request, response);
+    }
+
+    private static void sendResponse(HttpServletResponse response, String json){
+
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        try {
+            response.getWriter().write(json);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    private static String createJSONResponse(String error){
+
+        JSONObject object = new JSONObject();
+        object.put(ERROR_LOGIN, error);
+        StringWriter sw = new StringWriter();
+        try {
+            object.writeJSONString(sw);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return sw.toString();
+
+    }
+
+    /**
+     * Returns a hashed pass
+     * @param pass
+     * @return
+     */
+    private static String hashPassword(String pass){
+        return pass;
     }
 }

@@ -22,6 +22,7 @@ public class PalabraFacade {
      * @return a Connection object
      */
     public Connection connect(){
+        ConnectionController.changeConnection(ConnectionController.REMOTA);
         return ConnectionController.getConnection();
     }
 
@@ -36,6 +37,7 @@ public class PalabraFacade {
 
         Connection conn = null;
         try {
+            // TODO: 18/11/20 cambiar
         	conn = connect();
             PreparedStatement pstmt = conn.prepareStatement(INSERTAR_PALABRA,
             Statement.RETURN_GENERATED_KEYS);

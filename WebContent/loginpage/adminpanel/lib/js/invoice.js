@@ -8,9 +8,7 @@ function funcMain()
 	$("#add_row").on('click',newRowTableWithValueButton);
 	listWords();
 	$("loans_table").on('click','.fa-times',deleteProduct);
-	console.log($("loans_table"));
 	$("body").on('click',".fa-times",deleteProduct);
-	console.log($("body"));
 	nombreUser();
 }
 
@@ -29,11 +27,15 @@ function listWords(){
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
 			//aceptado error
-			console.log(data);
-      		var obj = JSON.parse(data);
-      		var all = Object.keys(obj.palabras).length;
-          	for (var i = 0; i < Object.keys(obj.palabras).length; i++) {
-			           newRowTableWithValue(obj.palabras[i].nombre,obj.palabras[i].importancia);
+		
+			if (data.error == "false") {
+	      		
+	      		var all = Object.keys(data.palabras).length;
+	          	for (var i = 0; i < all; i++) {
+				           newRowTableWithValue(data.palabras[i].nombre,data.palabras[i].importancia);
+				}
+			}else{
+				document.location = "../../"
 			}
         });
 }

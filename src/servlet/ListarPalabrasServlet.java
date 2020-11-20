@@ -30,7 +30,6 @@ public class ListarPalabrasServlet extends HttpServlet{
      */
     public ListarPalabrasServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -44,27 +43,27 @@ public class ListarPalabrasServlet extends HttpServlet{
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
             JSONObject palabra;
-
-
-//            if (request.getSession().getAttribute("admin") == null) {
-//                obj.put("error", "true");
-//            } else {
-//                obj.put("error", "false");
+            System.out.println("aaaaa" + request.getSession().getAttribute("admin"));	
+            if (request.getSession().getAttribute("admin") == null) {
+                obj.put("error", "true");
+            } else {
+                obj.put("error", "false");
 
                 for (int i = 0; i < lista.size(); i++) {
                     palabra = new JSONObject();
-                    palabra.put("nombre",lista.get(i).getPalabra());
-                    palabra.put("importancia",lista.get(i).getImportancia());
+                    palabra.put("nombre", lista.get(i).getPalabra());
+                    palabra.put("importancia", lista.get(i).getImportancia());
                     list.add(palabra);
                 }
-                obj.put("palabras",list);
+                obj.put("palabras", list);
+            }
 
 		    StringWriter out = new StringWriter();
             obj.writeJSONString(out);
 
 	        String jsonText = out.toString();
 
-            response.setContentType("text/plain");
+	        response.setContentType("application/json");
     		response.setCharacterEncoding("UTF-8");
     		System.out.println(jsonText);
     		response.getWriter().write(jsonText);
