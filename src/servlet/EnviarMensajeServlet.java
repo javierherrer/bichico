@@ -19,7 +19,7 @@ import java.io.IOException;
  * Servlet implementation class EnviarMensajeServlet
  */
 @WebServlet(description = "Servlet de envío de mensajes",
-        urlPatterns = { "/enviarMensajeServlet" })
+        urlPatterns = { "/loginpage/adminpanel/enviarmensaje" })
 public class EnviarMensajeServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 

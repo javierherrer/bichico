@@ -22,7 +22,7 @@ import static java.lang.Float.parseFloat;
  * Servlet implementation class InsertarPalabraServlet
  */
 @WebServlet(description = "Servlet de inserción de palabra",
-        urlPatterns = { "/adminPanel/insertarPalabraServlet" })
+        urlPatterns = { "/loginpage/adminpanel/insertarpalabra" })
 public class InsertarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 

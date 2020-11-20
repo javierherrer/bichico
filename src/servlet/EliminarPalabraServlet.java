@@ -14,7 +14,7 @@ import java.io.IOException;
  * Servlet implementation class EliminarPalabraServlet
  */
 @WebServlet(description = "Servlet de eliminacion de palabra",
-        urlPatterns = { "/adminPanel/eliminarPalabraServlet" })
+        urlPatterns = { "/loginpage/adminpanel/eliminarpalabra" })
 public class EliminarPalabraServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 

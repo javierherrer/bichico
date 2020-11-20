@@ -21,7 +21,7 @@ import java.util.List;
  * Servlet implementation class ListarMensajesServlet
  */
 @WebServlet(description = "Servlet de listado de mensajes",
-        urlPatterns = { "/adminPanel/listarMensajes" })
+        urlPatterns = { "/loginpage/adminpanel/listarmensajes" })
 public class ListarMensajesServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
