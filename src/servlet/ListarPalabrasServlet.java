@@ -21,7 +21,7 @@ import java.util.List;
  * Servlet implementation class ListarPalabrasServlet
  */
 @WebServlet(description = "Servlet de listado de palabras",
-        urlPatterns = { "/adminPanel/listarPalabrasServlet" })
+        urlPatterns = { "/loginpage/adminpanel/listarpalabras" })
 public class ListarPalabrasServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
