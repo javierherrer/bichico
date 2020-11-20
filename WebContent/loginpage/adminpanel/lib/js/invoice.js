@@ -24,7 +24,7 @@ function nombreUser(){
 function listWords(){
 
 
-	    $.get("listarpalabrasServlet", function(data, status){
+	    $.get("listarpalabras", function(data, status){
 	    	
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
@@ -42,7 +42,7 @@ function deleteProduct(){
 	//Guardando la referencia del objeto presionado
   var _this = this;
   var palabra = _this.id;
-   $.post("eliminarpalabraServlet",
+   $.post("eliminarpalabra",
   {
     palabra: palabra
   },
@@ -93,7 +93,7 @@ function newRowTableWithValueButton(name,importancia)
 	var importancia = document.getElementById("importancia").value;
 
 
-  $.post("insertarpalabraServlet",
+  $.post("insertarpalabra",
   {
     nombre: nombrePalabra,
     importancia: importancia
