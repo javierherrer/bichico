@@ -21,7 +21,7 @@ function desactivar(){
 
 function listMensajes(){
 	
-	    $.get("listarMensajes", function(data, status){
+	    $.get("listarmensajes", function(data, status){
 	    	
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
