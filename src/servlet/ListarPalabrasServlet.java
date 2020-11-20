@@ -30,7 +30,6 @@ public class ListarPalabrasServlet extends HttpServlet{
      */
     public ListarPalabrasServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
