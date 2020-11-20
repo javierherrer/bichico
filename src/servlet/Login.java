@@ -86,7 +86,7 @@ public class Login extends HttpServlet {
     private static String createJSONResponse(String nombre, String error){
 
         JSONObject object = new JSONObject();
-        object.put("nombre", nombre)
+        object.put("nombre", nombre);
         object.put(ERROR_LOGIN, error);
         StringWriter sw = new StringWriter();
         try {

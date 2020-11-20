@@ -46,23 +46,29 @@ public class ListarMensajesServlet extends HttpServlet{
             JSONArray list = new JSONArray();
             JSONObject mensaje;
 
-            for (int i = 0; i < lista.size(); i++) {
-                mensaje = new JSONObject();
-                mensaje.put("id", lista.get(i).getId());
-                mensaje.put("emisor",lista.get(i).getEmisor());
-                mensaje.put("email", lista.get(i).getEmail());
-                mensaje.put("contenido", lista.get(i).getContenido());
+            if (request.getSession().getAttribute("admin") == null) {
+                obj.put("error", "true");
+            } else {
+                obj.put("error", "false");
 
-                list.add(mensaje);
+                for (int i = 0; i < lista.size(); i++) {
+                    mensaje = new JSONObject();
+                    mensaje.put("id", lista.get(i).getId());
+                    mensaje.put("emisor",lista.get(i).getEmisor());
+                    mensaje.put("email", lista.get(i).getEmail());
+                    mensaje.put("contenido", lista.get(i).getContenido());
+
+                    list.add(mensaje);
+                }
+                obj.put("mensajes",list);
             }
-            obj.put("mensajes",list);
 
             StringWriter out = new StringWriter();
             obj.writeJSONString(out);
 
             String jsonText = out.toString();
 
-            response.setContentType("text/plain");
+            response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
             System.out.println(jsonText);
             response.getWriter().write(jsonText);
