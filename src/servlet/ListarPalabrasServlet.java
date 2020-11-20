@@ -1,6 +1,7 @@
 package servlet;
 
 
+import model.AdminVO;
 import model.PalabraVO;
 import model.facades.PalabraFacade;
 
@@ -43,11 +44,15 @@ public class ListarPalabrasServlet extends HttpServlet{
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
             JSONObject palabra;
-            System.out.println("aaaaa" + request.getSession().getAttribute("admin"));	
+            System.out.println("aaaaa" + request.getSession().getAttribute("admin"));
+
             if (request.getSession().getAttribute("admin") == null) {
                 obj.put("error", "true");
             } else {
+                AdminVO admin = (AdminVO) request.getSession().getAttribute("admin");
+
                 obj.put("error", "false");
+                obj.put("nombre", admin.getNombre());
 
                 for (int i = 0; i < lista.size(); i++) {
                     palabra = new JSONObject();
