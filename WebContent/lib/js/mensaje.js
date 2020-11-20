@@ -1,16 +1,16 @@
-$(document).on('ready', funcMain);
+//$(document).on('ready', funcMain);
 
-function funcMain()
+/*function funcMain()
 {
 	$("#botonMensaje").on('click',enviarMensaje);
 	
 }
-
+*/
 function enviarMensaje(){
 	var nombreUsuario = document.getElementById("nombreUsuario").value;
 	var emailUsuario = document.getElementById("emailUsuario").value;
 	var mensanjeUsuario = document.getElementById("mensajeUsuario").value;
-
+  console.log("paso");
   $.post("enviarMensajeServlet",
   {
     emisor: nombreUsuario,

@@ -45,9 +45,10 @@ function newRowTableMWithValue(nombre, email, contido)
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
 
-    cell1.innerHTML = '<p id="mensaje" name="palabra" class="non-margin">'+nombre+'</p>';
-    cell2.innerHTML = '<p name="email" class="non-margin">'+email+'</p>';
-    cell3.innerHTML = '<p name="contenido" class="non-margin">'+contido+'</p>';
-    cell4.innerHTML = '<span><i id ="'+name+'" class="fas fa-times"></i></span>';
+    cell1.innerHTML = '<p id="mensaje" name="palabra" class="non-margin mensaje">'+nombre+'</p>';
+    cell2.innerHTML = '<p name="email" class="non-margin mensaje">'+email+'</p>';
+    cell3.innerHTML = '<p name="contenido" class="non-margin mensaje">'+contido+'</p>';
+    cell4.innerHTML = '<span><i id ="'+name+'" class="fas fa-trash-alt mensaje"></i></span>';
+    
 
 }

@@ -8,7 +8,9 @@ function funcMain()
 	$("#add_row").on('click',newRowTableWithValueButton);
 	listWords();
 	$("loans_table").on('click','.fa-times',deleteProduct);
+	console.log($("loans_table"));
 	$("body").on('click',".fa-times",deleteProduct);
+	console.log($("body"));
 	nombreUser();
 }
 

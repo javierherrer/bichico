@@ -24,11 +24,37 @@ Text Color: #666
   outline: none;
 }
 
+@media screen and (max-width: 600px) {
+       table {
+           width:100%;
+       }
+       thead {
+           display: none;
+       }
+       tr:nth-of-type(2n) {
+           background-color: inherit;
+       }
+       tr td:first-child {
+           font-weight:bold;
+           font-size:1.3em;
+       }
+       tbody td {
+           display: block;
+           text-align:center;
+       }
+       tbody td:before {
+           content: attr(data-th);
+           display: block;
+           text-align:center;
+       }
+}
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 300px;
   margin: auto;
   text-align: center;
+  width: 100%;
+  height: 100%;
 }
 
 .title {
@@ -59,9 +85,10 @@ button:hover, a:hover {
   opacity: 0.7;
 }
 
-
-#mapid { width: 800px; height: 720px}
-
+/*
+#mapid { width: 800px; height: 1050px}
+*/
+#mapid { width: 800px; height: 1050px}
 /* Remove margins and padding from the list */
 #myUL {
   margin: 0;
@@ -317,6 +344,10 @@ h1, h2, h3, h4, h5, h6 { color: #333; }
 .tm-section-2-l {
   width: 70.5%;
   margin-right: 1.65%;
+}
+#mapid{
+    width: 100%;
+    margin-right: 1.65%;
 }
 
 .tm-section-2-r { width: 27.85%; }
@@ -662,9 +693,11 @@ button:hover { cursor: pointer; }
   .tm-section-1-l,
   .tm-section-1-r,
   .tm-section-2-l,
+  #mapid,
   .tm-section-2-r {
     width: 100%;
   }
+ 
 
   .tm-section-1-l {
     margin-bottom: 20px;
@@ -673,6 +706,7 @@ button:hover { cursor: pointer; }
   }
 
   .tm-section-2-l { margin-bottom: 20px; }
+  #mapid {margin-bottom: 20px; }
   .tm-section-2-r { text-align: center; }
 
   .tm-section-1-r,
@@ -681,7 +715,11 @@ button:hover { cursor: pointer; }
     margin-left: auto;
     margin-right: auto;
   }
-
+  #mapid { max-width: 700px;
+            max-height: 500px;
+            margin-left: auto;
+            margin-right: auto;
+          }
   .tm-about-row,
   .tm-services-row {
     flex-direction: column;

@@ -39,7 +39,7 @@ public class EnviarMensajeServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
-        ConnectionController.changeConnection(ConnectionController.REMOTA);
+       
         if (request.getParameter(PARAM_EMAIL) != null) {
             MensajeVO mensaje = new MensajeVO(request.getParameter(PARAM_EMISOR),
                     request.getParameter(PARAM_CONTENIDO),
