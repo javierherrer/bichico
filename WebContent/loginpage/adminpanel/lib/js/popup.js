@@ -5,6 +5,10 @@ function funcMain()
 {
 	$("#btn-abrir-popup").on('click',activar);
 	$("#salir").on('click',desactivar);
+
+	$("loans_table").on('click','.fa-trash-alt',deleteMensaje);
+	console.log($("loans_table"));
+	$("body").on('click',".fa-trash-alt",deleteMensaje);
 	listMensajes();
 }
 
@@ -30,13 +34,13 @@ function listMensajes(){
       		var obj = JSON.parse(data);
       		var all = Object.keys(obj.mensajes).length;
           	for (var i = 0; i < all; i++) {
-			           newRowTableMWithValue(obj.mensajes[i].emisor,obj.mensajes[i].email,obj.mensajes[i].contenido);
+			           newRowTableMWithValue(obj.mensajes[i].id,obj.mensajes[i].emisor,obj.mensajes[i].email,obj.mensajes[i].contenido);
 			}
         });
 }
 
 
-function newRowTableMWithValue(nombre, email, contido)
+function newRowTableMWithValue(id,nombre, email, contido)
 {
 	var name_table=document.getElementById("tablaMensajes");
     var row = name_table.insertRow(1);
@@ -48,7 +52,22 @@ function newRowTableMWithValue(nombre, email, contido)
     cell1.innerHTML = '<p id="mensaje" name="palabra" class="non-margin mensaje">'+nombre+'</p>';
     cell2.innerHTML = '<p name="email" class="non-margin mensaje">'+email+'</p>';
     cell3.innerHTML = '<p name="contenido" class="non-margin mensaje">'+contido+'</p>';
-    cell4.innerHTML = '<span><i id ="'+name+'" class="fas fa-trash-alt mensaje"></i></span>';
+    cell4.innerHTML = '<span><i id ="'+id+'" class="fas fa-trash-alt mensaje"></i></span>';
     
 
+}
+
+function deleteMensaje(){
+	//Guardando la referencia del objeto presionado
+  var _this = this;
+  var id = _this.id;
+   $.post("eliminarmensaje",
+  {
+    id: id
+  },
+  function(data, status){                                                 //detectar error
+    
+  });
+
+	$(this).parent().parent().parent().fadeOut("slow",function(){$(this).remove();});
 }
