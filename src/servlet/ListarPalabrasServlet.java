@@ -44,19 +44,19 @@ public class ListarPalabrasServlet extends HttpServlet{
             JSONArray list = new JSONArray();
             JSONObject palabra;
 
-
-//            if (request.getSession().getAttribute("admin") == null) {
-//                obj.put("error", "true");
-//            } else {
-//                obj.put("error", "false");
+            if (request.getSession().getAttribute("admin") == null) {
+                obj.put("error", "true");
+            } else {
+                obj.put("error", "false");
 
                 for (int i = 0; i < lista.size(); i++) {
                     palabra = new JSONObject();
-                    palabra.put("nombre",lista.get(i).getPalabra());
-                    palabra.put("importancia",lista.get(i).getImportancia());
+                    palabra.put("nombre", lista.get(i).getPalabra());
+                    palabra.put("importancia", lista.get(i).getImportancia());
                     list.add(palabra);
                 }
-                obj.put("palabras",list);
+                obj.put("palabras", list);
+            }
 
 		    StringWriter out = new StringWriter();
             obj.writeJSONString(out);

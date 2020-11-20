@@ -34,6 +34,7 @@ public class EliminarMensajeServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
+
         System.out.println("paso");
         if (request.getParameter(PARAM_ID) != null) {
             System.out.println("entro if");
