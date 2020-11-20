@@ -48,6 +48,7 @@ public class ListarMensajesServlet extends HttpServlet{
 
             for (int i = 0; i < lista.size(); i++) {
                 mensaje = new JSONObject();
+                mensaje.put("id", lista.get(i).getId());
                 mensaje.put("emisor",lista.get(i).getEmisor());
                 mensaje.put("email", lista.get(i).getEmail());
                 mensaje.put("contenido", lista.get(i).getContenido());
