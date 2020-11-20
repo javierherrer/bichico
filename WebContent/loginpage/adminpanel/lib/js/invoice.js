@@ -12,11 +12,9 @@ function funcMain()
 	nombreUser();
 }
 
-function nombreUser(){
+function nombreUser(nombre){
 	var nombreUsuario = document.getElementById("nombreUsuario");
-	var prueba = 'paco';
-	console.log(prueba);
-	nombreUsuario.innerHTML = '<span id= "nombreUsuario" style="color: black">'+prueba+'</span>';
+	nombreUsuario.innerHTML = '<span id= "nombreUsuario" style="color: black">'+nombre+'</span>';
 }
 
 function listWords(){
@@ -27,15 +25,16 @@ function listWords(){
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
 			//aceptado error
-		
+			alert(data);
 			if (data.error == "false") {
 	      		
 	      		var all = Object.keys(data.palabras).length;
 	          	for (var i = 0; i < all; i++) {
 				           newRowTableWithValue(data.palabras[i].nombre,data.palabras[i].importancia);
 				}
+				nombreUser(data.nombre);
 			}else{
-				document.location = "../../"
+				document.location = "../../";
 			}
         });
 }
@@ -117,4 +116,16 @@ function format(input)
 	else{ alert('Solo se permiten numeros');
 		input.value = input.value.replace(/[^\d\.]*/g,'');
 	}
+}
+
+function salir(){
+
+$.post("logout",
+  {
+
+  },
+  function(data, status){                                                 //detectar error
+    
+  });
+ document.location = "../../";
 }
