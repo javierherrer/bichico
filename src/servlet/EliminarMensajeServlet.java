@@ -1,6 +1,7 @@
 package servlet;
 
 
+import model.facades.MensajeFacade;
 import model.facades.PalabraFacade;
 
 import javax.servlet.ServletException;
@@ -11,19 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Servlet implementation class EliminarPalabraServlet
+ * Servlet implementation class EliminarMensajeServlet
  */
-@WebServlet(description = "Servlet de eliminacion de palabra",
-        urlPatterns = { "/loginpage/adminpanel/eliminarpalabra" })
-public class EliminarPalabraServlet extends HttpServlet{
+@WebServlet(description = "Servlet de eliminacion de mensaje",
+        urlPatterns = { "/loginpage/adminpanel/eliminarmensaje" })
+public class EliminarMensajeServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
-    private static final String PARAM_PALABRA = "palabra";
+    private static final String PARAM_ID = "id";
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminarPalabraServlet() {
+    public EliminarMensajeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,12 +33,12 @@ public class EliminarPalabraServlet extends HttpServlet{
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        PalabraFacade dao = new PalabraFacade();
+        MensajeFacade dao = new MensajeFacade();
         System.out.println("paso");
-        if (request.getParameter(PARAM_PALABRA) != null) {
+        if (request.getParameter(PARAM_ID) != null) {
             System.out.println("entro if");
-            String id = request.getParameter(PARAM_PALABRA);
-            int rows = dao.eliminarPalabra(id);
+            int id = Integer.parseInt(request.getParameter(PARAM_ID));
+            int rows = dao.eliminarMensaje(id);
             System.out.println("entro eliminar");
             /* No consideramos errores
             if (rows < 1) {

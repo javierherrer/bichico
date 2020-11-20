@@ -20,6 +20,9 @@ public class MensajeFacade {
 	private final static String INSERTAR_MENSAJE =
 			"INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
 
+	private final static String ELIMINAR_MENSAJE =
+			"DELETE FROM bichico.mensaje WHERE id = ?";
+
 	//private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
 
 	
@@ -35,11 +38,12 @@ public class MensajeFacade {
 			ResultSet rset = ps.executeQuery();
 
 			while(rset.next()) {
+				int id = rset.getInt("id");
 				String emisor = rset.getString("emisor");
 				String email = rset.getString("email");
 				String contenido = rset.getString("contenido");
 
-				listaMensajes.add(new MensajeVO(emisor, contenido, email));
+				listaMensajes.add(new MensajeVO(id, emisor, contenido, email));
 			}
 			rset.close();
 			ps.close();
@@ -92,5 +96,29 @@ public class MensajeFacade {
 			}
 			return true;
 
+	}
+
+	/*
+	 * Eliminar mensajes por identificador
+	 *
+	 */
+	public static int eliminarMensaje(int id) {
+		int affectedrows = 0;
+		Connection conn = null;
+		try {
+			conn = ConnectionController.getConnection();
+			PreparedStatement pstmt = conn.prepareStatement(ELIMINAR_MENSAJE);
+
+			pstmt.setInt(1, id);
+
+			affectedrows = pstmt.executeUpdate();
+
+			pstmt.close();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		} finally {
+			ConnectionController.releaseConnection(conn);
+		}
+		return affectedrows;
 	}
 }

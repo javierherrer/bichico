@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.StringWriter;
 
-@WebServlet(description = "Servlet de autenticación del usuario", urlPatterns = { "/login" })
+@WebServlet(description = "Servlet de autenticación del usuario",
+        urlPatterns = { "/loginpage/login" })
 public class Login extends HttpServlet {
 
     private static final String LOGIN = "inputEmail";
