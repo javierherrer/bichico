@@ -7,6 +7,7 @@ import java.sql.SQLException;
 
 
 import controller.ConnectionController;
+import encriptar.Encriptador;
 import model.ComunidadVO;
 import model.facades.ComunidadFacade;
 import model.facades.RegionFacade;
@@ -23,7 +24,18 @@ public class main {
 //		ComunidadVO comunidadVO = ComunidadFacade.leerComunidad("Aragón");
 //
 //		System.out.println(comunidadVO.toJSON().toJSONString());
-
+		
+		String c = "1234";
+		String c1 = "1234";
+		String c2 = "1234";
+		String c3 = "1234";
+		
+		System.out.println(Encriptador.encriptar(c));
+		System.out.println(Encriptador.encriptar(c1));
+		System.out.println(Encriptador.encriptar(c2));
+		System.out.println(Encriptador.encriptar(c3));
+		
+		
 	}
 
 
@@ -36,7 +48,7 @@ public class main {
 	private static void testRemoto(){
 		Connection connection =null;
 		try {
-			ConnectionController.changeConnection(ConnectionController.REMOTA);
+			//ConnectionController.changeConnection(ConnectionController.REMOTA);
 			connection = ConnectionController.getConnection();
 			PreparedStatement ps = connection.prepareStatement("SELECT t.*" +
 					"                 FROM bichico.admin t" +

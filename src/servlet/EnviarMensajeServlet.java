@@ -19,7 +19,7 @@ import java.io.IOException;
  * Servlet implementation class EnviarMensajeServlet
  */
 @WebServlet(description = "Servlet de envío de mensajes",
-        urlPatterns = { "/loginpage/adminpanel/enviarmensaje" })
+        urlPatterns = { "/enviarmensaje" })
 public class EnviarMensajeServlet extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
@@ -39,11 +39,12 @@ public class EnviarMensajeServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
-       
+        System.out.println("llego");
         if (request.getParameter(PARAM_EMAIL) != null) {
             MensajeVO mensaje = new MensajeVO(request.getParameter(PARAM_EMISOR),
                     request.getParameter(PARAM_CONTENIDO),
                     request.getParameter(PARAM_EMAIL));
+            System.out.println(mensaje);
             dao.enviarMensaje(mensaje);
             //No se realiza tratamiento de errores
         }

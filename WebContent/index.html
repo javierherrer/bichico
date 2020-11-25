@@ -169,7 +169,8 @@
             <h2 class="tm-text-white tm-contact-title">.04 Contact Us</h2>
             <div class="tm-bg-color-white tm-contact-main">
                 <div class="contact-form-outer">
-                    <form id="contact-form" onsubmit="enviarMensaje()" class="tm-bg-color-6 tm-contact-form">
+                   <!-- <form id="contact-form" onsubmit="enviarMensaje()" class="tm-bg-color-6 tm-contact-form"> -->
+                    <div id="contact-form" class="tm-bg-color-6 tm-contact-form">
                         <div class="form-group">
                             <input id="nombreUsuario" type="text" name="name" class="form-control" placeholder="Name" required="" />
                         </div>
@@ -181,11 +182,12 @@
                                 required=""></textarea>
                         </div>
                         <div>
-                            <button id="botonMensaje" class="ml-auto tm-btn tm-btn-3">
+                            <button id="botonMensaje" type="submit" onclick="enviarMensaje()" class="ml-auto tm-btn tm-btn-3">
                                 Send
                             </button>
                         </div>
-                    </form>
+                    </div>
+                  <!--  </form>-->
                 </div>
                 <div class="contact-info-outer">
                     <div class="tm-bg-color-6 contact-info">

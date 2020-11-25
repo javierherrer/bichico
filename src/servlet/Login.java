@@ -45,7 +45,6 @@ public class Login extends HttpServlet {
 
         } else {
             AdminVO adminVO = new AdminVO(id, pass);
-            System.out.println(request.getSession().getAttribute(ADMIN));
            // if (request.getSession().getAttribute(ADMIN) != null || AdminFacade.validateAdmin(adminVO)){
             if (AdminFacade.validateAdmin(adminVO)){
 
@@ -62,7 +61,9 @@ public class Login extends HttpServlet {
         sendResponse(response, createJSONResponse(error));
     }
 
-    /**
+  
+
+	/**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {

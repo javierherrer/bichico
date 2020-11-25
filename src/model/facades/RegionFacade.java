@@ -89,7 +89,7 @@ public class RegionFacade {
 		// Abrimos la conexión e inicializamos los parámetros 
     	try {
     	JSONObject obj = new JSONObject();
-    	ConnectionController.changeConnection(ConnectionController.REMOTA);
+    	//ConnectionController.changeConnection(ConnectionController.REMOTA);
     	conn = ConnectionController.getConnection();
 		PreparedStatement ps = conn.prepareStatement("select  * from bichico.region r where r.id_com  = 40;");
 		ResultSet rset;
