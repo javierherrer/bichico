@@ -30,11 +30,15 @@ function listMensajes(){
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
 			//aceptado error
-			console.log(data);
-      		var obj = JSON.parse(data);
-      		var all = Object.keys(obj.mensajes).length;
-          	for (var i = 0; i < all; i++) {
-			           newRowTableMWithValue(obj.mensajes[i].id,obj.mensajes[i].emisor,obj.mensajes[i].email,obj.mensajes[i].contenido);
+			
+			if (data.error == "false") {
+	      		
+	      		var all = Object.keys(data.mensajes).length;
+	          	for (var i = 0; i < all; i++) {
+				           newRowTableMWithValue(data.mensajes[i].id,data.mensajes[i].emisor,data.mensajes[i].email,data.mensajes[i].contenido);
+				}
+			}else{
+				document.location = "../../";
 			}
         });
 }

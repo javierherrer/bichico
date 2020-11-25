@@ -11,7 +11,7 @@ function enviarMensaje(){
 	var emailUsuario = document.getElementById("emailUsuario").value;
 	var mensanjeUsuario = document.getElementById("mensajeUsuario").value;
   console.log("paso");
-  $.post("enviarMensajeServlet",
+  $.post("enviarMensaje",
   {
     emisor: nombreUsuario,
     email: emailUsuario,

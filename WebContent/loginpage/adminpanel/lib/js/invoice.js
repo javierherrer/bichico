@@ -25,7 +25,7 @@ function listWords(){
 	    	//TODO comprobar con un if si el obj tiene el parametro "error" y en caso de que lo tenga hacer un
 			//Document.location para redirigir a la pagina de login (que te envian en el valor de error)
 			//aceptado error
-			alert(data);
+
 			if (data.error == "false") {
 	      		
 	      		var all = Object.keys(data.palabras).length;
@@ -122,10 +122,10 @@ function salir(){
 
 $.post("logout",
   {
-
   },
   function(data, status){                                                 //detectar error
-    
+
+    document.location = "../../";
   });
- document.location = "../../";
+
 }

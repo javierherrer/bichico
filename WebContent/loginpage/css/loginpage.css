@@ -56,19 +56,19 @@ Text Color: #666
 }
  .top:before {
    transform: rotate(45deg);
-   background: #e46569;
+   background: #9999cc;
 }
  .top:after {
    transform: rotate(135deg);
-   background: #ecaf81;
+   background: #CC9999;
 }
  .bottom:before {
    transform: rotate(-45deg);
-   background: #60b8d4;
+   background: #99CCFF;
 }
  .bottom:after {
    transform: rotate(-135deg);
-   background: #3745b5;
+   background: #99CC99;
 }
  .center {
    position: absolute;
