@@ -2,12 +2,10 @@ package model.facades;
 
 import controller.ConnectionController;
 import model.FactorVO;
+import model.PalabraVO;
 import model.RegionVO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class FactorFacade {
 
@@ -15,8 +13,40 @@ public class FactorFacade {
     private static final String  VALOR = "valor";
     private static final String  ID_REGION = "id_region";
 
+    private final static String INSERTAR_FACTOR =
+            "INSERT INTO Bichico.factor (fecha, id_region, valor) " +
+                    "VALUES (?,?,?)";
+
     private static final String CONSULTA_FACTOR =
             "SELECT * FROM Bichico.factor f WHERE f.id_region=?";
+
+    /**
+     * Inserta un factor
+     *
+     * @param factor
+     * @return
+     */
+    public void insertarFactor(FactorVO factor) {
+        Connection conn = null;
+        try {
+            // TODO: 18/11/20 cambiar
+            conn = ConnectionController.getConnection();
+            PreparedStatement pstmt = conn.prepareStatement(INSERTAR_FACTOR);
+
+            pstmt.setDate(1, factor.getFecha());
+            pstmt.setInt(2, factor.getId_region());
+            pstmt.setFloat(3, factor.getValor());
+            System.out.println(pstmt);
+
+            pstmt.executeUpdate();
+
+            pstmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            ConnectionController.releaseConnection(conn);
+        }
+    }
 
     public FactorVO obtenerFactor(RegionVO regionVO){
         FactorVO factorVO = null;
