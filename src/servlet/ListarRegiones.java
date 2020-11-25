@@ -27,6 +27,8 @@ public class ListarRegiones extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
     private static final String COMUNIDAD = "comunidad";
+    private static final String CAMPOREGION = "region";
+    private static final String CAMPOFACTOR = "factor";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -57,10 +59,11 @@ public class ListarRegiones extends HttpServlet{
 
                 datosregion = new JSONObject();
                 factorVO = FactorFacade.obtenerFactor(region);
-                datosregion.put("region", region.toJSON());
-                datosregion.put("factor", factorVO.toJSON());
-                jsonArray.add(datosregion);
-
+                if ( factorVO != null){
+                    datosregion.put(CAMPOREGION, region.toJSON());
+                    datosregion.put(CAMPOFACTOR, factorVO.toJSON());
+                    jsonArray.add(datosregion);
+                }
             }
 
             out.write(jsonArray.toJSONString());
