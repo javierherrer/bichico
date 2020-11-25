@@ -39,14 +39,12 @@ public class Login extends HttpServlet {
         String pass = hashPassword((String) request.getParameter(PASSWORD));
         String error = "";
         // TODO: 20/11/20 HASH PASS
-        System.out.println("entro    aaa");
-        System.out.println("id "+ id + " pass "+ pass);
+
         if (id == null || pass == null || pass.equals("") || id.equals("")){
             error = "Campos sin rellenar";
 
         } else {
             AdminVO adminVO = new AdminVO(id, pass);
-            System.out.println(request.getSession().getAttribute(ADMIN));
            // if (request.getSession().getAttribute(ADMIN) != null || AdminFacade.validateAdmin(adminVO)){
             if (AdminFacade.validateAdmin(adminVO)){
             	
@@ -63,7 +61,9 @@ public class Login extends HttpServlet {
         sendResponse(response, createJSONResponse(error));
     }
 
-    /**
+  
+
+	/**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {

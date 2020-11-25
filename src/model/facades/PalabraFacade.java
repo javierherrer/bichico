@@ -22,7 +22,7 @@ public class PalabraFacade {
      * @return a Connection object
      */
     public Connection connect(){
-        ConnectionController.changeConnection(ConnectionController.REMOTA);
+        //ConnectionController.changeConnection(ConnectionController.REMOTA);
         return ConnectionController.getConnection();
     }
 

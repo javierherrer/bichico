@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import controller.ConnectionController;
+import encriptar.Encriptador;
 import model.AdminVO;
 
 public class AdminFacade {
@@ -50,7 +51,7 @@ public class AdminFacade {
 				String dbpwd = findRs.getString(PASSWORD);
 				System.out.println("bs "+dbpwd);
 				System.out.println("user "+ user.getHashedPass());
-				if (dbpwd.contentEquals(user.getHashedPass())) {
+				if (dbpwd.contentEquals(Encriptador.encriptar(user.getHashedPass()))) {
 					result = true;
 				}
 				findRs.next();
