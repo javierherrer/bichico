@@ -6,7 +6,9 @@
  */
 package model;
 
-import java.util.Date;
+import org.json.simple.JSONObject;
+
+import java.sql.Date;
 
 
 /**
@@ -52,4 +54,13 @@ public class FactorVO {
 	public String toString() {
 		return "FactorVO [fecha=" + fecha + ", valor=" + valor + ", id_region=" + id_region + "]";
 	}
+
+    public JSONObject toJSON() {
+        JSONObject salida = new JSONObject();
+
+        salida.put("idregion",this.id_region);
+        salida.put("fecha",this.fecha);
+        salida.put("valor", this.valor);
+        return salida;
+    }
 }

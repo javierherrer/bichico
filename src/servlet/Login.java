@@ -47,7 +47,7 @@ public class Login extends HttpServlet {
             AdminVO adminVO = new AdminVO(id, pass);
            // if (request.getSession().getAttribute(ADMIN) != null || AdminFacade.validateAdmin(adminVO)){
             if (AdminFacade.validateAdmin(adminVO)){
-            	
+
                 adminVO.setHashedPass("");
                 request.getSession().setAttribute(ADMIN, adminVO);
 
