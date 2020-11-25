@@ -24,7 +24,7 @@ public class ComunidadFacade {
             "WHERE c.nombre=?";
 
     private static final String  CONSULTA_REGIONES
-            = "SELECT r.nombre, r.lat, r.long " +
+            = "SELECT r.id, r.nombre, r.lat, r.long " +
             "FROM bichico.region r " +
             "WHERE r.id_com=?";
 
@@ -78,17 +78,22 @@ public class ComunidadFacade {
             connection = ConnectionController.getConnection();
             if (connection != null){
                 List<RegionVO> regionVOList = new ArrayList<>();
+                int id;
                 String nombreRegion;
                 float latitud;
                 float longitud;
+                RegionVO regionVO;
                 PreparedStatement statement = connection.prepareStatement(CONSULTA_REGIONES);
                 statement.setInt(1,idCom);
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()){
+                    id = resultSet.getInt("id");
                     nombreRegion = resultSet.getString("nombre");
                     latitud = resultSet.getFloat("lat");
                     longitud = resultSet.getFloat("long");
-                    regionVOList.add(new RegionVO(nombreRegion, latitud, longitud));
+                    regionVO = new RegionVO(nombreRegion, latitud, longitud);
+                    regionVO.setId(id);
+                    regionVOList.add(regionVO);
                 }
                 ConnectionController.releaseConnection(connection);	
                 comunidadVO.setRegiones(regionVOList);
