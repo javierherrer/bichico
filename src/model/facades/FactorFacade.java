@@ -26,7 +26,7 @@ public class FactorFacade {
      * @param factor
      * @return
      */
-    public void insertarFactor(FactorVO factor) {
+    public static void insertarFactor(FactorVO factor) {
         Connection conn = null;
         try {
             // TODO: 18/11/20 cambiar
@@ -48,7 +48,7 @@ public class FactorFacade {
         }
     }
 
-    public FactorVO obtenerFactor(RegionVO regionVO){
+    public static FactorVO obtenerFactor(RegionVO regionVO){
         FactorVO factorVO = null;
         Connection connection = null;
         try {

@@ -2,7 +2,12 @@ package servlet;
 
 
 import model.ComunidadVO;
+import model.FactorVO;
+import model.RegionVO;
 import model.facades.ComunidadFacade;
+import model.facades.FactorFacade;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 
 /**
  * Servlet implementation class EliminarPalabraServlet
@@ -35,18 +41,32 @@ public class ListarRegiones extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
     	if (request.getParameter(COMUNIDAD) != null){
-    		System.out.println(request.getParameter(COMUNIDAD));
-            ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(request.getParameter(COMUNIDAD));
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");
-            System.out.println(comunidadVO.toJSON().toString());
+            ComunidadVO comunidadVO  = ComunidadFacade.leerComunidad(request.getParameter(COMUNIDAD));
+            List<RegionVO> regionVOS = comunidadVO.getRegiones();
+
             PrintWriter out = response.getWriter();
-            System.out.println("escribo");
-            out.write(comunidadVO.toJSON().toString());
-            System.out.println("fluxh");
+            // Imprimir comunidad
+
+            JSONArray jsonArray = new JSONArray();
+            JSONObject datosregion;
+            FactorVO factorVO;
+
+            for (RegionVO region : regionVOS) {
+
+                datosregion = new JSONObject();
+                factorVO = FactorFacade.obtenerFactor(region);
+                datosregion.put("region", region.toJSON());
+                datosregion.put("factor", factorVO.toJSON());
+                jsonArray.add(datosregion);
+
+            }
+
+            out.write(jsonArray.toJSONString());
+
             out.flush();
             out.close();
-            System.out.println("fin");
         }
     }
 
