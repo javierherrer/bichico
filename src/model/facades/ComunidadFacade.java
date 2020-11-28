@@ -2,6 +2,7 @@ package model.facades;
 
 import controller.ConnectionController;
 import model.ComunidadVO;
+import model.FactorVO;
 import model.RegionVO;
 
 import java.sql.Connection;
@@ -9,7 +10,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ComunidadFacade {
 
@@ -28,6 +31,54 @@ public class ComunidadFacade {
             "FROM bichico.region r " +
             "WHERE r.id_com=?";
 
+
+    private static final String CONSULTA_FACTOR_REGIONES =
+            "SELECT r.id, r.nombre, r.habitantes, r.lat, r.long, f.valorFROM region r, factor f " +
+                    "WHERE r.id = f.id_region AND r.id_com = ? " +
+                    "ORDER BY f.fecha DESC";
+
+
+    /**
+     * Devuelve un mapa de las regiones de una comunidad y su factor de riesgo asociado.
+     * @param idCom Id de la comunidad a obtener el mapa
+     * @return Map<RegionVO, FactorVO> regionesFactorMap
+     */
+    public static Map<RegionVO, FactorVO> obtenerFactorRegiones(int idCom){
+        Map<RegionVO, FactorVO> regionesFactorMap = new HashMap<>();
+        Connection connection = null;
+        try {
+            connection = ConnectionController.getConnection();
+
+            if (connection == null){
+                return null;
+            }
+            PreparedStatement statement = connection.prepareStatement(CONSULTA_FACTOR_REGIONES);
+            statement.setInt(1, idCom);
+            ResultSet resultSet = statement.executeQuery();
+            RegionVO regionVO;
+            FactorVO factorVO;
+            while (resultSet.next()){
+                regionVO = new RegionVO(
+                        resultSet.getString("nombre"),
+                        resultSet.getFloat("lat"),
+                        resultSet.getFloat("long"));
+                regionVO.setHabitantes(resultSet.getInt("habitantes"));
+                factorVO = new FactorVO(
+                        resultSet.getInt("id"),
+                        (int)resultSet.getDouble("valor")
+                );
+                regionesFactorMap.put(regionVO, factorVO);
+            }
+            statement.close();
+            return regionesFactorMap;
+
+        } catch (Exception e){
+            e.printStackTrace();
+            return null;
+        } finally {
+            ConnectionController.releaseConnection(connection);
+        }
+    }
 
     /**
      * Devuelve una comunidadVO leida de la base de datos
@@ -71,8 +122,6 @@ public class ComunidadFacade {
      * @param idCom
      */
     private static void leerRegiones(ComunidadVO comunidadVO, int idCom){
-
-
         Connection connection;
         try {
             connection = ConnectionController.getConnection();

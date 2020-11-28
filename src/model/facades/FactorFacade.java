@@ -2,10 +2,12 @@ package model.facades;
 
 import controller.ConnectionController;
 import model.FactorVO;
-import model.PalabraVO;
 import model.RegionVO;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class FactorFacade {
 
@@ -64,7 +66,7 @@ public class FactorFacade {
             if (resultSet.next()){
                 factorVO = new FactorVO(
                         resultSet.getDate(FECHA),
-                        resultSet.getFloat(VALOR),
+                        (int)resultSet.getFloat(VALOR),
                         resultSet.getInt(ID_REGION)
                 );
             }

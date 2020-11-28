@@ -10,6 +10,7 @@ public class RegionVO {
     private float latitud;
     private float longitud;
 
+
     public RegionVO(int id, int habitantes, String nombre, String comunidad, float latitud, float longitud) {
         this.id = id;
         this.habitantes = habitantes;

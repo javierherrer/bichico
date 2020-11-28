@@ -34,13 +34,6 @@ public class ComunidadVO {
         this.latitud = latitud;
         this.longitud = longitud;
     }
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNombre() {
         return nombre;
@@ -72,6 +65,14 @@ public class ComunidadVO {
 
     public void setRegiones(List<RegionVO> regiones){
         this.regiones = regiones;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     /**
