@@ -33,7 +33,7 @@ public class ComunidadFacade {
 
 
     private static final String CONSULTA_FACTOR_REGIONES =
-            "SELECT r.nombre, r.habitantes, r.lat, r.long, r.id, f.valor " +
+            "SELECT r.nombre, r.habitantes, r.lat, r.long, r.id id, f.valor " +
                     "FROM region r, factor f " +
                     "WHERE " +
                     "      r.id = f.id_region AND r.id_com = ? " +
@@ -66,13 +66,13 @@ public class ComunidadFacade {
             FactorVO factorVO;
             while (resultSet.next()){
                 regionVO = new RegionVO(
-                        resultSet.getString("r.nombre"),
-                        resultSet.getFloat("r.lat"),
-                        resultSet.getFloat("r.long"));
-                regionVO.setHabitantes(resultSet.getInt("r.habitantes"));
+                        resultSet.getString("nombre"),
+                        resultSet.getFloat("lat"),
+                        resultSet.getFloat("long"));
+                regionVO.setHabitantes(resultSet.getInt("habitantes"));
                 factorVO = new FactorVO(
-                        resultSet.getInt("r.id"),
-                        (int)resultSet.getDouble("f.valor")
+                        resultSet.getInt("id"),
+                        (int)resultSet.getDouble("valor")
                 );
                 regionesFactorMap.put(regionVO, factorVO);
             }
