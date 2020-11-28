@@ -10,6 +10,7 @@
     <link href="css/templatemo-comparto.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://kit.fontawesome.com/9232811b6f.js" crossorigin="anonymous"></script>
+    <script src="//www.bing.com/widget/bootstrap.answer.js" async=""></script>
 
     <title>Comparto HTML CSS Template</title>
 
@@ -67,23 +68,47 @@
         <section class="tm-mb-1" id="about">
             <div class="tm-row tm-about-row">
                 <div class="tm-section-1-l">
-                    <img src="img/mapaImage.png" alt="About image" class="tm-img-responsive">
+                	<div style="background-color: #EDEEEF;">
+                    <br>
+					  <h2 style="margin:5px;text-align: center;">Inspirado en:</h2>
+				  	<br>
+					</div>			
+					<br>
+
+                    <!--<img src="img/mapaImage.png" alt="About image" class="tm-img-responsive">-->
+                   <!-- <div class="bingwidget" data-type="covid19_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>-->
+                    <div style="max-height: 800px;"class="bingwidget" data-type="covid19_stats_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>
+
+					  <!--<div style="max-height: 800px;height:800px;" class="bingwidget" data-type="covid19_modules" data-market="es-es" data-language="es-es" data-modules='[{"_type": "map", "location-id":"/Spain",  "location-latlon":"40.463667,-3.74922"},
+					 {"_type": "stats", "location-id":"/Spain"}]'></div>-->
                 </div>
                 <article class="tm-section-1-r tm-bg-color-8">
                     <h2 class="tm-mb-2 tm-title-color">Proyecto bichico</h2>
                     <!-- -->
                     <p>Bichico es un proyecto realizado por 3 estudiantes de ingeniería informática en Unizar. 
-                     Este proyecto tiene como objetivo el poder prever futuras zonas en España afectadas por covid, para ello realizamos un tradado de datos obtenidos de
-                     <a rel="nofollow" href="https://trends.google.es/trends/?geo=ES" target="_parent">Google Trends</a> con los <a rel="nofollow" href="https://www.google.com/search?q=sintomas+covid&rlz=1C1CHBF_esES824ES824&oq=sintomas+covid&aqs=chrome.0.0i433l3j0l5.2431j0j7&sourceid=chrome&ie=UTF-8" target="_parent">sintomas del covid</a>
+                     Este proyecto tiene como objetivo el poder prever futuras zonas en España afectadas por covid, para ello realizamos un tratado de datos obtenidos de
+                     <a rel="nofollow" href="https://trends.google.es/trends/?geo=ES" target="_parent">Google Trends</a> con los <a rel="nofollow" href="https://www.google.com/search?q=sintomas+covid&rlz=1C1CHBF_esES824ES824&oq=sintomas+covid&aqs=chrome.0.0i433l3j0l5.2431j0j7&sourceid=chrome&ie=UTF-8" target="_parent">síntomas del covid</a>
  					 asignándoles diferentes pesos a cada palabra y evaluando la cantidad de búsquedas, con estos datos obtenemos un factor para cada región. </p>
-                    <p>Usted puede consultar el factor de las regiones cercana a usted clicando en su comunidad en la columna al lado del mapa.</p>
-                    <p>¿¿¿¿¿¿añadir leyenda?????</p>
-                    
-                    <a href="#mapa" class="tm-btn tm-btn-1 tm-link-to-services">Mapa</a>
+                    <p>Usted puede consultar el factor de las regiones cercanas a usted clicando en su comunidad en la columna al lado del mapa.</p>
+                    <a href="#mapa" class="tm-btn tm-btn-1 tm-link-to-services">Mapa de prevención</a>
                 </article>
             </div>
+        </section>  
+        <section class="tm-mb-1 tm-row tm-services-row" id="mapa">
+	        <div class="tm-section-2-l">			
+             <div id="mapid"></div>
+            </div>
+            <div class="tm-section-2-r">
+            	<div style="background-color: #99CC99;">
+                    <br>
+				  <h2 style="margin:5px;text-align: center;">Comunidades</h2>
+                <br>
+				</div>
+               <ul id="myUL">
+				</ul>
+            </div>
         </section>
-        <div class="tm-bg-color-1 tm-mb-1 tm-row tm-social-row">
+         <div class="tm-bg-color-1 tm-mb-1 tm-row tm-social-row">
             <div class="tm-icon">
                 <div class="tm-icon-inner">
                     <a>
@@ -109,21 +134,7 @@
                 </div>
             </div>
         </div>
-        <section class="tm-mb-1 tm-row tm-services-row" id="mapa">
-	        <div class="tm-section-2-l">			
-             <div id="mapid"></div>
-            </div>
-            <div class="tm-section-2-r">
-            	<div style="background-color: #99CC99;">
-                    <br>
-				  <h2 style="margin:5px;text-align: center;">Comunidades</h2>
-                <br>
-				</div>
-               <ul id="myUL">
-				</ul>
-            </div>
-        </section>
-                <section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
+        <section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
             <div class="tm-gallery-header">
                 <h2 class="tm-mb-1 text-center">Equipo de desarrollo</h2>
             </div>
@@ -170,7 +181,7 @@
             </div>
         </section> <!-- Gallery -->
         <section id="contact" class="tm-bg-color-5 tm-mb-3">
-            <h2 class="tm-text-white tm-contact-title">Contac-thanos</h2>
+            <h2 class="tm-text-white tm-contact-title">Contacto</h2>
             <div class="tm-bg-color-white tm-contact-main">
                 <div class="contact-form-outer">
                <!-- <form id="contact-form" onsubmit="enviarMensaje()" class="tm-bg-color-6 tm-contact-form"> -->
@@ -198,8 +209,8 @@
                 </div>
                 <div class="contact-info-outer">
                     <div class="tm-bg-color-6 contact-info">
-                        <p>Para más información sobre nosotros o sobre la aplicación puedes ponerte en contacto con nosotros a través de nuestras diferentes RRSS</p>
-                        <p>Si tiene alguna idea de mejora o error en la aplicación por favor póngase en contacto con el equipo de soporte</p>
+                        <p>Para más información sobre nosotros o sobre la aplicación puedes ponerte en contacto con nosotros a través de nuestras diferentes RRSS.</p>
+                        <p>Si tienes alguna idea de mejora o error en la aplicación por favor ponte en contacto con el equipo de soporte</p>
                         <p class="tm-mb-0">Tel: <a href="tel:0100200990">010-020-0990</a></p>
                         <p>Email: <a href="mailto:soporte@bichico.com">soporte@bichico.com</a></p>
                     </div>
