@@ -21,7 +21,7 @@ public class main {
 		String c = "1234";
 		String c1 = "1234";
 		String c2 = "1234";
-		String c3 = "1234";
+		String c3 = "12345";
 		
 		System.out.println(Encriptador.encriptar(c));
 		System.out.println(Encriptador.encriptar(c1));
