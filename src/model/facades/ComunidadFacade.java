@@ -33,7 +33,7 @@ public class ComunidadFacade {
 
 
     private static final String CONSULTA_FACTOR_REGIONES =
-            "SELECT r.nombre, r.habitantes, r.lat, r.long, f.valor " +
+            "SELECT r.nombre, r.habitantes, r.lat, r.long, f.id, f.valor " +
                     "FROM region r, factor f " +
                     "WHERE " +
                     "      r.id = f.id_region AND r.id_com = ? " +
