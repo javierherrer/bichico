@@ -1,23 +1,16 @@
-import java.io.StringWriter;
+import controller.ConnectionController;
+import encriptar.Encriptador;
+import utils.DataCleaner;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
-
-import controller.ConnectionController;
-import encriptar.Encriptador;
-import model.ComunidadVO;
-import model.facades.ComunidadFacade;
-import model.facades.RegionFacade;
-import utils.DataCleaner;
-
 public class main {
 
 	public static void main(String[] args) throws Exception {
 		System.out.println(DataCleaner.clean("Campo de Mirra/Camp de Mirra (el)"));
-		// TODO Auto-generated method stub
 		//testTomcat();
 //		testRemoto();
 //		ConnectionController.changeConnection(ConnectionController.REMOTA);
