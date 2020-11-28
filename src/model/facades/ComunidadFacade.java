@@ -71,8 +71,9 @@ public class ComunidadFacade {
                         resultSet.getFloat("long"));
                 regionVO.setHabitantes(resultSet.getInt("habitantes"));
                 factorVO = new FactorVO(
-                        resultSet.getInt("id"),
-                        (int)resultSet.getDouble("valor")
+                        (int)resultSet.getDouble("valor"),
+                        resultSet.getInt("id")
+
                 );
                 regionesFactorMap.put(regionVO, factorVO);
             }
