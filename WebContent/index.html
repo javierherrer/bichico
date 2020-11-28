@@ -229,12 +229,13 @@
             }
           if (ev.target.tagName === 'LI') {
             ev.target.classList.toggle('checked');
-            var comunidad = ev.srcElement.innerText;
+            //var comunidad = ev.srcElement.innerText;		//recojer nombre
+        	var id = ev.srcElement.id
             //peticion al servido
             
             $.post("listarregiones",
                                     {
-                                        comunidad: comunidad
+                                        id: id
                                   
                                     },
                                       function(data, status){

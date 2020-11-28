@@ -113,12 +113,14 @@ public class ComunidadFacade {
             connection = ConnectionController.getConnection();
             if (connection != null){
                 List<ComunidadVO> comunidadVOList = new ArrayList<>();
+                int idComunidad;
                 String nombreComunidad;
                 float latitud;
                 float longitud;
                 PreparedStatement statement = connection.prepareStatement(CONSULTAR_TODAS_COMUNIDADES);
                 ResultSet resultSet = statement.executeQuery();
                 while (resultSet.next()){
+                    idComunidad = resultSet.getInt("id");
                     nombreComunidad = resultSet.getString("nombre");
                     latitud = resultSet.getFloat("lat");
                     longitud = resultSet.getFloat("long");

@@ -22,7 +22,7 @@ import java.util.List;
  * Servlet implementation class EliminarPalabraServlet
  */
 @WebServlet(description = "Servlet de listado de palabras",
-        urlPatterns = { "/listarregiones" })
+        urlPatterns = { "/listarregiones1" })
 public class ListarRegiones extends HttpServlet{
     private static final long serialVersionUID = 1L;
 
