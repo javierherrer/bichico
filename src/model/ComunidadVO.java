@@ -17,6 +17,9 @@ import java.util.List;
  *
  */
 public class ComunidadVO {
+
+
+    private int id;
     private String nombre;
     private List<RegionVO> regiones;
     private float latitud;
@@ -30,6 +33,13 @@ public class ComunidadVO {
         this.nombre = nombre;
         this.latitud = latitud;
         this.longitud = longitud;
+    }
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNombre() {
