@@ -56,7 +56,6 @@ public class ListarRegiones extends HttpServlet{
             FactorVO factorVO;
             
             for (RegionVO region : regionVOS) {
-            	System.out.println(region);
                 datosregion = new JSONObject();
                 factorVO = FactorFacade.obtenerFactor(region);
                 if ( factorVO != null){
@@ -66,7 +65,8 @@ public class ListarRegiones extends HttpServlet{
                 }
             }
             System.out.println(jsonArray.toJSONString());
-            out.write(jsonArray.toJSONString());
+            //out.write(jsonArray.toString());
+            response.getWriter().write(jsonArray.toString());
 
             out.flush();
             out.close();

@@ -10,6 +10,7 @@ function rellenarListaComunidades() {
         for (i = 0; i < data.length; i++) {
               var li = document.createElement("li");
               var t = document.createTextNode(data[i].nombre);
+              t.Id=data[i].Id;
               li.appendChild(t);
               if (data[i] == '') {
                 console.log("dato recibido vacio");

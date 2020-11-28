@@ -36,7 +36,7 @@ public class FactorFacade {
             pstmt.setDate(1, factor.getFecha());
             pstmt.setInt(2, factor.getId_region());
             pstmt.setFloat(3, factor.getValor());
-            System.out.println(pstmt);
+           // System.out.println(pstmt);
 
             pstmt.executeUpdate();
 
@@ -58,7 +58,7 @@ public class FactorFacade {
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_FACTOR);
             statement.setInt(1,regionVO.getId());
-            System.out.println(statement);
+            //System.out.println(statement);
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()){

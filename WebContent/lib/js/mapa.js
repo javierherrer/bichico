@@ -8,6 +8,24 @@ L.tileLayer(tilesProvider,{
 	maxZoom: 18,
 }).addTo(myMap);
 
+function onLocationFound(e) {
+		var radius = e.accuracy / 2;
+
+		L.marker(e.latlng).addTo(myMap)
+			.bindPopup("You are within " + radius + " meters from this point").openPopup();
+
+		L.circle(e.latlng, radius).addTo(myMap);
+	}
+
+	function onLocationError(e) {
+		alert(e.message);
+	}
+
+	myMap.on('locationfound', onLocationFound);
+	myMap.on('locationerror', onLocationError);
+
+	myMap.locate({setView: true, maxZoom: 16});
+
 let bandera = false;
 function anadirCirculos(data) {
 	myMap.setView([data.latitud,data.longitud],8);
