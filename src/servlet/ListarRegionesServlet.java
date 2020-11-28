@@ -37,6 +37,7 @@ public class ListarRegionesServlet extends HttpServlet{
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
         try {
             if (request.getParameter(PARAM_COMUNIDAD) != null){
@@ -71,6 +72,7 @@ public class ListarRegionesServlet extends HttpServlet{
 
                 String jsonText = out.toString();
 
+
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 //System.out.println(jsonText);
@@ -80,6 +82,7 @@ public class ListarRegionesServlet extends HttpServlet{
             ex.printStackTrace();
         }
     }
+
 
     /**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
