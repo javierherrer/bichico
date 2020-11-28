@@ -43,7 +43,7 @@ public class ListarRegionesServlet extends HttpServlet{
             if (request.getParameter(PARAM_COMUNIDAD) != null){
 
                 int id = Integer.parseInt(request.getParameter(PARAM_COMUNIDAD));
-
+                System.out.println("id " + id);
                 Map<RegionVO, FactorVO> lista = ComunidadFacade.obtenerFactorRegiones(id);
                 JSONObject obj = new JSONObject();
                 JSONArray list = new JSONArray();
@@ -72,7 +72,7 @@ public class ListarRegionesServlet extends HttpServlet{
 
                 String jsonText = out.toString();
 
-
+                System.out.println(jsonText);
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 //System.out.println(jsonText);

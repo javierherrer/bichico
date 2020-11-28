@@ -38,9 +38,6 @@ public class EnviarMensajeServlet extends HttpServlet{
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	System.out.println(request.getContextPath());
-    	System.out.println(request.getLocalAddr());
-    	System.out.println(request.getRequestURL());
         MensajeFacade dao = new MensajeFacade();
         System.out.println("llego");
         if (request.getParameter(PARAM_EMAIL) != null) {
