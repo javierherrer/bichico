@@ -1,7 +1,6 @@
 package servlet;
 
 
-import model.ComunidadVO;
 import model.FactorVO;
 import model.RegionVO;
 import model.facades.ComunidadFacade;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.util.Map;
 
@@ -41,15 +39,12 @@ public class ListarRegionesServlet extends HttpServlet{
      */
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {
-        ComunidadFacade dao = new ComunidadFacade();
-
-
         try {
             if (request.getParameter(PARAM_COMUNIDAD) != null){
 
                 int id = Integer.parseInt(request.getParameter(PARAM_COMUNIDAD));
 
-                Map<RegionVO, FactorVO> lista = dao.obtenerFactorRegiones(id);
+                Map<RegionVO, FactorVO> lista = ComunidadFacade.obtenerFactorRegiones(id);
                 JSONObject obj = new JSONObject();
                 JSONArray list = new JSONArray();
                 JSONObject regionJson;

@@ -33,9 +33,16 @@ public class ComunidadFacade {
 
 
     private static final String CONSULTA_FACTOR_REGIONES =
-            "SELECT r.id, r.nombre, r.habitantes, r.lat, r.long, f.valorFROM region r, factor f " +
-                    "WHERE r.id = f.id_region AND r.id_com = ? " +
-                    "ORDER BY f.fecha DESC";
+            "SELECT r.nombre, r.habitantes, r.lat, r.long, f.valor " +
+                    "FROM region r, factor f " +
+                    "WHERE " +
+                    "      r.id = f.id_region AND r.id_com = ? " +
+                    "  AND " +
+                    "      f.fecha = (" +
+                    "            SELECT MAX(fecha) " +
+                    "            FROM factor f " +
+                    "            WHERE f.id_region = r.id " +
+                    "          )";
 
 
     /**
