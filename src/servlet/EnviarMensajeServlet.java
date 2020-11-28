@@ -48,6 +48,8 @@ public class EnviarMensajeServlet extends HttpServlet{
             dao.enviarMensaje(mensaje);
             //No se realiza tratamiento de errores
         }
+        
+        response.sendRedirect("../bichico");
     }
 
     /**

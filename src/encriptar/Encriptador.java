@@ -1,9 +1,20 @@
 package encriptar;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.NoSuchAlgorithmException;
 
+import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.commons.codec.binary.Base64;
+
+
 
 /**
  * Ejemplo de encriptado y desencriptado con algoritmo AES.
@@ -15,33 +26,41 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class Encriptador {
 		
- 
+		private final static String alg = "AES";
+		private final static String Ci = "AES/CBC/PKCS5Padding";
+		private final static String key = "96SD61A790ITB2L4";
+		private static String iv = "0123456789ABCDEF";
+		
    public static String encriptar(String cadena) {
-	   byte[] encriptado = null;
+	 
+	   byte[] encrypted = null;
 	   try {
-		// Generamos una clave de 128 bits adecuada para AES
-		      KeyGenerator keyGenerator = KeyGenerator.getInstance("AES");
-		      keyGenerator.init(128);
-		      Key key = keyGenerator.generateKey();
-		      // Alternativamente, una clave que queramos que tenga al menos 16 bytes
-		      // y nos quedamos con los bytes 0 a 15
-		      key = new SecretKeySpec("asdf2assdsaaadf3rdsaa".getBytes(),  0, 16, "AES");
-		      // Se obtiene un cifrador AES
-		      Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	
-		// Se inicializa para encriptacion y se encripta el texto,
-		      // que debemos pasar como bytes.
-		      aes.init(Cipher.ENCRYPT_MODE, key);
-		      encriptado = aes.doFinal(cadena.getBytes());
-	   }catch (Exception e) {
+			Cipher cipher = Cipher.getInstance(Ci);
+			SecretKeySpec skeySpec = new SecretKeySpec(key.getBytes(), alg);
+			IvParameterSpec ivParameterSpec = new IvParameterSpec(iv.getBytes());
+			cipher.init(Cipher.ENCRYPT_MODE, skeySpec, ivParameterSpec);
+			encrypted = cipher.doFinal(cadena.getBytes());
+	} catch (NoSuchAlgorithmException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (NoSuchPaddingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (InvalidKeyException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (InvalidAlgorithmParameterException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IllegalBlockSizeException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (BadPaddingException e) {
+		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-	      // Se escribe byte a byte en hexadecimal el texto
-	      // encriptado para ver su pinta.
-	   	String textoEncriptado = "";
-	   	  for (byte b : encriptado) {
-	   		textoEncriptado = textoEncriptado + Integer.toHexString(0xFF & b);
-	      }
-	   return textoEncriptado;
+	   
+	   return new String(Base64.encodeBase64(encrypted));
 	}
+	
 }

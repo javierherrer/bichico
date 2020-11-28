@@ -50,6 +50,7 @@ public class ListarRegionesServlet extends HttpServlet{
                 ComunidadVO comunidadVO = ComunidadFacade.leerComunidad(id);
 
                 Map<RegionVO, FactorVO> lista = dao.obtenerFactorRegiones(id);
+
                 JSONObject obj = new JSONObject();
                 JSONArray list = new JSONArray();
                 JSONObject regionJson;
@@ -78,6 +79,9 @@ public class ListarRegionesServlet extends HttpServlet{
                 obj.writeJSONString(out);
 
                 String jsonText = out.toString();
+
+
+                System.out.println(jsonText);
 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
