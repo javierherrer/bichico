@@ -17,11 +17,16 @@ import java.sql.Date;
  */
 public class FactorVO {
     private Date fecha;
-    private float valor;
+    private int valor;
     private int id_region;
 
-    public FactorVO(Date fecha, float valor, int id_region) {
+    public FactorVO(Date fecha, int valor, int id_region) {
         this.fecha = fecha;
+        this.valor = valor;
+        this.id_region = id_region;
+    }
+
+    public FactorVO(int valor, int id_region) {
         this.valor = valor;
         this.id_region = id_region;
     }
@@ -34,11 +39,11 @@ public class FactorVO {
         this.fecha = fecha;
     }
 
-    public float getValor() {
+    public int getValor() {
         return valor;
     }
 
-    public void setValor(float valor) {
+    public void setValor(int valor) {
         this.valor = valor;
     }
 
