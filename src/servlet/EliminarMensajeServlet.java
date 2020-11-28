@@ -2,7 +2,6 @@ package servlet;
 
 
 import model.facades.MensajeFacade;
-import model.facades.PalabraFacade;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +25,6 @@ public class EliminarMensajeServlet extends HttpServlet{
      */
     public EliminarMensajeServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -56,7 +54,7 @@ public class EliminarMensajeServlet extends HttpServlet{
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+
         doGet(request, response);
     }
 }

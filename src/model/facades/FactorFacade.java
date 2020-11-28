@@ -31,7 +31,6 @@ public class FactorFacade {
     public static void insertarFactor(FactorVO factor) {
         Connection conn = null;
         try {
-            // TODO: 18/11/20 cambiar
             conn = ConnectionController.getConnection();
             PreparedStatement pstmt = conn.prepareStatement(INSERTAR_FACTOR);
 

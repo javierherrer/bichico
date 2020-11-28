@@ -11,7 +11,6 @@ import java.sql.SQLException;
  * Clase que se comunica con el servidor TOMCAT para obtener y liberar conexiones.
  */
 public class PoolTomcatConnection implements DatabaseConnection {
-    // TODO: 21/10/20 Añadir url base datos
     private static PoolTomcatConnection instancia = null;
     private static final String URI_DB = "jdbc/bichicoremoto";
 

@@ -38,7 +38,6 @@ public class Login extends HttpServlet {
         String id = (String) request.getParameter(LOGIN);
         String pass = hashPassword((String) request.getParameter(PASSWORD));
         String error = "";
-        // TODO: 20/11/20 HASH PASS
 
         if (id == null || pass == null || pass.equals("") || id.equals("")){
             error = "Campos sin rellenar";

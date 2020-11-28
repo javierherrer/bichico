@@ -175,12 +175,15 @@ public class ComunidadFacade {
                 float longitud;
                 PreparedStatement statement = connection.prepareStatement(CONSULTAR_TODAS_COMUNIDADES);
                 ResultSet resultSet = statement.executeQuery();
+
                 while (resultSet.next()){
                     idComunidad = resultSet.getInt("id");
                     nombreComunidad = resultSet.getString("nombre");
                     latitud = resultSet.getFloat("lat");
                     longitud = resultSet.getFloat("long");
-                    comunidadVOList.add(new ComunidadVO(nombreComunidad, latitud, longitud));
+                    ComunidadVO comunidadVO = new ComunidadVO(nombreComunidad, latitud, longitud);
+                    comunidadVO.setId(idComunidad);
+                    comunidadVOList.add(comunidadVO);
                 }
                 ConnectionController.releaseConnection(connection);
                 return comunidadVOList;
