@@ -66,13 +66,13 @@ public class ComunidadFacade {
             FactorVO factorVO;
             while (resultSet.next()){
                 regionVO = new RegionVO(
-                        resultSet.getString("nombre"),
-                        resultSet.getFloat("lat"),
-                        resultSet.getFloat("long"));
-                regionVO.setHabitantes(resultSet.getInt("habitantes"));
+                        resultSet.getString("r.nombre"),
+                        resultSet.getFloat("r.lat"),
+                        resultSet.getFloat("r.long"));
+                regionVO.setHabitantes(resultSet.getInt("r.habitantes"));
                 factorVO = new FactorVO(
-                        resultSet.getInt("id"),
-                        (int)resultSet.getDouble("valor")
+                        resultSet.getInt("r.id"),
+                        (int)resultSet.getDouble("f.valor")
                 );
                 regionesFactorMap.put(regionVO, factorVO);
             }
