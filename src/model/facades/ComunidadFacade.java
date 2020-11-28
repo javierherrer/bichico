@@ -22,9 +22,9 @@ public class ComunidadFacade {
             " FROM bichico.comunidad c ";
 
     private static final String  CONSULTA_COMUNIDAD
-            = "SELECT c.nombre, c.lat, c.long, c.id" +
+            = "SELECT c.id, c.nombre, c.lat, c.long" +
             " FROM bichico.comunidad c " +
-            "WHERE c.nombre=?";
+            "WHERE c.id=?";
 
     private static final String  CONSULTA_REGIONES
             = "SELECT r.id, r.nombre, r.lat, r.long " +
@@ -91,7 +91,7 @@ public class ComunidadFacade {
      * Devuelve una comunidadVO leida de la base de datos
      * @return
      */
-    public static ComunidadVO leerComunidad(String comunidad){
+    public static ComunidadVO leerComunidad(int id){
 
         Connection connection = null;
         ComunidadVO comunidadVO = null;
@@ -102,14 +102,15 @@ public class ComunidadFacade {
                 return null;
             }
             PreparedStatement statement = connection.prepareStatement(CONSULTA_COMUNIDAD);
-            statement.setString(1,comunidad);
+            statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             int idCom = -1;
             if (resultSet.next()){
+                idCom = resultSet.getInt("id");
                 String nombre = resultSet.getString("nombre");
                 float latitud = resultSet.getFloat("lat");
                 float longitud = resultSet.getFloat("long");
-                idCom = resultSet.getInt("id");
+
                 comunidadVO = new ComunidadVO(nombre, latitud, longitud);
             }
             ConnectionController.releaseConnection(connection);
