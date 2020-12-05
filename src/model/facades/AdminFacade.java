@@ -49,8 +49,6 @@ public class AdminFacade {
 				// Comparamos contraseñas
 				findRs.next();
 				String dbpwd = findRs.getString(PASSWORD);
-				System.out.println("bs "+dbpwd);
-				System.out.println("user "+ user.getHashedPass());
 				if (dbpwd.contentEquals(Encriptador.encriptar(user.getHashedPass()))) {
 					result = true;
 				}
@@ -58,6 +56,7 @@ public class AdminFacade {
 
 
 			} else {
+				
 				result = false;
 			}
 

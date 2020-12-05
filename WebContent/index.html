@@ -2,382 +2,248 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
-    <link href="fontawesome/css/all.min.css" rel="stylesheet" />
-    <link href="css/templatemo-comparto.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="https://kit.fontawesome.com/9232811b6f.js" crossorigin="anonymous"></script>
-    <script src="//www.bing.com/widget/bootstrap.answer.js" async=""></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+	<link href="fontawesome/css/all.min.css" rel="stylesheet" />
+	<link href="css/templatemo-comparto.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<script src="https://kit.fontawesome.com/9232811b6f.js" crossorigin="anonymous"></script>
+	<script src="//www.bing.com/widget/bootstrap.answer.js" async=""></script>
 
-    <title>Bichico</title>
+	<title>Bichico</title>
 
-    
+	
     <!--   Mapa
     -->
-     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-   	 integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-     crossorigin=""/>
-     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
-     integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
-     crossorigin=""></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin=""/>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
 
 </head>
 
 <body>
-    <!-- Back to top button -->
-    <a id="button"><i class="fas fa-angle-up fa-2x"></i></a>
-    <div class="container-fluid">
-        <div class="tm-site-header tm-mb-1">
-            <div class="tm-site-name-container tm-bg-color-1">
-                <h1 class="tm-text-white">Bichico</h1>
-            </div>
-            <div class="tm-nav-container tm-bg-color-8">
-                <nav class="tm-nav" id="tm-nav">
-                    <ul>
-                        <li class="tm-nav-item current">
-                            <a href="#about" class="tm-nav-link">
-                                <span class="tm-mb-1">1</span>
-                                <span>Inicio</span>
-                            </a>
-                        </li>
-                        <li class="tm-nav-item">
-                            <a href="#mapa" class="tm-nav-link">
-                                <span class="tm-mb-1">2</span>
-                                <span>Mapa</span>
-                            </a>
-                        </li>
-                          <li class="tm-nav-item">
-                            <a href="#gallery" class="tm-nav-link">
-                                <span class="tm-mb-1">3</span>
-                                <span>Equipo</span>
-                            </a>
-                        </li>
-                        <li class="tm-nav-item">
-                            <a href="#contact" class="tm-nav-link">
-                                <span class="tm-mb-1">4</span>
-                                <span>Contacto</span>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-        <section class="tm-mb-1" id="about">
-            <div class="tm-row tm-about-row">
-                <div class="tm-section-1-l">
-                	<div style="background-color: #EDEEEF;">
-                    <br>
-					  <h2 style="margin:5px;text-align: center;">Inspirado en:</h2>
-				  	<br>
+	<!-- Back to top button -->
+	<a id="button"><i class="fas fa-angle-up fa-2x"></i></a>
+	<div class="container-fluid">
+		<div class="tm-site-header tm-mb-1">
+			<div class="tm-site-name-container tm-bg-color-1">
+				<h1 class="tm-text-white">Bichico</h1>
+			</div>
+			<div class="tm-nav-container tm-bg-color-8">
+				<nav class="tm-nav" id="tm-nav">
+					<ul>
+						<li class="tm-nav-item current">
+							<a href="#about" class="tm-nav-link">
+								<span class="tm-mb-1">1</span>
+								<span>Inicio</span>
+							</a>
+						</li>
+						<li class="tm-nav-item">
+							<a href="#mapa" class="tm-nav-link">
+								<span class="tm-mb-1">2</span>
+								<span>Mapa</span>
+							</a>
+						</li>
+						<li class="tm-nav-item">
+							<a href="#gallery" class="tm-nav-link">
+								<span class="tm-mb-1">3</span>
+								<span>Equipo</span>
+							</a>
+						</li>
+						<li class="tm-nav-item">
+							<a href="#contact" class="tm-nav-link">
+								<span class="tm-mb-1">4</span>
+								<span>Contacto</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<section class="tm-mb-1" id="about">
+			<div class="tm-row tm-about-row">
+				<div class="tm-section-1-l">
+					<div style="background-color: #EDEEEF;">
+						<br>
+						<h2 style="margin:5px;text-align: center;">Inspirado en:</h2>
+						<br>
 					</div>			
 					<br>
-
-                    <!--<img src="img/mapaImage.png" alt="About image" class="tm-img-responsive">-->
-                   <!-- <div class="bingwidget" data-type="covid19_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>-->
-                    <div style="max-height: 800px;"class="bingwidget" data-type="covid19_stats_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>
-
-					  <!--<div style="max-height: 800px;height:800px;" class="bingwidget" data-type="covid19_modules" data-market="es-es" data-language="es-es" data-modules='[{"_type": "map", "location-id":"/Spain",  "location-latlon":"40.463667,-3.74922"},
-					 {"_type": "stats", "location-id":"/Spain"}]'></div>-->
-                </div>
-                <article class="tm-section-1-r tm-bg-color-8">
-                    <h2 class="tm-mb-2 tm-title-color">Proyecto bichico</h2>
-                    <!-- -->
-                    <p>Bichico es un proyecto realizado por 3 estudiantes de ingeniería informática en Unizar. 
-                     Este proyecto tiene como objetivo el poder prever futuras zonas en España afectadas por covid, para ello realizamos un tratado de datos obtenidos de
-                     <a rel="nofollow" href="https://trends.google.es/trends/?geo=ES" target="_parent">Google Trends</a> con los <a rel="nofollow" href="https://www.google.com/search?q=sintomas+covid&rlz=1C1CHBF_esES824ES824&oq=sintomas+covid&aqs=chrome.0.0i433l3j0l5.2431j0j7&sourceid=chrome&ie=UTF-8" target="_parent">síntomas del covid</a>
- 					 asignándoles diferentes pesos a cada palabra y evaluando la cantidad de búsquedas, con estos datos obtenemos un factor para cada región. </p>
-                    <p>Usted puede consultar el factor de las regiones cercanas a usted clicando en su comunidad en la columna al lado del mapa.</p>
-                    <br>
-                    <a href="#mapa" class="tm-btn tm-btn-1 tm-link-to-services">Mapa de prevención</a>
-                </article>
-            </div>
-        </section>
-        <section class="tm-mb-1 tm-row tm-services-row" id="mapa">
-	        <div class="tm-section-2-l">			
-             <div id="mapid"></div>
-            </div>
-            <div class="tm-section-2-r">
-            	<div style="background-color: #99CC99;">
-                    <br>
-				  <h2 style="margin:5px;text-align: center;">Comunidades</h2>
-                <br>
+					<!-- <div class="bingwidget" data-type="covid19_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>-->
+					<div style="max-height: 800px;"class="bingwidget" data-type="covid19_stats_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>
 				</div>
-               <ul id="myUL">
+				<article class="tm-section-1-r tm-bg-color-8">
+					<h2 class="tm-mb-2 tm-title-color">Proyecto bichico</h2>
+					<p>Bichico es un proyecto realizado por 3 estudiantes de ingeniería informática en Unizar. 
+						Este proyecto tiene como objetivo el poder prever futuras zonas en España afectadas por covid, para ello realizamos un tratado de datos obtenidos de
+						<a rel="nofollow" href="https://trends.google.es/trends/?geo=ES" target="_parent">Google Trends</a> con los <a rel="nofollow" href="https://www.google.com/search?q=sintomas+covid&rlz=1C1CHBF_esES824ES824&oq=sintomas+covid&aqs=chrome.0.0i433l3j0l5.2431j0j7&sourceid=chrome&ie=UTF-8" target="_parent">síntomas del covid</a>
+					asignándoles diferentes pesos a cada palabra y evaluando la cantidad de búsquedas, con estos datos obtenemos un factor para cada región. </p>
+					<p>Usted puede consultar el factor de las regiones cercanas a usted clicando en su comunidad en la columna al lado del mapa.</p>
+					<br>
+					<a href="#mapa" class="tm-btn tm-btn-1 tm-link-to-services">Mapa de prevención</a>
+				</article>
+			</div>
+		</section>
+		<section class="tm-mb-1 tm-row tm-services-row" id="mapa">
+			<div class="tm-section-2-l">			
+				<div id="mapid"></div>
+			</div>
+			<div class="tm-section-2-r">
+				<div style="background-color: #99CC99;">
+					<br>
+					<h2 style="margin:5px;text-align: center;">Comunidades</h2>
+					<br>
+				</div>
+				<ul id="myUL">
 				</ul>
-            </div>
-        </section>
-         <div class="tm-bg-color-1 tm-mb-1 tm-row tm-social-row">
-            <div class="tm-icon">
-                <div class="tm-icon-inner">
-                    <a>
-                        <i class="fas fa-hands-wash fa-4x tm-mb-1"></i>
-                        <p>Lávate las manos</p>
-                    </a>
-                </div>
-            </div>
-            <div class="tm-icon">
-                <div class="tm-icon-inner">
-                    <a>
-                        <i class="fas fa-people-arrows fa-4x tm-mb-1"></i>
-                        <p>Mantén una distancia segura</p>
-                    </a>
-                </div>
-            </div>
-            <div class="tm-icon">
-                <div class="tm-icon-inner">
-                    <a>
-                        <i class="fas fa-head-side-mask fa-4x tm-mb-1"></i>
-                        <p>Utiliza mascarilla</p>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
-            <div class="tm-gallery-header">
-                <h2 class="tm-mb-1 text-center">Equipo de desarrollo</h2>
-            </div>
-            <div class="tm-gallery-outer">                                                                              
-               <table align="center">
-                   <tr>
-                        <td style="padding-right: 20px;padding-left: 20px; padding-top: 20px;padding-bottom: 20px;">
-                            <div class="card">
-                                  <img src="img/gallery/javiFuster.jpeg" alt="JaviF" style="width:100%">
-                                  <h1>Javier Jesús Fuster</h1>
-                                  <p class="title">Backend developer</p>
-                                  <p>Universidad de Zaragoza</p>
-                                  <a href="#"><i class="fa fa-twitter"></i></a>
-                                  <a href="#"><i class="fa fa-linkedin"></i></a>
-                                  <a href="#"><i class="fa fa-instagram"></i></a>
-                                 <!-- <p><button>Contact</button></p> -->
-                            </div>
-                        </td>
-                        <td style="padding-right: 20px;padding-left: 20px;">
-                           <div class="card">
-                                  <img src="img/gallery/javiherrer.jpg" alt="JaviH" style="width:100%">
-                                  <h1>Javier Herrer</h1>
-                                  <p class="title">Backend developer</p>
-                                  <p>Universidad de Zaragoza</p>                            
-                                  <a href="https://twitter.com/javi_herrer"><i class="fa fa-twitter"></i></a>
-                                  <a href="https://www.linkedin.com/in/javier-herrer/"><i class="fa fa-linkedin"></i></a>
-                                  <!--<p><button>Contact</button></p>-->
-                             </div>
-                           </td>
-                           <td style="padding-right: 20px;padding-left: 20px;">
-                            <div class="card">
-                                  <img src="img/gallery/juan.jpg" alt="Juan" style="width:100%">
-                                  <h1>J.Antonio Rodríguez</h1>
-                                  <p class="title">Frontend developer</p>
-                                  <p>Universidad de Zaragoza</p>
-                                  
-                                  <a href="https://www.linkedin.com/in/juan-antonio-rodríguez-gracia"><i class="fa fa-linkedin"></i></a>
-                                  <a href="https://www.instagram.com/juanillosm/"><i class="fa fa-instagram"></i></a>
-                                 <!-- <p><button>Contact</button></p>-->
-                            </div>
-                        </td>
-                        </tr>
-                </table>
-            </div>
-        </section> <!-- Gallery -->
-        <section id="contact" class="tm-bg-color-5 tm-mb-3">
-            <h2 class="tm-text-white tm-contact-title">Contacto</h2>
-            <div class="tm-bg-color-white tm-contact-main">
-                <div class="contact-form-outer">
-               <!-- <form id="contact-form" onsubmit="enviarMensaje()" class="tm-bg-color-6 tm-contact-form"> -->
-                <form id="contact-form" action="enviarmensaje" method="POST" class="tm-bg-color-6 tm-contact-form">
-                    <div id="contact-form" class="tm-bg-color-6 tm-contact-form">
-                        <div class="form-group">
-                            <input id="nombreUsuario" type="text" name="emisor" class="form-control" placeholder="Nombre" required="" />
-                        </div>
-                        <div class="form-group">
-                            <input id="emailUsuario" type="email" name="email" class="form-control" placeholder="Email" required="" />
-                        </div>
-                        <div class="form-group">
-                            <textarea id="mensajeUsuario" rows="4" name="contenido" class="form-control" placeholder="Mensaje..."
-                                required=""></textarea>
-                        </div>
-                        <div>
-                         <!--   <button id="botonMensaje" type="submit" onclick="enviarMensaje()" class="ml-auto tm-btn tm-btn-3">
-                      -->
-                       		<button type="submit" class="ml-auto tm-btn tm-btn-3">
-                                Enviar
-                            </button>
-                        </div>
-                    </div>
-                </form>
-                </div>
-                <div class="contact-info-outer">
-                    <div class="tm-bg-color-6 contact-info">
-                        <p>Para más información sobre nosotros o sobre la aplicación puedes ponerte en contacto con nosotros a través de nuestras diferentes RRSS.</p>
-                        <p>Si tienes alguna idea de mejora o error en la aplicación por favor ponte en contacto con el equipo de soporte</p>
-                        <p class="tm-mb-0">Tel: <a href="tel:0100200990">010-020-0990</a></p>
-                        <p>Email: <a href="mailto:soporte@bichico.com">soporte@bichico.com</a></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <div class="tm-mb-4 text-center tm-social-s">
-            <a href="https://fb.com/templatemo" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
-            <a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
-            <a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
-            <a href="https://youtube.com" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
-        </div>
-        <footer class="text-center tm-mb-1">
-            <p>Copyright &copy; 2020 Comparto Studio 
-            
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-        </footer>
-    </div> <!-- .container -->
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="lib/js/lista.js"></script>
-    <script src="lib/js/mapa.js"></script>
-   <!--  <script src="lib/js/mensaje.js"></script>-->
-    <script>
+			</div>
+		</section>
+		<div class="tm-bg-color-1 tm-mb-1 tm-row tm-social-row">
+			<div class="tm-icon">
+				<div class="tm-icon-inner">
+					<a>
+						<i class="fas fa-hands-wash fa-4x tm-mb-1"></i>
+						<p>Lávate las manos</p>
+					</a>
+				</div>
+			</div>
+			<div class="tm-icon">
+				<div class="tm-icon-inner">
+					<a>
+						<i class="fas fa-people-arrows fa-4x tm-mb-1"></i>
+						<p>Mantén una distancia segura</p>
+					</a>
+				</div>
+			</div>
+			<div class="tm-icon">
+				<div class="tm-icon-inner">
+					<a>
+						<i class="fas fa-head-side-mask fa-4x tm-mb-1"></i>
+						<p>Utiliza mascarilla</p>
+					</a>
+				</div>
+			</div>
+		</div>
+		<section class="tm-bg-color-4 tm-mb-3 tm-gallery-section" id="gallery">
+			<div class="tm-gallery-header">
+				<h2 class="tm-mb-1 text-center">Equipo de desarrollo</h2>
+			</div>
+			<div class="tm-gallery-outer">                                                                              
+				<table align="center">
+					<tr>
+						<td style="padding-right: 20px;padding-left: 20px; padding-top: 20px;padding-bottom: 20px;">
+							<div class="card">
+								<img src="img/gallery/javiFuster.jpeg" alt="JaviF" style="width:100%">
+								<h1>Javier Jesús Fuster</h1>
+								<p class="title">Backend developer</p>
+								<p>Universidad de Zaragoza</p>
+								<a href=""><i class="fa fa-twitter"></i></a>
+							</div>
+						</td>
+						<td style="padding-right: 20px;padding-left: 20px;">
+							<div class="card">
+								<img src="img/gallery/javiherrer.jpg" alt="JaviH" style="width:100%">
+								<h1>Javier Herrer</h1>
+								<p class="title">Backend developer</p>
+								<p>Universidad de Zaragoza</p>                            
+								<a href="https://twitter.com/javi_herrer"><i class="fa fa-twitter"></i></a>
+								<a href="https://www.linkedin.com/in/javier-herrer/"><i class="fa fa-linkedin"></i></a>
+							</div>
+						</td>
+						<td style="padding-right: 20px;padding-left: 20px;">
+							<div class="card">
+								<img src="img/gallery/juan.jpg" alt="Juan" style="width:100%">
+								<h1>J.Antonio Rodríguez</h1>
+								<p class="title">Frontend developer</p>
+								<p>Universidad de Zaragoza</p>
+								<a href="https://www.linkedin.com/in/juan-antonio-rodríguez-gracia"><i class="fa fa-linkedin"></i></a>
+								<a href="https://www.instagram.com/juanillosm/"><i class="fa fa-instagram"></i></a>
+							</div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</section> <!-- Gallery -->
+		<section id="contact" class="tm-bg-color-5 tm-mb-3">
+			<h2 class="tm-text-white tm-contact-title">Contacto</h2>
+			<div class="tm-bg-color-white tm-contact-main">
+				<div class="contact-form-outer">
+					<form id="contact-form" action="enviarmensaje" method="POST" class="tm-bg-color-6 tm-contact-form">
+						<div id="contact-form" class="tm-bg-color-6 tm-contact-form">
+							<div class="form-group">
+								<input id="nombreUsuario" type="text" name="emisor" class="form-control" placeholder="Nombre" required="" />
+							</div>
+							<div class="form-group">
+								<input id="emailUsuario" type="email" name="email" class="form-control" placeholder="Email" required="" />
+							</div>
+							<div class="form-group">
+								<textarea id="mensajeUsuario" rows="4" name="contenido" class="form-control" placeholder="Mensaje..."
+								required=""></textarea>
+							</div>
+							<div>
+								<button type="submit" class="ml-auto tm-btn tm-btn-3">
+									Enviar
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="contact-info-outer">
+					<div class="tm-bg-color-6 contact-info">
+						<p>Para más información sobre nosotros o sobre la aplicación puedes ponerte en contacto con nosotros a través de nuestras diferentes RRSS.</p>
+						<p>Si tienes alguna idea de mejora o error en la aplicación por favor ponte en contacto con el equipo de soporte</p>
+						<p class="tm-mb-0">Tel: <a href="tel:0100200990">010-020-0990</a></p>
+						<p>Email: <a href="mailto:soporte@bichico.com">soporte@bichico.com</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+		<div class="tm-mb-4 text-center tm-social-s">
+			<a href="https://fb.com/templatemo" class="tm-social-link"><i class="fab fa-facebook tm-social-icon"></i></a>
+			<a href="https://instagram.com" class="tm-social-link"><i class="fab fa-instagram tm-social-icon"></i></a>
+			<a href="https://twitter.com" class="tm-social-link"><i class="fab fa-twitter tm-social-icon"></i></a>
+			<a href="https://youtube.com" class="tm-social-link"><i class="fab fa-youtube tm-social-icon"></i></a>
+		</div>
+		<footer class="text-center tm-mb-1">
+			<p>Copyright &copy; 2020 Comparto Studio 
+				
+				- Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
+			</footer>
+		</div> <!-- .container -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<script src="lib/js/lista.js"></script>
+		<script src="lib/js/mapa.js"></script>
+		<!--  <script src="lib/js/mensaje.js"></script>  posible implementacion de envio de formulario a traves de JS-->
+		<script>
     	/////////////////////////////////////////////////      elemento de lista clicado
-    	 var list = document.getElementById('myUL');
-         var listItems = document.getElementById("myUL").getElementsByTagName('li');
-         list.addEventListener('click', function(ev) {
-            for (i = 0; i < listItems.length; i++) {
+    	var list = document.getElementById('myUL');
+    	var listItems = document.getElementById("myUL").getElementsByTagName('li');
+    	list.addEventListener('click', function(ev) {
+    		for (i = 0; i < listItems.length; i++) {
                     listItems[i].className = '';          //les coloco las class a nula en caso de ponerle colocar una nueva
-            }
-          if (ev.target.tagName === 'LI') {
-            ev.target.classList.toggle('checked');
-            //var comunidad = ev.srcElement.innerText;		//recojer nombre
-        	var id = ev.srcElement.id
+                }
+                if (ev.target.tagName === 'LI') {
+                	ev.target.classList.toggle('checked');
+            //var comunidad = ev.srcElement.innerText;		//recojer nombre por si cambio de id a nombre
+            var id = ev.srcElement.id
             //peticion al servido
             
             $.post("listarregiones",
-                                    {
-                                        id: id
-                                  
-                                    },
-                                      function(data, status){
-                                      console.log(data);                
-                                            anadirCirculos(data);
-                                      });
-          }
-     }, false);
-    	///////////////////////////////////////////////
-/*        
-        // Scroll to Top button
-        var btn = $('#button');
-
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
-
-        btn.on('click', function (e) {
-            e.preventDefault();
-            $('html, body').animate({ scrollTop: 0 }, '300');
-        });
-*/
-  // Scroll to Top button
-/*
-        var btn = $('#button');
-
-        $(window).scroll(function () {
-            if ($(window).scrollTop() > 300) {
-                btn.addClass('show');
-            } else {
-                btn.removeClass('show');
-            }
-        });
-
-        btn.on('click', function (e) {
-            e.preventDefault();
-
-
-           // $('html, body').animate({ scrollTop: 0 }, '300');
-        });
-*/
-/*
-        // DOM is ready
-        $(function () {
-            // Single Page Nav
-           // $('#tm-nav').singlePageNav({ speed: 600 });
-
-            // Smooth Scroll (https://css-tricks.com/snippets/jquery/smooth-scrolling/)
-            $('a[href*="#"]')
-                // Remove links that don't actually link to anything
-                .not('[href="#"]')
-                .not('[href="#0"]')
-                .click(function (event) {
-                    // On-page links
-                    if (
-                        location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '')
-                        &&
-                        location.hostname == this.hostname
-                    ) {
-                        // Figure out element to scroll to
-                        var target = $(this.hash);
-                        target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-                        // Does a scroll target exist?
-                        if (target.length) {
-                            // Only prevent default if animation is actually gonna happen
-                            event.preventDefault();
-                            $('html, body').animate({
-                                scrollTop: target.offset().top
-                            }, 600, function () {
-                                // Callback after animation
-                                // Must change focus!
-                                var $target = $(target);
-                                $target.focus();
-                                if ($target.is(":focus")) { // Checking if the target was focused
-                                    return false;
-                                } else {
-                                    $target.attr('tabindex', '-1'); // Adding tabindex for elements not focusable
-                                    $target.focus(); // Set focus again
-                                };
-                            });
-                        }
-                    }
-                });
-*/
-            /* Isotope Gallery */
-/*
-            // init isotope
-            var $gallery = $(".tm-gallery").isotope({
-                itemSelector: ".tm-gallery-item",
-                layoutMode: "fitRows"
+            {
+            	id: id
+            	
+            },
+            function(data, status){
+            	console.log(data);                
+            	anadirCirculos(data);
             });
-            
-            // layout Isotope after each image loads
-            $gallery.imagesLoaded().progress(function () {
-                $gallery.isotope("layout");
-            });
-            
-            */
-/*
-            $(".filters-button-group").on("click", "a", function () {
-                var filterValue = $(this).attr("data-filter");
-                $gallery.isotope({ filter: filterValue });
-            });
-
-            $(".tabgroup > div").hide();
-            $(".tabgroup > div:first-of-type").show();
-            $(".tabs a").click(function (e) {
-                e.preventDefault();
-                var $this = $(this),
-                    tabgroup = "#" + $this.parents(".tabs").data("tabgroup"),
-                    others = $this
-                        .closest("li")
-                        .siblings()
-                        .children("a"),
-                    target = $this.attr("href");
-                others.removeClass("active");
-                $this.addClass("active");
-            });
-        });
-*/
-    </script>
-
-		
-
+        }
+    }, false);
+</script>
 </body>
 </html>

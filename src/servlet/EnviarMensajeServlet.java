@@ -48,8 +48,12 @@ public class EnviarMensajeServlet extends HttpServlet{
             dao.enviarMensaje(mensaje);
             //No se realiza tratamiento de errores
         }
-        
-        response.sendRedirect("../bichico");
+        System.out.println(request.getRequestURI());
+        System.out.println(request.getContextPath());
+        System.out.println(request.getPathInfo());
+        System.out.println(request.getPathTranslated());
+        //response.sendRedirect("../");
+        response.sendRedirect(request.getContextPath());
     }
 
     /**

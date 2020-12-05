@@ -1,31 +1,31 @@
-const tilesProvider = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+	const tilesProvider = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
 
-let myMap = L.map('mapid').setView([40.463667, -3.74922], 6);
+	let myMap = L.map('mapid').setView([40.463667, -3.74922], 6);
 
-let grupoCirculos = L.layerGroup();
+	let grupoCirculos = L.layerGroup();
 
-L.tileLayer(tilesProvider,{
-	maxZoom: 18,
-}).addTo(myMap);
+	L.tileLayer(tilesProvider,{
+		maxZoom: 18,
+	}).addTo(myMap);
 
 //marca de agua
 L.Control.Watermark = L.Control.extend({
-    onAdd: function(map) {
-        var img = L.DomUtil.create('img');
+	onAdd: function(map) {
+		var img = L.DomUtil.create('img');
 
-        img.src = './img/gallery/covid.png';
-        img.style.width = '60px';
+		img.src = './img/gallery/covid.png';
+		img.style.width = '60px';
 
-        return img;
-    },
+		return img;
+	},
 
-    onRemove: function(map) {
+	onRemove: function(map) {
         // Nothing to do here
     }
 });
 
 L.control.watermark = function(opts) {
-    return new L.Control.Watermark(opts);
+	return new L.Control.Watermark(opts);
 }
 
 L.control.watermark({ position: 'bottomleft' }).addTo(myMap);
@@ -34,52 +34,52 @@ L.control.watermark({ position: 'bottomleft' }).addTo(myMap);
 //leyenda mapa
 var legend = L.control({position: 'bottomright'});
 
-	legend.onAdd = function (map) {
+legend.onAdd = function (map) {
 
-		var div = L.DomUtil.create('div', 'info legend'),
-			grades = [0, 20, 50, 70, 100],
-			labels = [],
-			from, to;
+	var div = L.DomUtil.create('div', 'info legend'),
+	grades = [0, 20, 50, 70, 100],
+	labels = [],
+	from, to;
 
-		for (var i = 0; i < grades.length -1; i++) {
-			from = grades[i];
-			to = grades[i + 1];
-			if(from == 0){
-				labels.push(
+	for (var i = 0; i < grades.length -1; i++) {
+		from = grades[i];
+		to = grades[i + 1];
+		if(from == 0){
+			labels.push(
 				'<i style="background:white;">Na</i> ' +
 				from + (to ? '&ndash;' + to : '+'));
-			}else{
-				labels.push(
+		}else{
+			labels.push(
 				'<i style="background:' + getColor(from + 1) + '"></i> ' +
 				from + (to ? '&ndash;' + to : '+'));
-			}
-			
 		}
+		
+	}
 
-		div.innerHTML = labels.join('<br>');
-		return div;
-	};
+	div.innerHTML = labels.join('<br>');
+	return div;
+};
 
-	legend.addTo(myMap);
+legend.addTo(myMap);
 
 //localizacion de la posicion
 function onLocationFound(e) {
-		var radius = e.accuracy / 2;
+	var radius = e.accuracy / 2;
 
-		L.marker(e.latlng).addTo(myMap)
-			.bindPopup("Tu estas entre  " + radius + " metros de este punto").openPopup();
+	L.marker(e.latlng).addTo(myMap)
+	.bindPopup("Tu estas entre  " + radius + " metros de este punto").openPopup();
 
-		L.circle(e.latlng, radius).addTo(myMap);
-	}
+	L.circle(e.latlng, radius).addTo(myMap);
+}
 
-	function onLocationError(e) {
-		alert(e.message);
-	}
+function onLocationError(e) {
+	alert(e.message);
+}
 
-	myMap.on('locationfound', onLocationFound);
-	myMap.on('locationerror', onLocationError);
+myMap.on('locationfound', onLocationFound);
+myMap.on('locationerror', onLocationError);
 
-	myMap.locate({setView: true, maxZoom: 16});
+myMap.locate({setView: true, maxZoom: 16});
 
 
 //añadir y eliminar circulos mapa
@@ -94,23 +94,23 @@ function anadirCirculos(data) {
 		var tamanioCirculo = calcularTamanio(data.regiones[i].habitantes);
 		if(data.regiones[i].factor > 20 && data.regiones[i].factor < 50){
 			circulo = L.circle([data.regiones[i].latitud,data.regiones[i].longitud], tamanioCirculo, {//5000
-			color: 'yellow',
-			fillColor: '#f7f85f',
-			fillOpacity: 0.5
+				color: 'yellow',
+				fillColor: '#f7f85f',
+				fillOpacity: 0.5
 			});
 			grupoCirculos.addLayer(circulo);
 		}else if(data.regiones[i].factor >= 50 && data.regiones[i].factor < 70){
 			circulo = L.circle([data.regiones[i].latitud,data.regiones[i].longitud], tamanioCirculo, {
-			color: 'orange',
-			fillColor: '#ffa500',
-			fillOpacity: 0.5
+				color: 'orange',
+				fillColor: '#ffa500',
+				fillOpacity: 0.5
 			});
 			grupoCirculos.addLayer(circulo);
 		}else if(data.regiones[i].factor >= 70){
 			circulo = L.circle([data.regiones[i].latitud,data.regiones[i].longitud], tamanioCirculo, {
-			color: 'red',
-			fillColor: '#f03',
-			fillOpacity: 0.5
+				color: 'red',
+				fillColor: '#f03',
+				fillOpacity: 0.5
 			});
 			grupoCirculos.addLayer(circulo);
 		}
@@ -118,8 +118,8 @@ function anadirCirculos(data) {
 	}
 	var i = 0;
 	grupoCirculos.eachLayer(function (layer) {
-    	layer.bindPopup(data.regiones[i].nombre);
-    	i++;
+		layer.bindPopup(data.regiones[i].nombre + "n" + data.regiones[i].factor);
+		i++;
 	});
 	grupoCirculos.addTo(myMap);
 	bandera = true;
@@ -127,17 +127,17 @@ function anadirCirculos(data) {
 }
 
 // color de la leyenda
-	function getColor(d) {
+function getColor(d) {
 
-		if(d>70){
-			return '#f03';
-		}else if(d >= 50){
-			return '#ffa500';
-		}else if(d >= 20){
-			return '#f7f85f';
-		}
-		return 'green';
+	if(d>70){
+		return '#f03';
+	}else if(d >= 50){
+		return '#ffa500';
+	}else if(d >= 20){
+		return '#f7f85f';
 	}
+	return 'green';
+}
 
 //tamaño circulos diferentes sitios
 function calcularTamanio(tamanio){

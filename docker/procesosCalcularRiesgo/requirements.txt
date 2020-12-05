@@ -1,0 +1,4 @@
+requests==2.24.0
+pytrends==4.7.3
+pandas==1.1.4
+psycopg2_binary==2.8.6

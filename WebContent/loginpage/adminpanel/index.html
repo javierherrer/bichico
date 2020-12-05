@@ -1,138 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
-    <link href="fontawesome/css/all.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/css/main.css" />
-    <title>AdminPanel</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+        <link href="fontawesome/css/all.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="assets/css/main.css" />
+        <title>AdminPanel</title>
 
-    
-   
-</head>
+        
+        
+    </head>
 
-<body>
+    <body>
 
-    <header id="header">
-                        <b style="color: black">Usuario:</b>
-                        <span id= "nombreUsuario" style="color: black">ooo</span> 
-                        <nav id="nav">
-                            <ul>
-                                <li class="special">
-                                	<button id="btn-abrir-popup" class="principal" >Mensajes</button>
-                                    <button onclick="salir()"id="btn-abrir-popup" style = "background-color: #CC9999;"  class="principal salir" >Salir</button>
-                                   <!-- <input onclick="salir()" type="button" value="salir" style = "background-color: #CC9999;" class="principal salir"/>-->
-                                </li>
-                            </ul>
-                        </nav>
-    </header>
-    <div id="myModal" class="modal">
-		  <div class="modal-content">
-		    <span id="salir" class="close">&times;</span>
-		    <!--
-            <div class="row uniform mensaje">
-				<div class="4u 12u$(xsmall)">
-					<input type="text" name="nombreMensaje" id="nombreMensaje" value="" placeholder="Nombre Usuario" readonly="readonly" /></div>
-				<div class="4u 12u$(xsmall)">
-					<input type="text" name="email" id="email" value="" placeholder="email Usuario" readonly="readonly" /></div>
-				
-				<div class="12u 12u$(xsmall)">
-					<textarea name="texto" rows="4" cols="40" placeholder="Mensaje" readonly="readonly"></textarea></div>              
-			</div>-->
-			  <br>
-              <br>
-			<div class="table-wrapper">
-                <table id="tablaMensajes">
-                  <thead>
-                         <tr>
-                         <td style="background-color: #9999cc">nombre</td>
-                         <td style="background-color: #9999CC">Email</td>
-                         <td style="background-color: #9999CC">mensaje</td>
-                         <td style="background-color: #9999CC">Acción</td>
-                         </tr>
-                </thead>
-                   <tbody id="">
+        <header id="header">
+            <b style="color: black">Usuario:</b>
+            <span id= "nombreUsuario" style="color: black">ooo</span> 
+            <nav id="nav">
+                <ul>
+                    <li class="special">
+                       <button id="btn-abrir-popup" class="principal" >Mensajes</button>
+                       <button onclick="salir()"id="btn-abrir-popup" style = "background-color: #CC9999;"  class="principal salir" >Salir</button>
+                   </li>
+               </ul>
+           </nav>
+       </header>
+       <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span id="salir" class="close">&times;</span>
+          <br>
+          <br>
+          <div class="table-wrapper">
+            <table id="tablaMensajes">
+              <thead>
+               <tr>
+                   <td style="background-color: #9999cc">nombre</td>
+                   <td style="background-color: #9999CC">Email</td>
+                   <td style="background-color: #9999CC">mensaje</td>
+                   <td style="background-color: #9999CC">Acción</td>
+               </tr>
+           </thead>
+           <tbody id="">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+<section class="wrapper style5">
+
+    <div class="inner">
+        <section>
+           <form method="post" action="#">
+            <div class="row uniform">
+
+                <div class="8u 12u$(xsmall)">
+                    <input type="text" name="name" id="nombrePalabra" value="" placeholder="Palabra" />
+                </div>
+                <div class="2u 12u$(xsmall)">
+                    <input type="text" name="importancia" id="importancia" value="" placeholder="importancia" onkeyup="format(this)" onchange="format(this)"/>
+                </div>         
+            </div>
+            <br>
+            <div class="12u$">
+                <ul class="actions" style="text-align: center">
+                    <li><input type="button" value="Insertar" class="principal" id="add_row"/></li>
+                </ul>
+            </div>
+            <br>
+            <br>
+
+            <div class="table-wrapper">
+                <table id="tabla_palabras">
+                    <thead>
                         <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                                                        
+                            <td style="background-color: #9999cc">Palabra</td>
+                            <td style="background-color: #9999CC">Importancia</td>
+                            <td style="background-color: #9999CC">Acción</td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody id="content_table">
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            
                         </tr>
                     </tbody>
                 </table>
             </div>
-		  </div>
-		</div>
-       <section class="wrapper style5">
+        </form>
+    </section>
+</div>
 
-        <div class="inner">
-            <section>
-                     <form method="post" action="#">
-                                        <div class="row uniform">
+</section>
 
-                                            <div class="8u 12u$(xsmall)">
-                                                <input type="text" name="name" id="nombrePalabra" value="" placeholder="Palabra" />
-                                            </div>
-                                            <div class="2u 12u$(xsmall)">
-                                                <input type="text" name="importancia" id="importancia" value="" placeholder="importancia" onkeyup="format(this)" onchange="format(this)"/>
-                                            </div>         
-                                        </div>
-                                        <br>
-                                        <div class="12u$">
-                                            <ul class="actions" style="text-align: center">
-                                                <li><input type="button" value="Insertar" class="principal" id="add_row"/></li>
-                                            </ul>
-                                        </div>
-                                        <br>
-                                        <br>
+<script src="assets/js/jquery.min.js"></script>
+<script src="assets/js/jquery.scrollex.min.js"></script>
+<script src="assets/js/jquery.scrolly.min.js"></script>
+<script src="assets/js/skel.min.js"></script>
+<script src="assets/js/util.js"></script>
+<script src="assets/js/main.js"></script>
 
-                                        <div class="table-wrapper">
-                                            <table id="tabla_palabras">
-                                                <thead>
-                                                    <tr>
-                                                        <td style="background-color: #9999cc">Palabra</td>
-                                                        <td style="background-color: #9999CC">Importancia</td>
-                                                        <td style="background-color: #9999CC">Acción</td>
-                                                       
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="content_table">
-                                                    <tr>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </form>
-                          </section>
-            </div>
-
-                        </section>
-                      
-        <script src="assets/js/jquery.min.js"></script>
-        <script src="assets/js/jquery.scrollex.min.js"></script>
-        <script src="assets/js/jquery.scrolly.min.js"></script>
-        <script src="assets/js/skel.min.js"></script>
-        <script src="assets/js/util.js"></script>
-        <script src="assets/js/main.js"></script>
-
-        <script src="lib/js/invoice.js"></script>
-        <script src="lib/js/popup.js"></script>
-        <script type="text/javascript">
-        	var modal = document.getElementById("myModal");
-        	window.onclick = function(event) {
-			  if (event.target == modal) {
-			    modal.style.display = "none";
-			  }
-			}
-        </script>
+<script src="lib/js/invoice.js"></script>
+<script src="lib/js/popup.js"></script>
+<script type="text/javascript">
+   var modal = document.getElementById("myModal");
+   window.onclick = function(event) {
+       if (event.target == modal) {
+         modal.style.display = "none";
+     }
+ }
+</script>
 </body>
 
 

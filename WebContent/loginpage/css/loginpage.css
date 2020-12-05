@@ -1,4 +1,4 @@
-/*
+   /*
 
 Comparto TemplateMo
 
@@ -17,29 +17,29 @@ Text Color: #666
 
 */
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,700');
- *, *:before, *:after {
+*, *:before, *:after {
    box-sizing: border-box;
 }
- body {
+body {
    min-height: 100vh;
    font-family: 'Raleway', sans-serif;
 }
- .container {
+.container {
    position: absolute;
    width: 100%;
    height: 100%;
    overflow: hidden;
 }
- .container:hover .top:before, .container:active .top:before, .container:hover .bottom:before, .container:active .bottom:before, .container:hover .top:after, .container:active .top:after, .container:hover .bottom:after, .container:active .bottom:after {
+.container:hover .top:before, .container:active .top:before, .container:hover .bottom:before, .container:active .bottom:before, .container:hover .top:after, .container:active .top:after, .container:hover .bottom:after, .container:active .bottom:after {
    margin-left: 200px;
    transform-origin: -200px 50%;
    transition-delay: 0s;
 }
- .container:hover .center, .container:active .center {
+.container:hover .center, .container:active .center {
    opacity: 1;
    transition-delay: 0.2s;
 }
- .top:before, .bottom:before, .top:after, .bottom:after {
+.top:before, .bottom:before, .top:after, .bottom:after {
    content: '';
    display: block;
    position: absolute;
@@ -54,23 +54,23 @@ Text Color: #666
    opacity: 0.65;
    transition-delay: 0.2s;
 }
- .top:before {
+.top:before {
    transform: rotate(45deg);
    background: #9999cc;
 }
- .top:after {
+.top:after {
    transform: rotate(135deg);
    background: #CC9999;
 }
- .bottom:before {
+.bottom:before {
    transform: rotate(-45deg);
    background: #99CCFF;
 }
- .bottom:after {
+.bottom:after {
    transform: rotate(-135deg);
    background: #99CC99;
 }
- .center {
+.center {
    position: absolute;
    width: 400px;
    height: 400px;
@@ -88,7 +88,7 @@ Text Color: #666
    transition-delay: 0s;
    color: #333;
 }
- .center input {
+.center input {
    width: 100%;
    padding: 15px;
    margin: 5px;
