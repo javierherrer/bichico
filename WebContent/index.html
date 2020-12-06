@@ -188,7 +188,7 @@
 			<h2 class="tm-text-white tm-contact-title">Contacto</h2>
 			<div class="tm-bg-color-white tm-contact-main">
 				<div class="contact-form-outer">
-					<form id="contact-form" action="enviarmensaje" method="POST" class="tm-bg-color-6 tm-contact-form">
+					<!--<form id="contact-form" action="enviarmensaje" method="POST" class="tm-bg-color-6 tm-contact-form"> -->
 						<div id="contact-form" class="tm-bg-color-6 tm-contact-form">
 							<div class="form-group">
 								<input id="nombreUsuario" type="text" name="emisor" class="form-control" placeholder="Nombre" required="" />
@@ -201,12 +201,16 @@
 								required=""></textarea>
 							</div>
 							<div>
+								 <button id="botonMensaje" type="submit" onclick="enviarMensaje()" class="ml-auto tm-btn tm-btn-3">
+                                Enviar
+                            	</button>
+								<!--
 								<button type="submit" class="ml-auto tm-btn tm-btn-3">
 									Enviar
-								</button>
+								</button> -->
 							</div>
 						</div>
-					</form>
+					<!-- </form>-->
 				</div>
 				<div class="contact-info-outer">
 					<div class="tm-bg-color-6 contact-info">
@@ -233,7 +237,7 @@
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 		<script src="lib/js/lista.js"></script>
 		<script src="lib/js/mapa.js"></script>
-		<!--  <script src="lib/js/mensaje.js"></script>  posible implementacion de envio de formulario a traves de JS-->
+		 <script src="lib/js/mensaje.js"></script> <!--  posible implementacion de envio de formulario a traves de JS-->
 		<script>
     	/////////////////////////////////////////////////      elemento de lista clicado
     	var list = document.getElementById('myUL');

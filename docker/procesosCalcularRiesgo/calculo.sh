@@ -4,6 +4,6 @@ while true
 do
 
 	python3 /trendsScrapper/main.py >> scrapper.log
-	/calcularfactor
-	sleep 600
+	/calcularfactor > /dev/null
+	sleep 14400
 done

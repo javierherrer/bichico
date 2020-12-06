@@ -45,6 +45,11 @@ public class EnviarMensajeServlet extends HttpServlet{
                     request.getParameter(PARAM_EMAIL));
             System.out.println(mensaje);
             dao.enviarMensaje(mensaje);
+            System.out.println(request.getContextPath());
+            System.out.println(request.getServletPath());
+            System.out.println(request.getPathInfo());
+            System.out.println(request.getPathTranslated());
+            response.sendRedirect("/");
         }
     }
 

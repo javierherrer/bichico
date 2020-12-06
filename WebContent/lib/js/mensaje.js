@@ -23,5 +23,6 @@
    document.getElementById("mensajeUsuario").value = "";
 
    alert("mensaje enviado");
+   document.location = "../";
 
  }
