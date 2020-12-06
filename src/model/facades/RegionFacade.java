@@ -28,7 +28,8 @@ public class RegionFacade {
 	private static final String LONGITUD = "long";
 	private static final String COMUNIDAD = "id_com";
 
-	private final static String CONSULTA_REGIONES = "SELECT * FROM Bichico.region r where r.id_com = (select c.id from Bichico.comunidad c where c.nombre = ?)";
+	private final static String CONSULTA_REGIONES = "SELECT * FROM Bichico.region r " +
+			"where r.id_com = (select c.id from Bichico.comunidad c where c.nombre = ?)";
 
 	private final static String CONSULTA_LATITUD = "SELECT r.lat " + "FROM Bichico.region r " + "WHERE r.id = ?";
 
@@ -64,46 +65,6 @@ public class RegionFacade {
 			e.printStackTrace();
 		}
 		return listaRegiones;
-	}
-
-	// prueba
-	public static String obtenerJSON() {
-		Connection conn;
-
-		String jsonText = null;
-
-		// Abrimos la conexión e inicializamos los parámetros
-		try {
-			JSONObject obj = new JSONObject();
-			conn = ConnectionController.getConnection();
-			PreparedStatement ps = conn.prepareStatement("select  * from bichico.region r where r.id_com  = 40;");
-			ResultSet rset;
-			rset = ps.executeQuery();
-			RegionVO rs = null;
-			JSONArray list = new JSONArray();
-			JSONObject obj1;
-			while (rset.next()) {
-				String nombre = rset.getString("nombre");
-				float longitud = rset.getFloat("long");
-				float latitud = rset.getFloat("lat");
-				obj1 = new JSONObject();
-				obj1.put("nombre", nombre);
-				obj1.put("long", longitud);
-				obj1.put("lat", latitud);
-				list.add(obj1);
-			}
-			obj.put("regiones", list);
-			StringWriter out = new StringWriter();
-			try {
-				obj.writeJSONString(out);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			jsonText = out.toString();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return jsonText;
 	}
 
 	/**
