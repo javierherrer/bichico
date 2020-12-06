@@ -1,0 +1,6 @@
+[submodule "docker/procesosCalcularRiesgo/SisInfo_Bichico"]
+	path = docker/procesosCalcularRiesgo/SisInfo_Bichico
+	url = https://github.com/javierherrer/SisInfo_Bichico.git
+[submodule "docker/procesosCalcularRiesgo/CalculadorFactorRiesgo"]
+	path = docker/procesosCalcularRiesgo/CalculadorFactorRiesgo
+	url = https://github.com/fuster92/CalculadorFactorRiesgo.git
