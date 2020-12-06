@@ -9,6 +9,7 @@ import java.sql.SQLException;
 
 /**
  * Clase que se comunica con el servidor TOMCAT para obtener y liberar conexiones.
+ * @deprecated
  */
 public class PoolTomcatConnection implements DatabaseConnection {
     private static PoolTomcatConnection instancia = null;

@@ -17,12 +17,11 @@ import java.io.StringWriter;
 public class Login extends HttpServlet {
 
     private static final String LOGIN = "usuario";
-    private static final String URL_LOGIN = "/login";
     private static final String PASSWORD = "password";
-    private static final String URL_LOGGED = "/adminpanel";
-    private static final String MENSAJE_ERROR = "Error en el login";
     private static final String ERROR_LOGIN = "error";
     private static final String ADMIN = "admin";
+    private static final String CAMPOS_SIN_RELLENAR = "Campos sin rellenar";
+    private static final String CONTRASENYA_INCORRECTA = "Contraseña incorrecta";
 
     /**
      * @see HttpServlet#HttpServlet()
@@ -40,38 +39,27 @@ public class Login extends HttpServlet {
         String error = "";
 
         if (id == null || pass == null || pass.equals("") || id.equals("")){
-            error = "Campos sin rellenar";
-
+            error = CAMPOS_SIN_RELLENAR;
         } else {
             AdminVO adminVO = new AdminVO(id, pass);
-           // if (request.getSession().getAttribute(ADMIN) != null || AdminFacade.validateAdmin(adminVO)){
             if (AdminFacade.validateAdmin(adminVO)){
-
                 adminVO.setHashedPass("");
                 request.getSession().setAttribute(ADMIN, adminVO);
-
-
             } else {
-
-                error = "Contraseña incorrecta";
-
+                error = CONTRASENYA_INCORRECTA;
             }
         }
         sendResponse(response, createJSONResponse(error));
     }
 
-  
-
 	/**
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-
         doGet(request, response);
     }
 
     private static void sendResponse(HttpServletResponse response, String json){
-
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
         try {
@@ -81,9 +69,7 @@ public class Login extends HttpServlet {
         }
     }
 
-
     private static String createJSONResponse(String error){
-
         JSONObject object = new JSONObject();
         object.put(ERROR_LOGIN, error);
         StringWriter sw = new StringWriter();
@@ -93,7 +79,6 @@ public class Login extends HttpServlet {
             e.printStackTrace();
         }
         return sw.toString();
-
     }
 
     /**

@@ -11,33 +11,35 @@ import controller.ConnectionController;
 import model.MensajeVO;
 import model.PalabraVO;
 
+/**
+ * Clase MensajeFacade para trabajar con mensajes
+ * 
+ * @author sisinf
+ */
 public class MensajeFacade {
 
+	private final static String MOSTRAR_MENSAJES = "SELECT m.* FROM Bichico.mensaje m";
 
-	private final static String MOSTRAR_MENSAJES =
-			"SELECT m.* FROM Bichico.mensaje m";
+	private final static String INSERTAR_MENSAJE = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
 
-	private final static String INSERTAR_MENSAJE =
-			"INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
+	private final static String ELIMINAR_MENSAJE = "DELETE FROM bichico.mensaje WHERE id = ?";
 
-	private final static String ELIMINAR_MENSAJE =
-			"DELETE FROM bichico.mensaje WHERE id = ?";
-
-	//private static String mostrarMensajeUsuario = "Select * from mensaje where emisor= ?";
-
-	
+	/**
+	 * metodo que devuelve una lista de mensajes
+	 * @return List<MensajeVO>
+	 */
 	public static List<MensajeVO> consultarMensajes() {
 		List<MensajeVO> listaMensajes = new ArrayList<>();
 
 		Connection conn = null;
 
 		try {
-			// Abrimos la conexión e inicializamos los parámetros 
+			// Abrimos la conexión e inicializamos los parámetros
 			conn = ConnectionController.getConnection();
 			PreparedStatement ps = conn.prepareStatement(MOSTRAR_MENSAJES);
 			ResultSet rset = ps.executeQuery();
 
-			while(rset.next()) {
+			while (rset.next()) {
 				int id = rset.getInt("id");
 				String emisor = rset.getString("emisor");
 				String email = rset.getString("email");
@@ -47,7 +49,7 @@ public class MensajeFacade {
 			}
 			rset.close();
 			ps.close();
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -56,51 +58,54 @@ public class MensajeFacade {
 
 		return listaMensajes;
 	}
-	
+	/**
+	 * metodo que comprueba que un mensaje es correcto.
+	 * @param mensaje
+	 * @return
+	 */
 	boolean comprobarMensage(MensajeVO mensaje) {
 
-		if(mensaje.getContenido() != null &&
-				mensaje.getEmail() != null &&
-				mensaje.getEmisor() != null) {
-					return true;
+		if (mensaje.getContenido() != null && mensaje.getEmail() != null && mensaje.getEmisor() != null) {
+			return true;
 		}
 		return false;
 	}
-
-
+	/**
+	 * metodo que inserta un mensaje en la base de datos
+	 * @param mensaje
+	 * @return true | false si los datos son correctos
+	 */
 	public static boolean enviarMensaje(MensajeVO mensaje) {
-			Connection conn = null;
+		Connection conn = null;
 
-			// Abrimos la conexión e inicializamos los parámetros 
-			try {
-				conn = ConnectionController.getConnection();
-//	private static String insertarMensaje = "INSERT INTO bichico.mensaje (emisor,email,contenido) VALUES (? , ? , ? )";
+		// Abrimos la conexión e inicializamos los parámetros
+		try {
+			conn = ConnectionController.getConnection();
 
-				PreparedStatement ps = conn.prepareStatement(INSERTAR_MENSAJE);
-				ps.setString(1, mensaje.getEmisor());
-				ps.setString(2, mensaje.getEmail());
-				ps.setString(3, mensaje.getContenido());
-				System.out.println(ps);
-				int tablasAfectadas = ps.executeUpdate();
-				System.out.println(tablasAfectadas);
+			PreparedStatement ps = conn.prepareStatement(INSERTAR_MENSAJE);
+			ps.setString(1, mensaje.getEmisor());
+			ps.setString(2, mensaje.getEmail());
+			ps.setString(3, mensaje.getContenido());
+			int tablasAfectadas = ps.executeUpdate();
 
-				ps.close();
-				conn.close();
-				
-			} catch (SQLException e) {
-				e.printStackTrace();
+			ps.close();
+			conn.close();
 
-				return false;
-			} finally {
-				ConnectionController.releaseConnection(conn);
-			}
-			return true;
+		} catch (SQLException e) {
+			e.printStackTrace();
+
+			return false;
+		} finally {
+			ConnectionController.releaseConnection(conn);
+		}
+		return true;
 
 	}
 
-	/*
-	 * Eliminar mensajes por identificador
-	 *
+	/**
+	 * metodo que elimina un mensaje por su id
+	 * @param id
+	 * @return devuelve las celdas afectas
 	 */
 	public static int eliminarMensaje(int id) {
 		int affectedrows = 0;
@@ -115,7 +120,8 @@ public class MensajeFacade {
 
 			pstmt.close();
 		} catch (SQLException ex) {
-			System.out.println(ex.getMessage());
+			ex.printStackTrace();
+			ConnectionController.releaseConnection(conn);
 		} finally {
 			ConnectionController.releaseConnection(conn);
 		}

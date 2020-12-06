@@ -1,9 +1,9 @@
 package controller;
 import java.sql.*;
 
-/**  * Clase que abstrae la conexion con la base de datos.  */
-
-
+/**  * Clase que abstrae la conexion con la base de datos.  
+ *@deprecated 
+ */
 public class PostgreSQLConnection implements DatabaseConnection {
 	private static PostgreSQLConnection instancia = null;
 

@@ -1,52 +1,59 @@
 package model;
 
+/**
+ * Clase MensajeVO para poder trabajar con la tabla mensaje
+ * 
+ * @author
+ *
+ */
 public class MensajeVO {
-    private int id;
-    private String emisor;
-    private String contenido;
-    private String email;
+	private int id;
+	private String emisor;
+	private String contenido;
+	private String email;
 
-    public MensajeVO(int id, String emisor, String contenido, String email) {
-        this.id = id;
-        this.emisor = emisor;
-        this.contenido = contenido;
-        this.email = email;
-    }
-    public MensajeVO( String emisor, String contenido, String email) {
-        this.emisor = emisor;
-        this.contenido = contenido;
-        this.email = email;
-    }
+	public MensajeVO(int id, String emisor, String contenido, String email) {
+		this.id = id;
+		this.emisor = emisor;
+		this.contenido = contenido;
+		this.email = email;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public MensajeVO(String emisor, String contenido, String email) {
+		this.emisor = emisor;
+		this.contenido = contenido;
+		this.email = email;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getEmisor() {
-        return emisor;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setEmisor(String emisor) {
-        this.emisor = emisor;
-    }
+	public String getEmisor() {
+		return emisor;
+	}
 
-    public String getContenido() {
-        return contenido;
-    }
+	public void setEmisor(String emisor) {
+		this.emisor = emisor;
+	}
 
-    public void setContenido(String contenido) {
-        this.contenido = contenido;
-    }
+	public String getContenido() {
+		return contenido;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public void setContenido(String contenido) {
+		this.contenido = contenido;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 }

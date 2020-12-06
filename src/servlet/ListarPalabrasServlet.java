@@ -34,7 +34,8 @@ public class ListarPalabrasServlet extends HttpServlet{
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
             PalabraFacade dao = new PalabraFacade();
 
@@ -42,7 +43,6 @@ public class ListarPalabrasServlet extends HttpServlet{
             JSONObject obj = new JSONObject();
             JSONArray list = new JSONArray();
             JSONObject palabra;
-            //System.out.println("aaaaa" + request.getSession().getAttribute("admin"));
 
             if (request.getSession().getAttribute("admin") == null) {
                 obj.put("error", "true");
@@ -68,7 +68,6 @@ public class ListarPalabrasServlet extends HttpServlet{
 
 	        response.setContentType("application/json");
     		response.setCharacterEncoding("UTF-8");
-    		//System.out.println(jsonText);
     		response.getWriter().write(jsonText);
         } catch (Exception ex) {
             ex.printStackTrace();
