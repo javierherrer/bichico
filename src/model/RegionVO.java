@@ -2,83 +2,89 @@ package model;
 
 import org.json.simple.JSONObject;
 
+/**
+ * Clase RegionVO para poder trabajar con la tabla regiones
+ * 
+ * @author
+ *
+ */
 public class RegionVO {
-    private int id;
-    private int habitantes;
-    private String nombre;
-    private String comunidad;
-    private float latitud;
-    private float longitud;
+	private int id;
+	private int habitantes;
+	private String nombre;
+	private String comunidad;
+	private float latitud;
+	private float longitud;
 
+	public RegionVO(int id, int habitantes, String nombre, String comunidad, float latitud, float longitud) {
+		this.id = id;
+		this.habitantes = habitantes;
+		this.nombre = nombre;
+		this.comunidad = comunidad;
+		this.latitud = latitud;
+		this.longitud = longitud;
+	}
 
-    public RegionVO(int id, int habitantes, String nombre, String comunidad, float latitud, float longitud) {
-        this.id = id;
-        this.habitantes = habitantes;
-        this.nombre = nombre;
-        this.comunidad = comunidad;
-        this.latitud = latitud;
-        this.longitud = longitud;
-    }
-
-    /**
-     * Constructor de RegionVO
-     * @param nombre
-     * @param latitud
-     * @param longitud
-     */
-    public RegionVO(String nombre, float latitud, float longitud) {
+	/**
+	 * Constructor de RegionVO
+	 * 
+	 * @param nombre
+	 * @param latitud
+	 * @param longitud
+	 */
+	public RegionVO(String nombre, float latitud, float longitud) {
 		this.nombre = nombre;
 		this.latitud = latitud;
 		this.longitud = longitud;
 	}
 
 	public String getComunidad() {
-        return comunidad;
-    }
+		return comunidad;
+	}
 
-    public void setComunidad(String comunidad) {
-        this.comunidad = comunidad;
-    }
+	public void setComunidad(String comunidad) {
+		this.comunidad = comunidad;
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public int getHabitantes() {
-        return habitantes;
-    }
+	public int getHabitantes() {
+		return habitantes;
+	}
 
-    public void setHabitantes(int habitantes) {
-        this.habitantes = habitantes;
-    }
+	public void setHabitantes(int habitantes) {
+		this.habitantes = habitantes;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public double getLatitud() {
-        return latitud;
-    }
+	public double getLatitud() {
+		return latitud;
+	}
 
-    public double getLongitud() {
-        return longitud;
-    }
+	public double getLongitud() {
+		return longitud;
+	}
 
-    public void setLatitud(float latitud) {
-        this.latitud = latitud;
-    }
+	public void setLatitud(float latitud) {
+		this.latitud = latitud;
+	}
 
-    public void setLongitud(float longitud) {
-        this.longitud = longitud;
-    }
+	public void setLongitud(float longitud) {
+		this.longitud = longitud;
+	}
 
 	@Override
 	public String toString() {
@@ -86,18 +92,19 @@ public class RegionVO {
 				+ ", latitud=" + latitud + ", longitud=" + longitud + "]";
 	}
 
-    /**
-     * Returns de JSON representation of the region
-     * @return
-     */
-	public JSONObject toJSON(){
-        JSONObject obj = new JSONObject();
-        obj.put("id", id);
-        obj.put("habitantes", habitantes);
-        obj.put("nombre",nombre);
-        obj.put("comunidad",comunidad);
-        obj.put("latitud", latitud);
-        obj.put("longitud",longitud);
-        return obj;
-    }
+	/**
+	 * Returns de JSON representation of the region
+	 * 
+	 * @return
+	 */
+	public JSONObject toJSON() {
+		JSONObject obj = new JSONObject();
+		obj.put("id", id);
+		obj.put("habitantes", habitantes);
+		obj.put("nombre", nombre);
+		obj.put("comunidad", comunidad);
+		obj.put("latitud", latitud);
+		obj.put("longitud", longitud);
+		return obj;
+	}
 }

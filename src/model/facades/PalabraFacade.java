@@ -7,125 +7,133 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Clase PalabraFacade para trabajar con palabras
+ * 
+ * @author sisinf
+ */
 public class PalabraFacade {
-    private final static String INSERTAR_PALABRA =
-            "INSERT INTO Bichico.palabra (nombre, importancia) " +
-            "VALUES (?,?)";
+	private static final String IMPORTANCIA = "importancia";
 
-    private final static String CONSULTAR_PALABRAS = "SELECT p.nombre, p.importancia FROM Bichico.palabra p";
+	private static final String NOMBRE = "nombre";
 
-    private static final String ELIMINAR_PALABRA = "DELETE FROM bichico.palabra " +
-            "WHERE nombre = ?";
-    /**
-     * Connect to the PostgreSQL database
-     *
-     * @return a Connection object
-     */
-    public Connection connect(){
-        //ConnectionController.changeConnection(ConnectionController.REMOTA);
-        return ConnectionController.getConnection();
-    }
+	private final static String INSERTAR_PALABRA = "INSERT INTO Bichico.palabra (nombre, importancia) "
+			+ "VALUES (?,?)";
 
-    /**
-     * Inserta una palabra
-     *
-     * @param palabra
-     * @return
-     */
-    public String insertarPalabra(PalabraVO palabra) {
-        String nombre ="";
+	private final static String CONSULTAR_PALABRAS = "SELECT p.nombre, p.importancia FROM Bichico.palabra p";
 
-        Connection conn = null;
-        try {
-        	conn = connect();
-            PreparedStatement pstmt = conn.prepareStatement(INSERTAR_PALABRA,
-            Statement.RETURN_GENERATED_KEYS);
+	private static final String ELIMINAR_PALABRA = "DELETE FROM bichico.palabra " + "WHERE nombre = ?";
 
-            pstmt.setString(1, palabra.getPalabra());
-            pstmt.setFloat(2, palabra.getImportancia());
-            System.out.println(pstmt);
-            int filas = pstmt.executeUpdate();
-            // comprobar filas afectadas
-            if (filas > 0) {
-                // devolver el ID
-                try (ResultSet rs = pstmt.getGeneratedKeys()) {
-                    if (rs.next()) {
-                        nombre = rs.getString(1);
-                    }
-                } catch (SQLException ex) {
-                    System.out.println(ex.getMessage());
-                }
-            }
+	/**
+	 * Connect to the PostgreSQL database
+	 *
+	 * @return a Connection object
+	 */
+	public Connection connect() {
+		return ConnectionController.getConnection();
+	}
 
-            pstmt.close();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-        	ConnectionController.releaseConnection(conn); 
-		} 
+	/**
+	 * Inserta una palabra
+	 *
+	 * @param palabra
+	 * @return String de la palabra insertada
+	 */
+	public String insertarPalabra(PalabraVO palabra) {
+		String nombre = "";
 
-        return nombre;
-    }
+		Connection conn = null;
+		try {
+			conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(INSERTAR_PALABRA, Statement.RETURN_GENERATED_KEYS);
 
-    /**
-     * Consulta palabras
-     *
-     * @return una lista de palabras
-     */
-    public List<PalabraVO> consultarPalabras() {
+			pstmt.setString(1, palabra.getPalabra());
+			pstmt.setFloat(2, palabra.getImportancia());
+			int filas = pstmt.executeUpdate();
+			// comprobar filas afectadas
+			if (filas > 0) {
+				// devolver el ID
+				try (ResultSet rs = pstmt.getGeneratedKeys()) {
+					if (rs.next()) {
+						nombre = rs.getString(1);
+					}
+				} catch (SQLException ex) {
+					ex.printStackTrace();
+					ConnectionController.releaseConnection(conn);
+				}
+			}
 
+			pstmt.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+			ConnectionController.releaseConnection(conn);
+		} finally {
+			ConnectionController.releaseConnection(conn);
+		}
 
-        List<PalabraVO> listaPalabras = new ArrayList<PalabraVO>();
+		return nombre;
+	}
 
-        Connection conn = null;
-        try {
-        	conn = connect();
-            PreparedStatement pstmt = conn.prepareStatement(CONSULTAR_PALABRAS);
-            ResultSet consultarRs = pstmt.executeQuery();
+	/**
+	 * Consulta palabras
+	 *
+	 * @return una lista de palabras
+	 */
+	public List<PalabraVO> consultarPalabras() {
 
-            //Leemos los registros
-            while (consultarRs.next()) {
-                String palabra = consultarRs.getString("nombre");
-                float importancia = consultarRs.getFloat("importancia");
-                listaPalabras.add(new PalabraVO(palabra, importancia));
-            }
+		List<PalabraVO> listaPalabras = new ArrayList<PalabraVO>();
 
-            consultarRs.close();
-            pstmt.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-        	ConnectionController.releaseConnection(conn);  
-		} 
+		Connection conn = null;
+		try {
+			conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(CONSULTAR_PALABRAS);
+			ResultSet consultarRs = pstmt.executeQuery();
 
-        return listaPalabras;
-    }
+			// Leemos los registros
+			while (consultarRs.next()) {
+				String palabra = consultarRs.getString(NOMBRE);
+				float importancia = consultarRs.getFloat(IMPORTANCIA);
+				listaPalabras.add(new PalabraVO(palabra, importancia));
+			}
 
-    /**
-     * Eliminar palabras por nombre
-     *
-     * @param nombre
-     * @return
-     */
-    public int eliminarPalabra(String nombre) {
+			consultarRs.close();
+			pstmt.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			ConnectionController.releaseConnection(conn);
+		} finally {
+			ConnectionController.releaseConnection(conn);
+		}
 
-        int affectedrows = 0;
-        Connection conn = null;
-        try {
-        	conn = connect();
-        	PreparedStatement pstmt = conn.prepareStatement(ELIMINAR_PALABRA);
+		return listaPalabras;
+	}
 
-            pstmt.setString(1, nombre);
+	/**
+	 * Eliminar palabras por nombre
+	 *
+	 * @param nombre
+	 * @return int con las celdas afectadas
+	 */
+	public int eliminarPalabra(String nombre) {
 
-            affectedrows = pstmt.executeUpdate();
+		int affectedrows = 0;
+		Connection conn = null;
+		try {
+			conn = connect();
+			PreparedStatement pstmt = conn.prepareStatement(ELIMINAR_PALABRA);
 
-            pstmt.close();
-        } catch (SQLException ex) {
-            System.out.println(ex.getMessage());
-        } finally {
-        	ConnectionController.releaseConnection(conn); 
-		} 
-        return affectedrows;
-    }
+			pstmt.setString(1, nombre);
+
+			affectedrows = pstmt.executeUpdate();
+
+			pstmt.close();
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+			ConnectionController.releaseConnection(conn);
+		} finally {
+			ConnectionController.releaseConnection(conn);
+		}
+		return affectedrows;
+	}
 
 }

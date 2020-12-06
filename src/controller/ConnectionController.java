@@ -2,7 +2,11 @@ package controller;
 
 import java.sql.Connection;
 
-
+/**
+ * Clase antigua de control de conexion.
+ * @author sisinf
+ * @deprecated
+ */
 public class ConnectionController {
 
     public static final String REMOTA = "remota";

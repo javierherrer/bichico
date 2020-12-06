@@ -1,9 +1,4 @@
-/**
- * factorVO.java
- *
- * Versión V.v 21-oct-2020
- * Javier Herrer Torres
- */
+
 package model;
 
 import org.json.simple.JSONObject;
@@ -12,8 +7,10 @@ import java.sql.Date;
 
 
 /**
- * factorVO
+ * factorVO.java
  *
+ * Versión V.v 21-oct-2020
+ * Javier Herrer Torres
  */
 public class FactorVO {
     private Date fecha;
@@ -62,7 +59,6 @@ public class FactorVO {
 
     public JSONObject toJSON() {
         JSONObject salida = new JSONObject();
-
         salida.put("idregion",this.id_region);
         salida.put("fecha",this.fecha);
         salida.put("valor", this.valor);

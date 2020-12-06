@@ -9,18 +9,22 @@ import controller.ConnectionController;
 import encriptar.Encriptador;
 import model.AdminVO;
 
+/**
+ * Clase AdminFacade para comprobar los admins de la aplicacion
+ * @author sisinf
+ */
 public class AdminFacade {
-	
-	
-	private final static String contarUsuarios =
-			"SELECT count(*) cuenta FROM bichico.admin a WHERE a.nombre = ?";
-	private final static String buscamosUsuario =
-			"SELECT a.* FROM bichico.admin a where a.nombre = ?";
-	
+
+	private final static String contarUsuarios = "SELECT count(*) cuenta FROM bichico.admin a WHERE a.nombre = ?";
+	private final static String buscamosUsuario = "SELECT a.* FROM bichico.admin a where a.nombre = ?";
+
 	private final static String PASSWORD = "hash_contrasenya";
 
-	
-	
+	/**
+	 * Metodo que recibe un adminVO y comprueba si existe en la BBDD 
+	 * @param user
+	 * @return true | false
+	 */
 	public static boolean validateAdmin(AdminVO user) {
 		boolean result = false;
 		Connection conn = null;
@@ -35,7 +39,6 @@ public class AdminFacade {
 			countPs.setString(1, user.getNombre());
 			findPs.setString(1, user.getNombre());
 
-
 			// Ejecutamos la consulta
 			ResultSet findRs = findPs.executeQuery();
 			ResultSet countRs = countPs.executeQuery();
@@ -43,9 +46,8 @@ public class AdminFacade {
 			countRs.next();
 			int n = countRs.getInt(1);
 
-
 			// Leemos resultados
-			if(n == 1) {
+			if (n == 1) {
 				// Comparamos contraseñas
 				findRs.next();
 				String dbpwd = findRs.getString(PASSWORD);
@@ -54,9 +56,8 @@ public class AdminFacade {
 				}
 				findRs.next();
 
-
 			} else {
-				
+
 				result = false;
 			}
 
@@ -66,15 +67,14 @@ public class AdminFacade {
 			countRs.close();
 			countPs.close();
 
-		} catch(SQLException se) {
+		} catch (SQLException se) {
 			se.printStackTrace();
 
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace(System.err);
 		} finally {
 			ConnectionController.releaseConnection(conn);
 		}
-		
 		return result;
 	}
 
