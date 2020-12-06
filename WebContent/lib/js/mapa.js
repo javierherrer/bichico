@@ -118,7 +118,7 @@ function anadirCirculos(data) {
 	}
 	var i = 0;
 	grupoCirculos.eachLayer(function (layer) {
-		layer.bindPopup(data.regiones[i].nombre + "n" + data.regiones[i].factor);
+		layer.bindPopup(data.regiones[i].nombre + " " + data.regiones[i].factor);
 		i++;
 	});
 	grupoCirculos.addTo(myMap);

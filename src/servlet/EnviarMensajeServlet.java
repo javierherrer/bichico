@@ -52,8 +52,9 @@ public class EnviarMensajeServlet extends HttpServlet{
         System.out.println(request.getContextPath());
         System.out.println(request.getPathInfo());
         System.out.println(request.getPathTranslated());
-        //response.sendRedirect("../");
-        response.sendRedirect(request.getContextPath());
+     
+        response.sendRedirect("../");
+        //response.sendRedirect(request.getContextPath());
     }
 
     /**
