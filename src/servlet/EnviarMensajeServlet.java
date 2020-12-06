@@ -39,22 +39,13 @@ public class EnviarMensajeServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
-        System.out.println("llego");
         if (request.getParameter(PARAM_EMAIL) != null) {
             MensajeVO mensaje = new MensajeVO(request.getParameter(PARAM_EMISOR),
                     request.getParameter(PARAM_CONTENIDO),
                     request.getParameter(PARAM_EMAIL));
             System.out.println(mensaje);
             dao.enviarMensaje(mensaje);
-            //No se realiza tratamiento de errores
         }
-        System.out.println(request.getRequestURI());
-        System.out.println(request.getContextPath());
-        System.out.println(request.getPathInfo());
-        System.out.println(request.getPathTranslated());
-     
-        response.sendRedirect("../");
-        //response.sendRedirect(request.getContextPath());
     }
 
     /**

@@ -33,20 +33,9 @@ public class EliminarMensajeServlet extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MensajeFacade dao = new MensajeFacade();
 
-        System.out.println("paso");
         if (request.getParameter(PARAM_ID) != null) {
-            System.out.println("entro if");
             int id = Integer.parseInt(request.getParameter(PARAM_ID));
             int rows = dao.eliminarMensaje(id);
-            System.out.println("entro eliminar");
-            /* No consideramos errores
-            if (rows < 1) {
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            } else {
-                request.setAttribute("error", "invalid word");
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            }
-             */
         }
     }
 
@@ -54,7 +43,6 @@ public class EliminarMensajeServlet extends HttpServlet{
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         doGet(request, response);
     }
 }

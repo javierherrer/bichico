@@ -33,9 +33,9 @@ public class ListarMensajesServlet extends HttpServlet{
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         try {
-        	System.out.println("entro");
             MensajeFacade dao = new MensajeFacade();
 
             List<MensajeVO> lista = dao.consultarMensajes();

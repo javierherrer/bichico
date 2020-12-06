@@ -39,18 +39,16 @@ public class ListarRegionesServlet extends HttpServlet{
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         ComunidadFacade dao = new ComunidadFacade();
 
         try {
             if (request.getParameter(PARAM_COMUNIDAD) != null){
-
                 int id = Integer.parseInt(request.getParameter(PARAM_COMUNIDAD));
-
                 ComunidadVO comunidadVO = ComunidadFacade.leerComunidad(id);
 
                 Map<RegionVO, FactorVO> lista = dao.obtenerFactorRegiones(id);
-
                 JSONObject obj = new JSONObject();
                 JSONArray list = new JSONArray();
                 JSONObject regionJson;
@@ -80,12 +78,8 @@ public class ListarRegionesServlet extends HttpServlet{
 
                 String jsonText = out.toString();
 
-
-                System.out.println(jsonText);
-
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                //System.out.println(jsonText);
                 response.getWriter().write(jsonText);
             }
         } catch (Exception ex) {

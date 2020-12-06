@@ -25,7 +25,6 @@ public class EliminarPalabraServlet extends HttpServlet{
      */
     public EliminarPalabraServlet() {
         super();
-
     }
 
     /**
@@ -33,20 +32,9 @@ public class EliminarPalabraServlet extends HttpServlet{
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PalabraFacade dao = new PalabraFacade();
-        System.out.println("paso");
         if (request.getParameter(PARAM_PALABRA) != null) {
-            System.out.println("entro if");
             String id = request.getParameter(PARAM_PALABRA);
             int rows = dao.eliminarPalabra(id);
-            System.out.println("entro eliminar");
-            /* No consideramos errores
-            if (rows < 1) {
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            } else {
-                request.setAttribute("error", "invalid word");
-                request.getRequestDispatcher(URL_ADMIN).forward(request, response);
-            }
-             */
         }
     }
 
