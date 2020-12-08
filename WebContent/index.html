@@ -9,8 +9,9 @@
 	<link href="fontawesome/css/all.min.css" rel="stylesheet" />
 	<link href="css/templatemo-comparto.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://kit.fontawesome.com/9232811b6f.js" crossorigin="anonymous"></script>
 	<script src="//www.bing.com/widget/bootstrap.answer.js" async=""></script>
+	<script src="https://kit.fontawesome.com/9232811b6f.js" crossorigin="anonymous"></script>
+	
 
 	<title>Bichico</title>
 
@@ -74,8 +75,9 @@
 						<br>
 					</div>			
 					<br>
-					<!-- <div class="bingwidget" data-type="covid19_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>-->
-					<div style="max-height: 800px;"class="bingwidget" data-type="covid19_stats_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>
+					<!--<div class="bingwidget" data-type="covid19_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div>-->
+					<!--<div style="max-height: 800px;"class="bingwidget" data-type="covid19_stats_map" data-market="es-es" data-language="es-es" data-location-id="/Spain"></div> -->
+					<div class="bingwidget" data-type="covid19_stats_map" data-market="es-ES" data-language="es-ES" data-location-id="/Spain"></div>
 				</div>
 				<article class="tm-section-1-r tm-bg-color-8">
 					<h2 class="tm-mb-2 tm-title-color">Proyecto Bichico</h2>
@@ -258,7 +260,7 @@
             	
             },
             function(data, status){
-            	console.log(data);                
+            	//console.log(data);                
             	anadirCirculos(data);
             });
         }

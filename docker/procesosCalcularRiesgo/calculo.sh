@@ -3,7 +3,7 @@
 while true 
 do
 
-	python3 /trendsScrapper/main.py >> scrapper.log
-	/calcularfactor > /dev/null
+	python3 /main.py >> scrapper.log
+	/calcularfactor >> factor.log
 	sleep 14400
 done

@@ -1,6 +1,10 @@
 $(document).on('ready', funcMain);
 
 
+function prueba(){
+	alert("cargando");
+}
+
 function funcMain()
 {
 	var modal = document.getElementById("myModal");
