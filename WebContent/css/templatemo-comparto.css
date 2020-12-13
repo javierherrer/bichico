@@ -712,6 +712,8 @@ h1, h2, h3, h4, h5, h6 { color: #333; }
       width: 100%;
     }
 
+    
+
     #bingwidget{
       max-height: -1;
       padding-bottom: 10px;
@@ -724,6 +726,7 @@ h1, h2, h3, h4, h5, h6 { color: #333; }
       margin-right: 0;
       text-align: center;
     }
+   
 
     .tm-section-2-l { margin-bottom: 20px; }
     #mapid {margin-bottom: 20px; }
