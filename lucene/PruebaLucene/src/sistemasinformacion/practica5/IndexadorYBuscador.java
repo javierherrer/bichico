@@ -66,9 +66,9 @@ public class IndexadorYBuscador{
 	public IndexadorYBuscador(Collection<String> ficherosAIndexar, Collection<String> queries){
 		this.ficherosAIndexar = ficherosAIndexar;
 		this.queries = queries;
-		/*	
+		
 		analizador = new SimpleAnalyzer();
-	*/
+		/*	
 		try {
 			FileReader reader = new FileReader("./ficheros/stopwords.txt");
 			analizador = new StandardAnalyzer(reader);
@@ -76,7 +76,7 @@ public class IndexadorYBuscador{
 			System.out.println("Error leyendo fichero de Stop Words. Usando valor por defecto");
 			analizador = new StandardAnalyzer();
 		} 
-
+*/
 		//analizador = new SpanishAnalyzer();
 
 	
@@ -85,10 +85,9 @@ public class IndexadorYBuscador{
 	
 	
 	public IndexadorYBuscador(Collection<String> ficheros) {
-		this.ficherosAIndexar = ficherosAIndexar;
-		
-		
+		this.ficherosAIndexar = ficheros;
 		analizador = new SimpleAnalyzer();
+		System.out.println(ficherosAIndexar);
 	/*	
 		try {
 			FileReader reader = new FileReader("./ficheros/stopwords.txt");
@@ -137,6 +136,7 @@ public class IndexadorYBuscador{
 		indice = new IndexWriter(directorioAlmacenarIndice, configuracionIndice);
 		
 		for (String fichero : ficherosAIndexar) {
+			System.out.println(fichero);
 			anhadirFichero(indice, fichero);
 		}
 		
@@ -168,7 +168,7 @@ public class IndexadorYBuscador{
 										int hitsPorPagina, 
 										String queryAsString)
 	throws IOException{
-
+		System.out.println(directorioDelIndice);
 		DirectoryReader directoryReader = DirectoryReader.open(directorioDelIndice);
 		IndexSearcher buscador = new IndexSearcher(directoryReader);
 		
@@ -227,6 +227,7 @@ public class IndexadorYBuscador{
 		ficheros.add("./ficheros/dos.txt");
 		ficheros.add("./ficheros/tres.txt");
 		ficheros.add("./ficheros/cuatro.txt");
+		ficheros.add("./ficheros/prueba.txt");
 
 		// Establecemos las palabras clave a utilizar en la búsqueda
 		Collection <String> queries = new ArrayList <String>();
@@ -235,7 +236,7 @@ public class IndexadorYBuscador{
 		queries.add("cambio climático");
 		queries.add("cambio");
 		queries.add("climatico");
-		queries.add("por");
+		queries.add("Laboral");
 		queries.add("aeropuerto");
 
 		// Creamos el idexador / buscador
@@ -246,10 +247,22 @@ public class IndexadorYBuscador{
 		
 		// Abrimos un ficher indexado previamente
 		//Directory directorioDelIndiceCreado = MMapDirectory.open(Paths.get(INDEXDIR));
-		
 		// Ejecutamos la búsqueda de las palabras clave
 		ejemplo.buscarQueries(directorioDelIndiceCreado, ficheros.size(), 1);
 	}
+
+
+
+	public Analyzer getAnalizador() {
+		return analizador;
+	}
+
+
+
+	public void setAnalizador(Analyzer analizador) {
+		this.analizador = analizador;
+	}
+	
 	
 }
 
